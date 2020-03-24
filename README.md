@@ -1,1 +1,126 @@
 # Gallery
+Department of Computing
+COWB40390 INTRODUCTION TO WEB PROGRAMMING (EFREI)		
+Learning Outcomes
+1.	Plan and program server-side web applications.
+2.	Develop web applications to interact with simple databases.	
+3.	Devise test plans to test web programs with database interactivity.
+
+Assignment - Worth 100% of module marks
+The University Regulations regarding extenuating circumstances and plagiarism apply.
+Standard submission rules apply. Late submissions attract ZERO marks.
+Marking grids are shown at the end of this document.
+All submissions are handed in electronically via Blackboard at the date and time specified below. Your work must also be uploaded to either the University’s internal web server or your own external hosting provider.
+Task One – PHP Pseudocode – Submit a Word or PDF document containing your pseudocode – 15%, due Friday 22nd May 2020 15.30 BST.
+Task Two – The application (HTML, CSS, PHP, SQL) - Submit a Zip file containing a copy of your entire web application and a link to your web application – 70%, due Friday 22nd May 2020 15.30 BST.
+Task Three – Testing - Submit your testing documentation as a Word or PDF document – 15%, due Friday 22nd May 2020 15.30 BST.
+
+Scenario
+An online art community wants to create and manage a gallery of images they use for inspiration. They understand that this could be a large and complex site, but to begin with they want something simple to test if it interests their members.
+
+You have been approached to create this initial version of the website for them.
+
+The idea is that anybody should be able to view the image gallery.
+Only community members with passwords should be able to log in and manage the gallery.
+Managing the gallery means adding and deleting entries.
+To begin with, the community is interested in allowing members to add the URL of an image and a brief description of it.
+
+The community is full of people who care deeply about colour, layout, texture and space. However, they are completely unable to agree on a look-and-feel for the website, or even a logo. It will be up to you to decide on these elements. 
+Task One – PHP Pseudocode (15%)
+Plan and design your PHP application using pseudocode.
+
+The requirements of the application are detailed in Task Two.
+
+Ensure that you submit your pseudocode as a Word or PDF document.
+
+Task Two – The application (HTML, CSS, PHP, SQL) (70%)
+1.	Create the web pages detailed below and style them using cascading style sheets, so that the pages are readable, user-friendly and suitable for an art-loving target audience. You can choose to use a CSS framework.
+
+The pages are:
+•	Home Page (must be named index.php)
+•	Gallery View Page with a search capability
+•	Login Page
+•	Add Content Page
+•	Remove Content Page
+
+Details of the contents of each page are shown below.
+
+Each page requires:
+•	Header and footer with appropriate content
+•	A navigation section with working links
+
+Home Page
+•	Some paragraphs of text with images
+
+View and Search Page
+•	A form which contains:
+o	A text box for the user to input a key word
+o	A button to search an item’s description
+•	A display area showing images, their description and ID number
+
+Login page
+•	A text field for the user’s ID
+•	A password field
+•	A button to run the login script
+
+Add Content / Remove Content (may be one page or two separate pages)
+•	A form to enter the URL text and a description, with a submit button
+•	A form to enter an item ID for deletion, with a submit button
+
+ 
+To allow data to be submitted and saved, the art community members have asked you to create a database for the web application. The tables to include are: - User, Image
+
+2.	Create database tables in MYSQL with the fields listed below, making sure you use these field names with appropriate data types and field lengths. NOTE: the primary key for both tables is an auto-increment field.
+User:		UserID / LoginName / LoginPassword
+Image:		ImageID / Description / URL / UserID
+
+3.	Populate your tables with appropriate sample data, so you can test your web application, making sure you have some users and some images in the gallery.
+
+4.	Build your PHP login page and the view/search content page.
+
+5.	Build your PHP Add Content and Delete Content page(s).
+
+6.	Create a Zip file containing your entire web application and upload them as a single file for upload to Blackboard. You must also include a link to your web application either on the University’s internal web server, or your own external webhost.
+
+
+Task Three - Testing (15%)
+
+1.	Create a test plan
+a.	Test the web application and fill in a record of the test results.
+b.	Testing should include verification that forms, fields, navigation and validation function as intended.
+c.	Test that valid and invalid inputs are correctly processed by your web application.
+
+2.	HTML must be validated and evidenced with screenshots of validation, including pages generated by the PHP.
+
+3.	The CSS must be validated and evidenced with screenshots of validation.
+
+Ensure that you submit your testing and validation evidence as a Word or PDF document. 
+Task One Marking Grid
+Area	Fail
+(0-49%)	Okay
+(50-59%)	Good
+(60-69%)	Excellent
+(above 70%)	15
+Application planning and design –pseudocode	Incomplete or missing pseudocode, poor quality, difficult to interpret	Basic or simple pseudocode, mostly following the expected format	Well-presented pseudocode with enough detail to be useful	Professionally presented and complete pseudocode	15
+
+Task Two Marking Grid
+Area	Fail
+(0-49%)	Okay
+(50-59%)	Good
+(60-69%)	Excellent
+(above 70%)	70
+HTML – layout, navigation, content; four or five linked pages.	Few pages, missing required elements. Poor structure.	Some pages with basic content, most required elements. Weak structure.	Well-structured HTML with required content.	Thoughtful, consistent page structure. Extra elements which add to the content.	15
+CSS – pages styled appropriately, readable, user-friendly and suitable for the audience	CSS not linked or not valid, missing most content.	Linked but basic, some weak choices but functions.	Good choices of style and colour, valid and clearly structured.	Advanced CSS which add value to the pages, valid and thoughtful.	15
+PHP – functionality, structure, content, SQL	Scripts do not function, have invalid PHP, no SQL	Some scripts functioning, others near working condition, some SQL in use	Mostly functioning scripts, good structure and SQL in use, some error handling.	Complete, working system with robust error handling and good content	40
+
+Task Three Marking Grid
+Area	Fail
+(0-49%)	Okay
+(50-59%)	Good
+(60-69%)	Excellent
+(above 70%)	15
+Testing plan	Broad and generic “tests” which are not very specific.	Most fields tested for basic input and output.
+Most navigation tested.	All tables and fields tested with a good range of inputs.
+Navigation fully exercised.	Tables, fields, navigation and extras thoughtfully tested. Testing thoroughly documented.	10
+HTML and CSS validation	Poorly documented. Lacking validation or evidence of validation.	HTML and CSS validation tests documented for most pages/files. Some validation errors or warnings.	HTML and CSS validation tests documented and evidenced for all pages/files. Some validation warnings, no errors.	HTML and CSS validation tests documented and evidenced for all pages/files. No validation warnings or errors.	5
+
