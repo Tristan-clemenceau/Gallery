@@ -8,8 +8,15 @@ class Admin extends Person
 
 	function __construct()
 	{
-		# code...
+		parent :: __construct();
+		$this->cc = 10;
 	}
+
+	/*GETTER*/
+
+	/*SETTER*/
+
+	/*OTHER*/
 }
 
 ?>
