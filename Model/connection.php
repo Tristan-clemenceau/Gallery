@@ -11,9 +11,9 @@ class DbObject
 	private $password;
 
 	function __construct(){
-		$this->host = "";
-		$this->user = "";
-		$this->dataBaseName = "";
+		$this->host = "localhost";
+		$this->user = "root";
+		$this->dataBaseName = "c03104j";
 		$this->password = "";
 	}
 
