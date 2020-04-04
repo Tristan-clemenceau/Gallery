@@ -10,4 +10,5 @@ class ClassName extends AnotherClass
 		# code...
 	}
 }
+
 ?>
