@@ -2,12 +2,23 @@
 /**
  * 
  */
-class ClassName extends AnotherClass
+class Member extends Person
 {
-	
-	function __construct(argument)
+	private $cc;
+
+	function __construct()
 	{
-		# code...
+		parent :: __construct();
+		$this->cc = 10;
+	}
+
+	/*GETTER*/
+
+	/*SETTER*/
+
+	/*OTHER*/
+	public function display(){
+		echo "Id : ".$this->getId()."\t Login : ".$this->getLogin()."\t test : ".$this->cc;
 	}
 }
 ?>

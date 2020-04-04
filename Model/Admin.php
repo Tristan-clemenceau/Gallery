@@ -2,10 +2,11 @@
 /**
  * 
  */
-class ClassName extends AnotherClass
+class Admin extends Person
 {
-	
-	function __construct(argument)
+	private $test2;
+
+	function __construct()
 	{
 		# code...
 	}
