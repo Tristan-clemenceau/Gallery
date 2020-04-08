@@ -11,5 +11,14 @@ $db->connection();
 $test->display();
 echo "<br />";
 $to->display();
+$to->setLogin('rap');
+echo "<br />";
+$to->display();
+
+/*$ar = [];
+
+array_push($ar, $to);
+
+print_r($ar);*/
 
 ?>

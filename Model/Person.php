@@ -7,7 +7,7 @@ class Person
 	private $id;
 	private $login;
 	
-	function __construct()
+	function __construct()// 1 : id,2 : login
 	{
 		$numArgs = func_num_args(); //Number arguments
 		$args = func_get_args(); //Array arguments
@@ -27,7 +27,7 @@ class Person
 				break;
 			
 			default:
-				echo "Neutre";
+				echo "[ERROR] : ";
 				break;
 		}
 	}
@@ -42,6 +42,13 @@ class Person
 	}
 
 	/*SETTER*/
+	public function setId($id){
+		$this->id = $id;
+	}
+
+	public function setLogin($login){
+		$this->login = $login;
+	}
 
 	/*OTHER*/
 	public function display(){
