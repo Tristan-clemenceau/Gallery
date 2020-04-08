@@ -43,11 +43,11 @@ class Member extends Person
 	}
 
 	/*OTHER*/
-	public function addGallery($gallery){
+	public function addGallery(Gallery $gallery){
 		array_push($this->arr_Gallery, $gallery);
 	}
 
-	public function addOwned($Ogallery){
+	public function addOwned(Gallery $Ogallery){
 		array_push($this->arr_Owned, $Ogallery);
 	}
 
