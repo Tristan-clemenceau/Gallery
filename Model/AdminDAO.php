@@ -18,9 +18,13 @@ class AdminDAO extends DbObject
 
 		parent :: deconnection();
 	}
-	/*GETTER*/
+	/*CREATE*/
 
-	/*SETTER*/
+	/*READ*/
+
+	/*UPDATE*/
+
+	/*DELETE*/
 
 	/*OTHER*/
 }

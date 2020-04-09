@@ -2,7 +2,7 @@
 /**
  * 
  */
-class MemberDAO extends DbObject
+class PersonDAO extends DbObject
 {
 	
 	function __construct()
@@ -27,6 +27,7 @@ class MemberDAO extends DbObject
 	/*DELETE*/
 
 	/*OTHER*/
+
 }
 
 ?>

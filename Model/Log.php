@@ -88,7 +88,7 @@ class Log
 
 	/*OTHER*/
 	public function display(){
-		echo "[LOG] : id : ".$this->id."\tDateReport : ".date_format($this->dateReport,"Y/m/d H:i:s")."\tAction : ".$this->action."\tSeverity : ".$this->severity;
+		echo "[LOG] : id : ".$this->id."\tDateReport : ".date_format($this->dateReport,"Y-m-d H:i:s")."\tAction : ".$this->action."\tSeverity : ".$this->severity;
 	}
 }
 

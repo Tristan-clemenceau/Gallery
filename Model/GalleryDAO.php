@@ -18,9 +18,13 @@ class GalleryDAO extends DbObject
 
 		parent :: deconnection();
 	}
-	/*GETTER*/
+	/*CREATE*/
 
-	/*SETTER*/
+	/*READ*/
+
+	/*UPDATE*/
+
+	/*DELETE*/
 
 	/*OTHER*/
 }
