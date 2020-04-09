@@ -12,5 +12,11 @@ class Image
 	{
 		# code...
 	}
+
+	/*GETTER*/
+
+	/*SETTER*/
+
+	/*OTHER*/
 }
 ?>

@@ -16,6 +16,17 @@ class DbObject
 		$this->dataBaseName = "c03104j";
 		$this->password = "";
 	}
+	/*GETTER*/
+	function getCo(){
+		return $this->co;
+	}
+
+	/*SETTER*/
+	public function setCo($co){
+		$this->co = $co;
+	}
+
+	/*OTHER*/
 
 	function connection(){
 		$this->co = mysqli_connect($this->host,$this->user,$this->password,$this->dataBaseName) or die("Probleme connection avec la bd");
@@ -25,8 +36,6 @@ class DbObject
 		mysqli_close($this->co);
 	}
 
-	function getCo(){
-		return $this->co;
-	}
+	
 }
 ?>

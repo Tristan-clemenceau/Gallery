@@ -6,7 +6,6 @@ class Person
 {
 	private $id;
 	private $login;
-	private $co;
 	
 	function __construct()// 1 : id,2 : login
 	{
