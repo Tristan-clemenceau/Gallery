@@ -10,10 +10,52 @@ class Member extends Person
 
 	function __construct()
 	{
-		parent :: __construct();
-		$this->registrationDate = date_create("2202-05-24");
-		$this->arr_Gallery = [];
-		$this->arr_Owned = [];
+		$numArgs = func_num_args(); //Number arguments
+		$args = func_get_args(); //Array arguments
+
+		switch ($numArgs) {//1: id ,2:login,3:registrationDate,4:arr_Gallery,5:arr_Owned
+			case 0:
+				parent :: __construct();
+				$this->registrationDate = date_create("2202-05-24");
+				$this->arr_Gallery = [];
+				$this->arr_Owned = [];
+				break;
+			case 1:
+				parent :: __construct($args[0]);
+				$this->registrationDate = date_create("2202-05-24");
+				$this->arr_Gallery = [];
+				$this->arr_Owned = [];
+				break;
+			case 2:
+				parent :: __construct($args[0],$args[1]);
+				$this->registrationDate = date_create("2202-05-24");
+				$this->arr_Gallery = [];
+				$this->arr_Owned = [];
+				break;
+			case 3:
+				parent :: __construct($args[0],$args[1]);
+				$this->registrationDate = $args[2];
+				$this->arr_Gallery = [];
+				$this->arr_Owned = [];
+				break;
+			case 4:
+				parent :: __construct($args[0],$args[1]);
+				$this->registrationDate = $args[2];
+				$this->arr_Gallery = $args[3];
+				$this->arr_Owned = [];
+				break;
+			case 5:
+				parent :: __construct($args[0],$args[1]);
+				$this->registrationDate = $args[2];
+				$this->arr_Gallery = $args[3];
+				$this->arr_Owned = $args[4];
+				break;
+			
+			default:
+				echo "[ERROR] : [MEMBER] too many or not enought arguments";
+				break;
+		}
+		
 	}
 
 	/*GETTER*/
