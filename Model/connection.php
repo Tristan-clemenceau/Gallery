@@ -35,7 +35,6 @@ class DbObject
 	function deconnection(){
 		mysqli_close($this->co);
 	}
-
 	
 }
 ?>
