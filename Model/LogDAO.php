@@ -30,32 +30,50 @@ class LogDAO extends DbObject
 	public function searchById($id){
 		parent :: connection();
 
-		$sql = "SELECT id_Image,link_Image FROM IMAGE WHERE id_Image = $id";
+		$sql = "SELECT id_Log,dte_Log,action_Log,severity_Log FROM LOG WHERE id_Log = $id";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 		$row = mysqli_fetch_row($sqlExecute);
 
-		$image = new Image($row[0],$row[1]);
+		$log = new Log($row[0],date_create($row[1]),$row[2],$row[3]);
 
 		parent :: deconnection();
 
-		return $image;
+		return $log;
 	}
 
 	/*UPDATE*/
-	public function updateLink(Image $img){
+	public function updateDateLog(Log $log){
 		parent :: connection();
 
-		$sql = "UPDATE IMAGE SET link_Image = '".$img->getLink()."' WHERE id_Image = ".$img->getId();
+		$sql = "UPDATE LOG SET dte_Log = '".date_format($log->getDateReport(),"Y-m-d H:i:s")."' WHERE id_Log = ".$log->getId();
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		parent :: deconnection();
+	}
+
+	public function updateActionLog(Log $log){
+		parent :: connection();
+
+		$sql = "UPDATE LOG SET action_Log = '".$log->getAction()."' WHERE id_Log = ".$log->getId();
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		parent :: deconnection();
+	}
+
+	public function updateSeverityLog(Log $log){
+		parent :: connection();
+
+		$sql = "UPDATE LOG SET severity_Log = '".$log->getSeverity()."' WHERE id_Log = ".$log->getId();
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();
 	}
 
 	/*DELETE*/
-	public function delete(Image $img){
+	public function delete(Log $log){
 		parent :: connection();
 
-		$sql = "DELETE FROM IMAGE WHERE id_Image = {$img->getId()} ";
+		$sql = "";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();

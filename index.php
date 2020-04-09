@@ -52,9 +52,10 @@ $testDAO->updateLink($testimg);
 echo "<br />";
 $testimg->display();
 $testDAO->delete($testimg);
-$testDAOlog = $testLog->create($log);
-echo "<br />";
-$testDAOlog->display();
+//$testDAOlog = $testLog->create($log);
+//echo "<br />";
+//$testDAOlog->display();
+$testDAOlog = $testLog->searchById(1);
 /*$ar = [];
 
 array_push($ar, $to);
