@@ -10,15 +10,15 @@ class MemberDAO extends DbObject
 		parent :: __construct();
 	}
 
-	public function test(){
+	/*CREATE*/
+	public function test(Member $member){
 		parent :: connection();
 
-		$sql = "INSERT INTO user ( login_User, registration_User, admin_User, hash_User) VALUES ( 'uytruytruytr', '2020-04-09 00:00:00', '1', 'uytruytruytruytr')";
+		$sql = "INSERT INTO USER ( login_User, registration_User, admin_User, hash_User) VALUES ( '".$member->getLogin()."', '".date_format($log->getRegistationDate(),"Y-m-d H:i:s")."', '0', 'UNKNOW')";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();
 	}
-	/*CREATE*/
 
 	/*READ*/
 

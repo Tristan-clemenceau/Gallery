@@ -10,21 +10,29 @@ class PostDAO extends DbObject
 		parent :: __construct();
 	}
 
-	public function test(){
-		parent :: connection();
-
-		$sql = "INSERT INTO user ( login_User, registration_User, admin_User, hash_User) VALUES ( 'uytruytruytr', '2020-04-09 00:00:00', '1', 'uytruytruytruytr')";
-		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
-
-		parent :: deconnection();
-	}
 	/*CREATE*/
 
 	/*READ*/
 
 	/*UPDATE*/
+	public function updateDescription(Post $post){
+		parent :: connection();
+
+		$sql = "UPDATE POST SET description_Post = '".$post->getDescription()."' WHERE id_Post = ".$post->getId();
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		parent :: deconnection();
+	}
 
 	/*DELETE*/
+	public function delete(Post $post){
+		parent :: connection();
+
+		$sql = "DELETE FROM POST WHERE id_Post = {$post->getId()} ";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		parent :: deconnection();
+	}
 
 	/*OTHER*/
 }

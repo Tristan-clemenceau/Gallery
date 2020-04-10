@@ -73,7 +73,7 @@ class LogDAO extends DbObject
 	public function delete(Log $log){
 		parent :: connection();
 
-		$sql = "";
+		$sql = "DELETE FROM LOG WHERE id_Log = {$log->getId()}";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();

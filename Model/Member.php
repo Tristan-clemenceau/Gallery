@@ -71,6 +71,14 @@ class Member extends Person
 		return $this->arr_Owned;
 	}
 
+	public function getLogin(){
+		return parent :: getLogin();
+	}
+
+	public function getId(){
+		return parent :: getId();
+	}
+
 	/*SETTER*/
 	public function setId($id){
 		parent :: setId($id);
