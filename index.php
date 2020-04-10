@@ -3,7 +3,7 @@ require('Controller/frontend.php');
 
 try {
 	if (!isset($_GET['action'])) {
-		HomePage();
+		test();
 	}else{
 		switch (variable) {
 			case 'value':
