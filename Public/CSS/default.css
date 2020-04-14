@@ -1,0 +1,42 @@
+body{
+	background-color: #262626;
+	color: white;
+}
+.navFontSize{
+	font-size: 20px;
+}
+.carousel-item img{
+	height: 90vh;
+}
+.itemBoxTitle{
+	background-color: rgba(0,0,0,0.9);
+}
+.itemBoxContent{
+	background-color: rgba(0,0,0,0.5);
+}
+.titleContent{
+	border-bottom-style: solid;
+	border-bottom-color: rgb(110,191,194);
+	border-bottom-width: 5px;
+}
+
+.whiteLine{
+	background-color: white;
+}
+
+.backgroundOrange{
+	background-color: rgb(209,86,65);
+}
+.textOrange{
+	color: rgb(209,86,65);
+}
+.backgroundBleue{
+	background-color: rgb(110,191,194);
+}
+.textBleue{
+	color: rgb(110,191,194);
+}
+
+footer{
+	background-color: rgb(209,86,65);
+}
