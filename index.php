@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['test'] = 3;
 require('Controller/frontend.php');
 
 try {
