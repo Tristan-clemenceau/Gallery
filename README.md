@@ -94,33 +94,3 @@ c.	Test that valid and invalid inputs are correctly processed by your web applic
 
 3.	The CSS must be validated and evidenced with screenshots of validation.
 
-Ensure that you submit your testing and validation evidence as a Word or PDF document. 
-Task One Marking Grid
-Area	Fail
-(0-49%)	Okay
-(50-59%)	Good
-(60-69%)	Excellent
-(above 70%)	15
-Application planning and design –pseudocode	Incomplete or missing pseudocode, poor quality, difficult to interpret	Basic or simple pseudocode, mostly following the expected format	Well-presented pseudocode with enough detail to be useful	Professionally presented and complete pseudocode	15
-
-Task Two Marking Grid
-Area	Fail
-(0-49%)	Okay
-(50-59%)	Good
-(60-69%)	Excellent
-(above 70%)	70
-HTML – layout, navigation, content; four or five linked pages.	Few pages, missing required elements. Poor structure.	Some pages with basic content, most required elements. Weak structure.	Well-structured HTML with required content.	Thoughtful, consistent page structure. Extra elements which add to the content.	15
-CSS – pages styled appropriately, readable, user-friendly and suitable for the audience	CSS not linked or not valid, missing most content.	Linked but basic, some weak choices but functions.	Good choices of style and colour, valid and clearly structured.	Advanced CSS which add value to the pages, valid and thoughtful.	15
-PHP – functionality, structure, content, SQL	Scripts do not function, have invalid PHP, no SQL	Some scripts functioning, others near working condition, some SQL in use	Mostly functioning scripts, good structure and SQL in use, some error handling.	Complete, working system with robust error handling and good content	40
-
-Task Three Marking Grid
-Area	Fail
-(0-49%)	Okay
-(50-59%)	Good
-(60-69%)	Excellent
-(above 70%)	15
-Testing plan	Broad and generic “tests” which are not very specific.	Most fields tested for basic input and output.
-Most navigation tested.	All tables and fields tested with a good range of inputs.
-Navigation fully exercised.	Tables, fields, navigation and extras thoughtfully tested. Testing thoroughly documented.	10
-HTML and CSS validation	Poorly documented. Lacking validation or evidence of validation.	HTML and CSS validation tests documented for most pages/files. Some validation errors or warnings.	HTML and CSS validation tests documented and evidenced for all pages/files. Some validation warnings, no errors.	HTML and CSS validation tests documented and evidenced for all pages/files. No validation warnings or errors.	5
-
