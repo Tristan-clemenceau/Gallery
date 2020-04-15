@@ -8,6 +8,7 @@ if (!isset($_SESSION['lang'])) {
 	echo "session unset";
 }else{
 	array_push($linkCSS, "Public/CSS/default.css");
+	array_push($linkJS, "Public/JS/home.js");
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
 }
 ob_start();?>
@@ -45,12 +46,12 @@ ob_start();?>
 	</nav>
 	<!-- [MODAL] -->
 	<!-- [MODAL-CONNEXION] -->
-	<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalConnexionTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered " role="document">
 	    <div class="modal-content backgroundDarkGrey">
 	      <div class="modal-header">
 	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Connexion</h5>
+	        <h5 class="mt-2 navFontSize text-center" id="modalConnexionTitle">Connexion</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
 	        </button>
@@ -75,12 +76,12 @@ ob_start();?>
 	  </div>
 	</div>
 	<!-- [MODAL-REGISTER] -->
-	<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modalRegisterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered " role="document">
 	    <div class="modal-content backgroundDarkGrey">
 	      <div class="modal-header">
 	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Register</h5>
+	        <h5 class="mt-2 navFontSize text-center" id="modalRegisterTitle">Register</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
 	        </button>
@@ -111,12 +112,12 @@ ob_start();?>
 	  </div>
 	</div>
 	<!-- [MODAL-SEARCH] -->
-	<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalSearchTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered " role="document">
 	    <div class="modal-content backgroundDarkGrey">
 	      <div class="modal-header">
 	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Search</h5>
+	        <h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle">Search</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
 	        </button>

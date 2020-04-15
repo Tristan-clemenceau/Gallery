@@ -28,7 +28,7 @@
 
     <?php 
     foreach ($linkJS as $js) {
-    	echo "<script type=\"text/javascript\" href=\"{$js}\"></script>";
+    	echo "<script type=\"text/javascript\" src=\"{$js}\"></script>";
     }?>
 </body>
 </html>
