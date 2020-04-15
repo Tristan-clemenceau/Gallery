@@ -27,6 +27,9 @@ body{
 .backgroundOrange{
 	background-color: rgb(209,86,65);
 }
+.backgroundDarkGrey{
+	background-color: #262626;
+}
 .textOrange{
 	color: rgb(209,86,65);
 }

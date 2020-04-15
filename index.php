@@ -1,15 +1,15 @@
 <?php
 session_start();
-$_SESSION['test'] = 3;
+$_SESSION['Lang'] = "en";
 require('Controller/frontend.php');
 
 try {
 	if (!isset($_GET['action'])) {
 		test();
 	}else{
-		switch (variable) {
-			case 'value':
-				# code...
+		switch ($_GET['action']) {
+			case "test":
+				testView();
 				break;
 			
 			default:

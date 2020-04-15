@@ -26,13 +26,13 @@
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		        	<li class="nav-item active pr-5">
-			            <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-search"></i> Recherche</a>
+			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
 			        </li>
 			        <li class="nav-item active pr-5">
-			            <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-user"></i> Connexion</a>
+			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> Connexion</a>
 			        </li>
 			        <li class="nav-item pr-5">
-			            <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-user-edit"></i> S'enregistrer</a>
+			            <a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> S'enregistrer</a>
 			        </li>
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
@@ -44,8 +44,104 @@
 		        </ul>
 		    </div>
 	    </div>
-	</nav>	
-
+	</nav>
+	<!-- [MODAL] -->
+	<!-- [MODAL-CONNEXION] -->
+	<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered " role="document">
+	    <div class="modal-content backgroundDarkGrey">
+	      <div class="modal-header">
+	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Connexion</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form><!--action="Register" method="post"-->
+	          <div class="form-group">
+	            <label for="registerInputUsername">Username</label>
+	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+	            <label for="registerInputPassword" class="mt-2">Password</label>
+	            <input type="password" class="form-control" id="registerInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+	          </div>
+	          <div id="alert_register" class="alert alert-info fade show" role="alert">
+	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary">Connexion</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- [MODAL-REGISTER] -->
+	<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered " role="document">
+	    <div class="modal-content backgroundDarkGrey">
+	      <div class="modal-header">
+	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Register</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form><!--action="Register" method="post"-->
+	          <div class="form-group">
+	            <label for="registerInputEmail">Email address</label>
+	            <input type="text" class="form-control" id="registerInputEmail" aria-describedby="emailHelp" placeholder="Enter email" required><!-- name="registerInputEmail" -->
+	            <label for="registerInputUsername">Username</label>
+	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+	          </div>
+	          <div class="form-group">
+	            <label for="registerInputPassword">Password</label>
+	            <input type="password" class="form-control" id="registerInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+	            <label for="confirmRegisterInputPassword">Confirm Password</label>
+	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="Confirm password" aria-describedby="passHelp" required><!-- name="confirmRegisterInputPassword" -->
+	          </div>
+	          <div id="alert_register" class="alert alert-info fade show" role="alert">
+	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary">S'enregistrer</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- [MODAL-SEARCH] -->
+	<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered " role="document">
+	    <div class="modal-content backgroundDarkGrey">
+	      <div class="modal-header">
+	      	<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+	        <h5 class="mt-2 navFontSize text-center" id="exampleModalCenterTitle">Search</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form><!--action="Register" method="post"-->
+	          <div class="form-group">
+	            <label for="registerInputUsername">Username</label>
+	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+	            <label for="registerInputPassword" class="mt-2">Gallery</label>
+	            <input type="password" class="form-control" id="registerInputPassword" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+	          </div>
+	          <div id="alert_register" class="alert alert-info fade show" role="alert">
+	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary">Recherche</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
   	<!-- [CONTENT] -->
   	<div class="container-fluid">
   		<div class="row">
@@ -94,25 +190,6 @@
 				</div>
   			</div>
   		</div>
-  		<!--<div class="row">
-  			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-  				<h1 class="display-1 font-weight-bold text-center">Recherche</h1>
-  				<div class="input-group">
-				  <input type="text" class="form-control" placeholder="Gallery ou user" aria-label="searchbar" aria-describedby="basic-addon2">
-				  <div class="input-group-append">
-				    <button class="btn btn-outline-secondary" type="button">SEARCH</button>
-				  </div>
-				</div>
-				<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-				  <strong>Information</strong> <p>Il est possible de rechercher un utilisateur ou une galerie via la barre de recherche au dessus. Les resultats seront affichés juste en dessous et il vous sera possible d'avoir plus d'informations.</p>
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				    <span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<h1 class="text-center">Resultats</h1>
-				<p class="text-center">Aucun resultats pour le moment</p>
-  			</div>
-  		</div>-->
   	</div>
   	<hr class="text-white m-3 whiteLine">
   	<h1 class="display-3 font-weight-bold text-center" ><span class="titleContent">Examples d'utilisation</span></h1>
@@ -159,18 +236,18 @@
     <div class="row text-center d-flex justify-content-center pt-5 mb-3">
       <div class="col-md-2 mb-3">
         <h6>
-          <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-search"></i> Recherche</a>
+          <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
         </h6>
       </div>
       <div class="col-md-2 mb-3">
         <h6>
-          <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-user"></i> Connexion</a>
+          <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> Connexion</a>
         </h6>
       </div>
       <div class="col-md-2 mb-3">
         <h6>
           <div class="dropup">
-            <a class="nav-link text-white navFontSize" href="#"><i class="fas fa-user-edit"></i> S'enregistrer</a>
+             <a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> S'enregistrer</a>
           </div>
         </h6>
       </div>
