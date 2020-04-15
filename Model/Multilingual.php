@@ -7,7 +7,7 @@ $multilingualArray = array(
 			)
 		)
     */ 
-    "HOME" => array(
+    "homeView" => array(
     	"fr" => array(
     		"title" => "Accueil",
     		"aa" => "pp",

@@ -17,8 +17,8 @@ require_once('Model/AdminDAO.php');
 
 /*FUNCTION*/
 
-function test(){
-	require('View/home.html');
+function homeView(){
+	require('View/homeView.php');
 }
 
 function testView(){
