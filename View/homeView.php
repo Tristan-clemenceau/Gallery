@@ -22,7 +22,7 @@ ob_start();?>
 	      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    		<span class="text-white"><i class="fas fa-bars fa-1x"></i></span>
 	  		</button>
-		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		        	<li class="nav-item active pr-5">
 			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
@@ -59,18 +59,18 @@ ob_start();?>
 	      <div class="modal-body">
 	        <form><!--action="Register" method="post"-->
 	          <div class="form-group">
-	            <label for="registerInputUsername">Username</label>
-	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
-	            <label for="registerInputPassword" class="mt-2">Password</label>
-	            <input type="password" class="form-control" id="registerInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+	            <label for="connexionInputUsername">Username</label>
+	            <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+	            <label for="connexionInputPassword" class="mt-2">Password</label>
+	            <input type="password" class="form-control" id="connexionInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
 	          </div>
-	          <div id="alert_register" class="alert alert-info fade show" role="alert">
-	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	          <div id="alert_connexion" class="alert alert-info fade show" role="alert">
+	            <p id="alert_connexion_message" class="text-center">Tous les champs doivent êtres remplis</p>
 	          </div>
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">Connexion</button>
+	        <button type="button" class="btn btn-primary" id="btn_connexion" >Connexion</button>
 	      </div>
 	    </div>
 	  </div>
@@ -89,8 +89,6 @@ ob_start();?>
 	      <div class="modal-body">
 	        <form><!--action="Register" method="post"-->
 	          <div class="form-group">
-	            <label for="registerInputEmail">Email address</label>
-	            <input type="text" class="form-control" id="registerInputEmail" aria-describedby="emailHelp" placeholder="Enter email" required><!-- name="registerInputEmail" -->
 	            <label for="registerInputUsername">Username</label>
 	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
 	          </div>
@@ -101,12 +99,12 @@ ob_start();?>
 	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="Confirm password" aria-describedby="passHelp" required><!-- name="confirmRegisterInputPassword" -->
 	          </div>
 	          <div id="alert_register" class="alert alert-info fade show" role="alert">
-	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis et les deux mots de passes doivent correspondre</p>
 	          </div>
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">S'enregistrer</button>
+	        <button type="button" class="btn btn-primary" id="btn_register">S'enregistrer</button>
 	      </div>
 	    </div>
 	  </div>
@@ -125,18 +123,18 @@ ob_start();?>
 	      <div class="modal-body">
 	        <form><!--action="Register" method="post"-->
 	          <div class="form-group">
-	            <label for="registerInputUsername">Username</label>
-	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
-	            <label for="registerInputPassword" class="mt-2">Gallery</label>
-	            <input type="password" class="form-control" id="registerInputPassword" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+	            <label for="searchInputUsername">Username</label>
+	            <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+	            <label for="searchInputGallery" class="mt-2">Gallery</label>
+	            <input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
 	          </div>
-	          <div id="alert_register" class="alert alert-info fade show" role="alert">
-	            <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis</p>
+	          <div id="alert_search" class="alert alert-info fade show" role="alert">
+	            <p id="alert_search_message" class="text-center">Vous devez remplir un des deux champs afin d'effectuer une recherche</p>
 	          </div>
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">Recherche</button>
+	        <button type="button" class="btn btn-primary" id="btn_search">Recherche</button>
 	      </div>
 	    </div>
 	  </div>
