@@ -72,7 +72,6 @@ $(document).ready(function(){
   }
 
   function setMessageAndState(objParent,objChield,state,message){//[0]modal connexion [1]modal register [2]modal search
-    console.log(objParent.attr('id'));
     switch(objParent.attr('id')){
       case "alert_connexion":
         objParent.toggleClass(emptyArr[0]+" "+state);
@@ -98,17 +97,40 @@ $(document).ready(function(){
       $btn_connexion.attr("disabled", false);
     }else{
       /*NOT OK*/
+      $btn_connexion.attr("disabled", true);
       setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(2),"Condtion pas ok");
     }
     
   }
 
   function submitRegister(){
-    alert("submit register");
+    if(!isEmptyField($field_register_username) && !isEmptyField($field_register_password) && !isEmptyField($field_register_confirmpassword)){
+      if ($field_register_password.val() == $field_register_confirmpassword.val()) {//ok
+        setMessageAndState($alert_register,$alert_register_msg,getAlert(0),"Condition ok");
+        $btn_register.attr("disabled",false);
+      } else {
+        $btn_register.attr("disabled",true);
+        setMessageAndState($alert_register,$alert_register_msg,getAlert(1),"Mot de passe non identique");
+      }
+    }else{
+      $btn_register.attr("disabled",true);
+      setMessageAndState($alert_register,$alert_register_msg,getAlert(2),"Condtion pas ok");
+    }
   }
 
   function submitSearch(){
-    alert("submit search");
+    if (!isEmptyField($field_search_username) || !isEmptyField($field_search_gallery)) {
+      if (!isEmptyField($field_search_username) && !isEmptyField($field_search_gallery)) {
+        $btn_search.attr("disabled",true);
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(1),"Il n'est pas possible de faire deux recherches en même temps");
+      }else{
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(0),"Condition ok");
+        $btn_search.attr("disabled",false);
+      }
+    }else{
+      $btn_search.attr("disabled",true);
+      setMessageAndState($alert_search,$alert_search_msg,getAlert(2),"Condtion pas ok");
+    }
   }
 
 
