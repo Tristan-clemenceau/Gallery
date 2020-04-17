@@ -141,14 +141,13 @@ $(document).ready(function(){
 
   function sendDataConnexion(){
   $.ajax({
-      url: "Controller/register.php",
+      url: "Controller/auth.php",
       method: "POST",
-      data: { type : "test" , dateRegister : getDateTimeFromNow()}
+      data: { login : $field_connexion_username.val() , password : $field_connexion_password.val()}
   }).done(function(message){
       console.log(message);
   }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );
-      //console.log( "jqXHR" + jqXHR[1] );
       $.each( jqXHR, function( i, item ){
                        console.log(item);
                      });
@@ -160,12 +159,11 @@ $(document).ready(function(){
   $.ajax({
       url: "Controller/register.php",
       method: "POST",
-      data: { login : "test" , password : "test", dateRegister : getDateTimeFromNow()}
-  }).done(function(message){
+      data: { login : $field_register_username.val() , password : $field_register_password.val(), dateRegister : getDateTimeFromNow()}
+  }).done(function(message){//need to change Alert in fact of result
       console.log(message);
   }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );
-      //console.log( "jqXHR" + jqXHR[1] );
       $.each( jqXHR, function( i, item ){
                        console.log(item);
                      });

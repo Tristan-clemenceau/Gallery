@@ -40,6 +40,57 @@ class MemberDAO extends DbObject
 		return $member;
 	}
 
+	public function searchByLogin($login){
+		parent :: connection();
+
+		$sql = "SELECT id_User,login_User,registration_User FROM USER WHERE login_User = '{$login}'";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		$row = mysqli_fetch_row($sqlExecute);
+
+		$member = new Member($row[0],$row[1],date_create($row[2]));
+
+		parent :: deconnection();
+		return $member;
+	}
+
+	public function alreadyInDb($login){
+		parent :: connection();
+
+		$ok = false;
+
+		$sql = "SELECT * FROM USER WHERE login_User = '{$login}'";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_num_rows($sqlExecute);
+
+		if($row != 0){
+			$ok = true;
+		}
+
+		parent :: deconnection();
+
+		return $ok;
+	}
+
+	public function verifyPass($id,$login,$pass){
+		parent :: connection();
+
+		$ok = false;
+
+		$sql = "SELECT * FROM USER WHERE id_User = {$id} AND login_User = '{$login}' AND hash_User = '{$pass}'";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_num_rows($sqlExecute);
+
+		if($row == 1){
+			$ok = true;
+		}
+
+		parent :: deconnection();
+
+		return $ok;
+	}
+
 	/*UPDATE*/
 	public function updatePassword($id,$password){
 		parent :: connection();

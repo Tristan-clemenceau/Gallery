@@ -14,6 +14,7 @@ require_once('Model/Admin.php');
 require_once('Model/ImageDAO.php');
 require_once('Model/LogDAO.php');
 require_once('Model/AdminDAO.php');
+require_once('Model/MemberDAO.php');
 
 /*FUNCTION*/
 
@@ -24,5 +25,4 @@ function homeView(){
 function testView(){
 	require('View/ViewTest.php');
 }
-
 ?>
