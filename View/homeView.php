@@ -36,8 +36,8 @@ ob_start();?>
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=test&lang=fr">Français</a>
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=test&lang=en">Anglais</a>
+			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=fr">Français</a>
+			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=en">Anglais</a>
 			            </div>
           			</li>
 		        </ul>
@@ -197,12 +197,12 @@ ob_start();?>
           		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   			</div>
   			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-  				<img class="img-responsive center-block" src="Public/Images/Pictures/Pictures01.jpg" alt="">
+  				<img class="img-responsive center-block specialImg" src="Public/Images/Pictures/Pictures01.jpg" alt="">
   			</div>
   		</div>
   		<div class="row pt-5">
   			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-  				<img class="img-responsive center-block" src="Public/Images/Pictures/Pictures01.jpg" alt="">
+  				<img class="img-responsive center-block specialImg" src="Public/Images/Pictures/Pictures01.jpg" alt="">
   			</div>
   			<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 text-center my-auto">
   				<h2 class="featurette-heading">First featurette heading. <span class="backgroundOrange">It'll blow your mind.</span></h2>
@@ -215,18 +215,11 @@ ob_start();?>
           		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
   			</div>
   			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-  				<img class="img-responsive center-block" src="Public/Images/Pictures/Pictures01.jpg" alt="">
+  				<img class="img-responsive center-block specialImg" src="Public/Images/Pictures/Pictures01.jpg" alt="">
   			</div>
   		</div>
   	</div>
   	<hr class="text-white m-3 whiteLine">
-  	<!--<form action="Controller/register.php" method="POST">
-  			<label for="fname">First name:</label><br>
-  			<input type="text" id="fname" name="fname" value="John"><br>
-  			<label for="lname">Last name:</label><br>
-  			<input type="text" id="lname" name="lname" value="Doe"><br><br>
-  			<input type="submit" value="Submit">
-	</form>-->
 	<!-- [FOOTER] -->
 	<footer class="sticky-bottom">
     <div class="container-fluid padding">

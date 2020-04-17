@@ -8,6 +8,9 @@ body{
 .carousel-item img{
 	height: 90vh;
 }
+.specialImg{
+	width:100%;
+}
 .itemBoxTitle{
 	background-color: rgba(0,0,0,0.9);
 }

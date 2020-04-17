@@ -13,8 +13,9 @@ class MemberDAO extends DbObject
 	/*CREATE*/
 	public function create($login,$registrationDate,$hashUser){
 		parent :: connection();
+		$d = new DateTime($registrationDate);
 
-		$sql = "INSERT INTO USER (login_User,registration_User,admin_User,hash_User) VALUES ('".$login."','".date_format($registrationDate,"Y/m/d H:i:s")."','0','{$hashUser}')";
+		$sql = "INSERT INTO USER (login_User,registration_User,admin_User,hash_User) VALUES ('".$login."','".date_format($d,"Y/m/d H:i:s")."','0','{$hashUser}')";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		$id = mysqli_insert_id(parent :: getCo());
@@ -22,7 +23,7 @@ class MemberDAO extends DbObject
 		$member = new Member($id,$login,date_create($registrationDate));
 
 		parent :: deconnection();
-		return $member:
+		return $member;
 	}
 
 	/*READ*/
@@ -36,10 +37,18 @@ class MemberDAO extends DbObject
 		$member = new Member($row[0],$row[1],date_create($row[2]));
 
 		parent :: deconnection();
-		return $member:
+		return $member;
 	}
 
 	/*UPDATE*/
+	public function updatePassword($id,$password){
+		parent :: connection();
+
+		$sql = "UPDATE USER SET hash_User = '{$password}' WHERE id_User = {$id}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		parent :: deconnection();
+	}
 
 	/*DELETE*/
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['lang'] = "fr";
-$_SESSION['page'] = "TOKEN";
+$_SESSION['page'] = "2265a29d906471a5cbe833a48168e85b23a2a9ce76cd3eb22efa013451898d24";
 require('Controller/frontend.php');
 
 try {

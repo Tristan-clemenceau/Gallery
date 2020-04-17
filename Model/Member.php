@@ -101,6 +101,18 @@ class Member extends Person
 		array_push($this->arr_Owned, $Ogallery);
 	}
 
+	public function setPass($password,$salt){
+		return hash('sha512',"{$password}{$salt}");
+	}
+
+	public function getPair(){
+		if ((parent :: getId() % 2) == 0) {
+			return "2";
+		}else{
+			return "1";
+		}
+	}
+
 	public function display(){
 		echo "Id : ".parent :: getId()."\t Login : ".$this->getLogin()."\t Gallery : ".count($this->arr_Gallery)."\t Owned gallery : ".count($this->arr_Owned)."\t registration date : ".date_format($this->registrationDate,"Y/m/d H:i:s");
 	}

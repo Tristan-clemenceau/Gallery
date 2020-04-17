@@ -30,10 +30,14 @@ $(document).ready(function(){
   /*EVENT MODAL CONNEXION*/
   $field_connexion_username.keyup(submitConnexion);
   $field_connexion_password.keyup(submitConnexion);
+
+  $btn_connexion.click(sendDataConnexion);
   /*EVENT MODAL REGISTER*/
   $field_register_username.keyup(submitRegister);
   $field_register_password.keyup(submitRegister);
   $field_register_confirmpassword.keyup(submitRegister);
+
+  $btn_register.click(sendDataRegister);
   /*EVENT MODAL SEARCH*/
   $field_search_username.keyup(submitSearch);
   $field_search_gallery.keyup(submitSearch);
@@ -95,6 +99,8 @@ $(document).ready(function(){
       /*OK QUERY AJAX*/
       setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(0),"Condition ok");
       $btn_connexion.attr("disabled", false);
+      /*TEST REDIRECTION*/
+      //location.href = "Controller/auth.php";
     }else{
       /*NOT OK*/
       $btn_connexion.attr("disabled", true);
@@ -131,6 +137,49 @@ $(document).ready(function(){
       $btn_search.attr("disabled",true);
       setMessageAndState($alert_search,$alert_search_msg,getAlert(2),"Condtion pas ok");
     }
+  }
+
+  function sendDataConnexion(){
+  $.ajax({
+      url: "Controller/register.php",
+      method: "POST",
+      data: { type : "test" , dateRegister : getDateTimeFromNow()}
+  }).done(function(message){
+      console.log(message);
+  }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      //console.log( "jqXHR" + jqXHR[1] );
+      $.each( jqXHR, function( i, item ){
+                       console.log(item);
+                     });
+      console.log( "errorThrown" + errorThrown );
+  });
+    
+  }
+  function sendDataRegister(){
+  $.ajax({
+      url: "Controller/register.php",
+      method: "POST",
+      data: { login : "test" , password : "test", dateRegister : getDateTimeFromNow()}
+  }).done(function(message){
+      console.log(message);
+  }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      //console.log( "jqXHR" + jqXHR[1] );
+      $.each( jqXHR, function( i, item ){
+                       console.log(item);
+                     });
+      console.log( "errorThrown" + errorThrown );
+  });
+    
+  }
+
+  function getDateTimeFromNow(){
+    //H:i:s
+    var d = new Date();
+    var str="";
+    str+= d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+    return str;
   }
 
 
