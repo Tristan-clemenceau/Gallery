@@ -27,12 +27,25 @@ body{
 	background-color: white;
 }
 
+.borderDarkGrey{
+	border-color: #262626;
+}
+
+.borderBleue{
+	border-color:  rgb(110,191,194);
+	border-width: 2px;
+}
+
 .backgroundOrange{
 	background-color: rgb(209,86,65);
 }
 .backgroundDarkGrey{
 	background-color: #262626;
 }
+.backgroundGrey{
+	background-color: #778899;
+}
+
 .textOrange{
 	color: rgb(209,86,65);
 }
@@ -42,7 +55,9 @@ body{
 .textBleue{
 	color: rgb(110,191,194);
 }
-
+.test{
+	visibility: hidden;
+}
 footer{
 	background-color: rgb(209,86,65);
 }

@@ -21,13 +21,16 @@
 
 			if($daoMember->alreadyInDb($_POST['login'])){
 				//ERREUR statut / message (fr / anglais)
-				$data['erreur'] = "Already in base";
+				$data['state'] = "ERROR";
+				$data['msg'] = "Username already taken";
 			}else{
 				$member = $daoMember->create($_POST['login'],$_POST['dateRegister'],'');
 				$daoMember->updatePassword($member->getId(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]));
 
 				/*ADDING OBJECT TO SESSION*/
 				$_SESSION['member'] = $member;
+				$data['state'] = "OK";
+				$data['msg'] = "Successfully registered";
 			}
 
 			/*ANSWER*/

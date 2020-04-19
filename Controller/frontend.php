@@ -23,6 +23,18 @@ function homeView(){
 }
 
 function testView(){
-	require('View/ViewTest.php');
+	require('View/UserView.php');
+}
+
+function logout(){
+	/*DELETE OLD*/
+	session_unset();
+	session_destroy();
+	header("Location: index.php");
+	exit();
+}
+
+function account(){
+	require('View/UserAccount.php');
 }
 ?>

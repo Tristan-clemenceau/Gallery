@@ -1,12 +1,11 @@
 <?php
 
+/*IMPORT*/ 
+require_once('../Model/Person.php');
+require_once('../Model/Member.php');
+
 session_start();
-//session start
-
-// remove all session variables
-session_unset();
-
-// destroy the session
-session_destroy();
-
+echo $_SESSION['member']->getId();
+echo $_SESSION['member']->getLogin();
+echo date_format($_SESSION['member']->getRegistationDate(),"Y/m/d H:i:s");
 ?>

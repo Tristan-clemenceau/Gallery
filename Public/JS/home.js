@@ -97,14 +97,12 @@ $(document).ready(function(){
   function submitConnexion(){
     if(!isEmptyField($field_connexion_username) && !isEmptyField($field_connexion_password)){
       /*OK QUERY AJAX*/
-      setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(0),"Condition ok");
+      setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(0),"Vous pouvez appuyer sur le bouton connexion");
       $btn_connexion.attr("disabled", false);
-      /*TEST REDIRECTION*/
-      //location.href = "Controller/auth.php";
     }else{
       /*NOT OK*/
       $btn_connexion.attr("disabled", true);
-      setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(2),"Condtion pas ok");
+      setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(2),"Vous devez remplir tous les champs pour vous connecter");
     }
     
   }
@@ -112,7 +110,7 @@ $(document).ready(function(){
   function submitRegister(){
     if(!isEmptyField($field_register_username) && !isEmptyField($field_register_password) && !isEmptyField($field_register_confirmpassword)){
       if ($field_register_password.val() == $field_register_confirmpassword.val()) {//ok
-        setMessageAndState($alert_register,$alert_register_msg,getAlert(0),"Condition ok");
+        setMessageAndState($alert_register,$alert_register_msg,getAlert(0),"Vous pouvez appuyer sur le bouton register");
         $btn_register.attr("disabled",false);
       } else {
         $btn_register.attr("disabled",true);
@@ -120,7 +118,7 @@ $(document).ready(function(){
       }
     }else{
       $btn_register.attr("disabled",true);
-      setMessageAndState($alert_register,$alert_register_msg,getAlert(2),"Condtion pas ok");
+      setMessageAndState($alert_register,$alert_register_msg,getAlert(2),"Vous devez remplir tous les champs pour vous enregistrer");
     }
   }
 
@@ -130,12 +128,12 @@ $(document).ready(function(){
         $btn_search.attr("disabled",true);
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),"Il n'est pas possible de faire deux recherches en même temps");
       }else{
-        setMessageAndState($alert_search,$alert_search_msg,getAlert(0),"Condition ok");
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(0),"Vous pouvez appuyer sur le bouton search");
         $btn_search.attr("disabled",false);
       }
     }else{
       $btn_search.attr("disabled",true);
-      setMessageAndState($alert_search,$alert_search_msg,getAlert(2),"Condtion pas ok");
+      setMessageAndState($alert_search,$alert_search_msg,getAlert(2),"Vous devez remplir un des deux champs pour effectuer une recherche");
     }
   }
 
@@ -145,7 +143,13 @@ $(document).ready(function(){
       method: "POST",
       data: { login : $field_connexion_username.val() , password : $field_connexion_password.val()}
   }).done(function(message){
-      console.log(message);
+      console.log(message.state);
+      if (message.state == "OK") {
+        setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(0),message.msg);
+        location.href = "View/UserView.php";
+      }else{
+        setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(1),message.msg);
+      }
   }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );
       $.each( jqXHR, function( i, item ){
@@ -161,7 +165,13 @@ $(document).ready(function(){
       method: "POST",
       data: { login : $field_register_username.val() , password : $field_register_password.val(), dateRegister : getDateTimeFromNow()}
   }).done(function(message){//need to change Alert in fact of result
-      console.log(message);
+    console.log(message.state);
+      if (message.state == "OK") {
+        setMessageAndState($alert_register,$alert_register_msg,getAlert(0),message.msg);
+        location.href = "View/UserView.php";
+      }else{
+        setMessageAndState($alert_register,$alert_register_msg,getAlert(1),message.msg);
+      }
   }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );
       $.each( jqXHR, function( i, item ){

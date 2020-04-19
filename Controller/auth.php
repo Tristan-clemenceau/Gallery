@@ -25,14 +25,17 @@
 				if($daoMember->verifyPass($member->getId(),$member->getLogin(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]))){
 					/*ADDING OBJECT TO SESSION*/
 					$_SESSION['member'] = $member;
-					$data['msg'] = "OK";
+					$data['state'] = "OK";
+					$data['msg'] = "Successfully login";
 				}else{
 					//eerreur
-					$data['erreur'] = "Incorrect pass / username";
+					$data['state'] = "ERROR";
+					$data['msg'] = "Incorrect pass / username";
 				}
 			}else{
 				//ERREUR statut / message (fr / anglais)
-				$data['erreur'] = "Not in the base";
+				$data['state'] = "ERROR";
+				$data['msg'] = "Incorrect pass / username";
 			}
 			/*ANSWER*/
 			echo json_encode( $data );
