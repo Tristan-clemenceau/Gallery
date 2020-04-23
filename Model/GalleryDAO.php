@@ -11,8 +11,39 @@ class GalleryDAO extends DbObject
 	}
 
 	/*CREATE*/
+	public function create($name,$ownerID){
+		parent :: connection();
 
+		$sql = "INSERT INTO GALLERY (name_Gallery,owner_Gallery) VALUES ( '{$name}', '{$ownerID}')";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$id = mysqli_insert_id(parent :: getCo());
+
+		$gallery = new Gallery($name);
+		$gallery->setId($id);
+
+		parent :: deconnection();
+		return $gallery;
+	}
 	/*READ*/
+	public function alreadyTaken($name){
+		parent :: connection();
+
+		$ok = false;
+
+		$sql = "SELECT * FROM GALLERY WHERE name_Gallery = '{$name}'";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_num_rows($sqlExecute);
+
+		if($row != 0){
+			$ok = true;
+		}
+
+		parent :: deconnection();
+
+		return $ok;
+	}
 
 	/*UPDATE*/
 	public function updateName(Gallery $gallery){

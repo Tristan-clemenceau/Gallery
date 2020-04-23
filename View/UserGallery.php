@@ -1,8 +1,8 @@
 <?php
 /*IMPORT*/ 
-require_once('Model/Multilingual.php');
-require_once('Model/Person.php');
-require_once('Model/Member.php');
+require_once('../Model/Multilingual.php');
+require_once('../Model/Person.php');
+require_once('../Model/Member.php');
 
 if (!isset($_SESSION['member'])) {
 	header("Location: index.php");
@@ -16,8 +16,8 @@ if (!isset($_SESSION['lang'])) {
 	header("Location: index.php");
 	exit();
 }else{
-	array_push($linkCSS, "Public/CSS/default.css");
-	array_push($linkJS, "Public/JS/home.js");/*Need to change the js file*/
+	array_push($linkCSS, "..Public/CSS/default.css");
+	array_push($linkJS, "..Public/JS/home.js");
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
 }
 ob_start();?>
