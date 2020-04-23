@@ -21,7 +21,7 @@ $(document).ready(function(){
   /*EVENT MODAL GALLERY*/
   $field_gallery_name.keyup(submitGallery);
 
-  $btn_gallery_create.click(/**/);
+  $btn_gallery_create.click(sendDataGallery);
   /*EVENT MODAL SEARCH*/
   $field_search_username.keyup(submitSearch);
   $field_search_gallery.keyup(submitSearch);
@@ -104,11 +104,10 @@ $(document).ready(function(){
 
   function sendDataGallery(){
   $.ajax({
-      url: "Controller/galleryCreate.php",
+     url: "../Controller/galleryCreate.php",
       method: "POST",
       data: { name : $field_gallery_name.val()}
   }).done(function(message){//need to change Alert in fact of result
-    console.log(message.state);
       if (message.state == "OK") {
         setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
         //location.href = "View/gallery.php";

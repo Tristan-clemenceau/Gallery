@@ -2,13 +2,14 @@
 	/*VERIF*/
 	session_start();
 	if(isset($_SESSION['page'])){
+		$data = array("state" => "", "msg" => "");
 		/*IMPORT*/ 
 		require_once('../Model/pageTOKEN.php');
 		require_once('../Model/Multilingual.php');
 		if($_SESSION['page'] == $pageArray['index']){//VERIF
 			if (isset($_POST['login']) && isset($_POST['password'])) {
 			/*IMPORT*/ 
-			require_once('../Model/connection.php');
+			require_once('../Model/Connection.php');
 			require_once('../Model/MemberDAO.php');
 			require_once('../Model/Person.php');
 			require_once('../Model/Member.php');
@@ -17,7 +18,6 @@
 			/*OBJECT*/
 			$daoMember = new MemberDAO();
 			$member = new Member();
-			$data = array("Peter"=>35, "Ben"=>37, "Joe"=>43);
 
 			if($daoMember->alreadyInDb($_POST['login'])){
 				//verify login & pass

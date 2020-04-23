@@ -1,36 +1,42 @@
 <?php
+	/*IMPORT*/ 
+	require_once('../Model/Connection.php');
+	require_once('../Model/MemberDAO.php');
+	require_once('../Model/Person.php');
+	require_once('../Model/Member.php');
+	require_once('../Model/Gallery.php');
+	require_once('../Model/GalleryDAO.php');
 	/*VERIF*/
 	session_start();
+
 	if(isset($_SESSION['page'])){
+		$data = array("state" => "", "msg" => "");
 		/*IMPORT*/ 
 		require_once('../Model/pageTOKEN.php');
 		require_once('../Model/Multilingual.php');
 		if(($_SESSION['page'] == $pageArray['userAcc']) || ($_SESSION['page'] == $pageArray['userView'])){//VERIF
 			if (isset($_POST['name'])) {
-			/*IMPORT*/ 
-			require_once('../Model/connection.php');
-			require_once('../Model/MemberDAO.php');
-			require_once('../Model/Person.php');
-			require_once('../Model/Member.php');
 			/*HEADER*/
 			header("Content-Type: application/json");
 			/*OBJECT*/
-			$daoMember = new MemberDAO();
-			$member = new Member();
-			$data = array();
+			$daoGallery = new GalleryDAO();
+			$gallery = new Gallery();
 
-			if($daoMember->alreadyInDb($_POST['login'])){
+			if($daoGallery->alreadyTaken($_POST['name'])){
 				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
-				$data['msg'] = "Username already taken";
+				$data['msg'] = "Gallery name already taken";
 			}else{
-				$member = $daoMember->create($_POST['login'],$_POST['dateRegister'],'');
-				$daoMember->updatePassword($member->getId(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]));
+				$gallery = $daoGallery->create($_POST['name'],$_SESSION['member']->getId());
+				$gallery->setOwner($_SESSION['member']);
 
 				/*ADDING OBJECT TO SESSION*/
-				$_SESSION['member'] = $member;
+				$_SESSION['member']->addOwned($gallery);
+
+				
+				/*JSON OBJECT*/
 				$data['state'] = "OK";
-				$data['msg'] = "Successfully registered";
+				$data['msg'] = "Gallery successfully created";
 			}
 
 			/*ANSWER*/

@@ -22,6 +22,9 @@ class GalleryDAO extends DbObject
 		$gallery = new Gallery($name);
 		$gallery->setId($id);
 
+		$sql = "INSERT INTO MEMBER (id_Gallery,id_User) VALUES ( '{$id}', '{$ownerID}')";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
 		parent :: deconnection();
 		return $gallery;
 	}
