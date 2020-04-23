@@ -44,17 +44,17 @@ $(document).ready(function(){
     var result ="";
     switch(state){
       case 0:
-        result ="alert-success";
-        break;
+      result ="alert-success";
+      break;
       case 1:
-        result ="alert-danger";
-        break;
+      result ="alert-danger";
+      break;
       case 2:
-        result ="alert-warning";
-        break;
+      result ="alert-warning";
+      break;
       case 3:
-        result ="alert-info";
-        break;
+      result ="alert-info";
+      break;
     }
     return result;
   }
@@ -62,13 +62,13 @@ $(document).ready(function(){
   function setMessageAndState(objParent,objChield,state,message){//[0]modal search [1]modal gallery
     switch(objParent.attr('id')){
       case "alert_search":
-        objParent.toggleClass(emptyArr[0]+" "+state);
-        emptyArr[0] = state;
-        break;
+      objParent.toggleClass(emptyArr[0]+" "+state);
+      emptyArr[0] = state;
+      break;
       case "alert_gallery":
-        objParent.toggleClass(emptyArr[1]+" "+state);
-        emptyArr[1] = state;
-        break;
+      objParent.toggleClass(emptyArr[1]+" "+state);
+      emptyArr[1] = state;
+      break;
     }
     objChield.empty();
     objChield.html(message);
@@ -103,27 +103,49 @@ $(document).ready(function(){
   }
 
   function sendDataGallery(){
-  $.ajax({
-     url: "../Controller/galleryCreate.php",
-      method: "POST",
-      data: { name : $field_gallery_name.val()}
-  }).done(function(message){//need to change Alert in fact of result
-      if (message.state == "OK") {
-        setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
+    if((document.title == "Accueil") || (document.title == "Home")){
+      $.ajax({
+       url: "../Controller/galleryCreate.php",
+       method: "POST",
+       data: { name : $field_gallery_name.val()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+      setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
         //location.href = "View/gallery.php";
       }else{
         setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(1),message.msg);
       }
-  }).fail(function( jqXHR, textStatus,errorThrown) {
+    }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );
       $.each( jqXHR, function( i, item ){
-                       console.log(item);
-                     });
+       console.log(item);
+     });
       console.log( "errorThrown" + errorThrown );
-  });
+    });
+  }else{
+     $.ajax({
+       url: "Controller/galleryCreate.php",
+       method: "POST",
+       data: { name : $field_gallery_name.val()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+      setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
+        //location.href = "View/gallery.php";
+      }else{
+        setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(1),message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
   }
+  
+}
 
-  function getDateTimeFromNow(){
+function getDateTimeFromNow(){
     //H:i:s
     var d = new Date();
     var str="";

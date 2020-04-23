@@ -20,15 +20,14 @@ if (!isset($_SESSION['lang'])) {
 	exit();
 }else{
 	array_push($linkCSS, "../Public/CSS/default.css");
-	array_push($linkJS, "../Public/JS/home.js");
 	array_push($linkJS, "../Public/JS/member.js");
-	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
+	$title = $multilingualArray['userView'][$_SESSION['lang']]['title'];
 }
 ob_start();?>
 <!-- [NAVBAR] -->
 	<nav class="navbar navbar-expand-lg sticky-top">
 	    <div class="container-fluid">
-	      	<a class="navbar-brand" href="#">
+	      	<a class="navbar-brand" href="UserView.php">
      			<img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
      			<span class="text-white navFontSize">Gallery</span>
   			</a>

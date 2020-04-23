@@ -27,6 +27,26 @@ $multilingualArray = array(
             "message" => "pp",
         )
     ),
+    "userView" => array(
+        "fr" => array(
+            "title" => "Accueil",
+            "message" => "pp",
+        ),
+        "en" => array(
+            "title" => "Home",
+            "message" => "pp",
+        )
+    ),
+    "userAccount" => array(
+        "fr" => array(
+            "title" => "Mon compte",
+            "message" => "pp",
+        ),
+        "en" => array(
+            "title" => "My account",
+            "message" => "pp",
+        )
+    ),
     "OTHER" => array(
     	"fr" => array(
     		"title" => "Accueil",

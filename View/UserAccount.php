@@ -9,6 +9,8 @@ if (!isset($_SESSION['member'])) {
 	exit();
 }
 
+$_SESSION['page'] = "649ffcc6b21ccd8ff7b1d5ebc43cf8c464f03990b3a28428debae4cb21166562";
+
 /*VAR*/
 $linkCSS = [];
 $linkJS = [];
@@ -17,14 +19,14 @@ if (!isset($_SESSION['lang'])) {
 	exit();
 }else{
 	array_push($linkCSS, "Public/CSS/default.css");
-	array_push($linkJS, "Public/JS/home.js");/*Need to change the js file*/
-	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
+	array_push($linkJS, "Public/JS/member.js");
+	$title = $multilingualArray['userAccount'][$_SESSION['lang']]['title'];
 }
 ob_start();?>
 <!-- [NAVBAR] -->
 <nav class="navbar navbar-expand-lg sticky-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="View/UserView.php">
 			<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
 			<span class="text-white navFontSize">Gallery</span>
 		</a>
@@ -36,8 +38,12 @@ ob_start();?>
 				<li class="nav-item active pr-5">
 					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
 				</li>
-				<li class="nav-item active pr-5">
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-image"></i> Gallery</a>
+				<li class="nav-item dropdown pr-5">
+					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> Gallery</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownGallery">
+						<a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery">Creer une galerie</a>
+						<a class="dropdown-item navFontSize" type="button" href="#">Mes galleries</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown pr-5">
 					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
@@ -84,6 +90,34 @@ ob_start();?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" id="btn_search">Recherche</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [MODAL-GALLERY] -->
+<div class="modal fade" id="modalGallery" tabindex="-1" role="dialog" aria-labelledby="ModalGalleryTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered " role="document">
+		<div class="modal-content backgroundDarkGrey">
+			<div class="modal-header">
+				<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+				<h5 class="mt-2 navFontSize text-center" id="ModalGalleryTitle">Gallery</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="galleryInputName">Gallery name</label>
+						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="Enter gallery name" required>
+					</div>
+					<div id="alert_gallery" class="alert alert-info fade show" role="alert">
+						<p id="alert_gallery_message" class="text-center">Vous devez remplir le champs pour pouvoir creer votre gallerie</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="btn_gallery_create">Créer</button>
 			</div>
 		</div>
 	</div>
