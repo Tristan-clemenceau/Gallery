@@ -26,6 +26,7 @@ $(document).ready(function(){
   $field_search_username.keyup(submitSearch);
   $field_search_gallery.keyup(submitSearch);
 
+  $btn_search.click(senDataResearch);
   /*VAR*/
   var emptyArr = [];
   emptyArr.push("alert-info");
@@ -111,7 +112,6 @@ $(document).ready(function(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
       setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
-        //location.href = "View/gallery.php";
       }else{
         setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(1),message.msg);
       }
@@ -130,7 +130,6 @@ $(document).ready(function(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
       setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
-        //location.href = "View/gallery.php";
       }else{
         setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(1),message.msg);
       }
@@ -143,6 +142,56 @@ $(document).ready(function(){
     });
   }
   
+}
+
+function senDataResearch(){
+  if(!isEmptyField($field_search_username)){
+    sendDataSearchUsername();
+  }else{
+    sendDataSearchGallery();
+  }
+}
+
+function sendDataSearchUsername(){
+$.ajax({
+       url: "../Controller/search.php",
+       method: "POST",
+       data: { UserName : $field_search_username.val() }
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+      setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
+        //location.href = "View/gallery.php";
+      }else{
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+}
+
+function sendDataSearchGallery(){
+  $.ajax({
+       url: "../Controller/search.php",
+       method: "POST",
+       data: { GalleryName : $field_search_gallery.val()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+      setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
+        //location.href = "View/gallery.php";
+      }else{
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
 }
 
 function getDateTimeFromNow(){
