@@ -26,6 +26,8 @@ $(document).ready(function(){
   $alert_register_msg = $('#alert_register_message');
   $alert_search = $('#alert_search');
   $alert_search_msg = $('#alert_search_message');
+  /*OTHER*/
+  $logo = $("#logo");
 
   /*EVENT MODAL CONNEXION*/
   $field_connexion_username.keyup(submitConnexion);
@@ -47,6 +49,8 @@ $(document).ready(function(){
   var emptyArr = [];
   emptyArr.push("alert-info");
   emptyArr.unshift("alert-info");
+
+  setLogo();
 
   /*FUNCTION*/
   function isEmptyField(field){
@@ -199,7 +203,7 @@ $.ajax({
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
       setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
-        //location.href = "View/gallery.php";
+        location.href = "View/searchUser.php";
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
       }
@@ -219,8 +223,8 @@ function sendDataSearchGallery(){
        data: { GalleryName : $field_search_gallery.val()}
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
-      setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
-        //location.href = "View/gallery.php";
+        setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
+        
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
       }
@@ -241,5 +245,12 @@ function sendDataSearchGallery(){
     return str;
   }
 
+  function setLogo(){
+    if((document.title == "Accueil") || (document.title == "Home")){
+      $logo.attr('src', 'Public/Images/Icon/Logo01.png');
+    }else{
+      $logo.attr('src', '../Public/Images/Icon/Logo01.png');
+    }
+  }
 
 });

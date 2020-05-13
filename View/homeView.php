@@ -12,38 +12,8 @@ if (!isset($_SESSION['lang'])) {
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
 }
 ob_start();?>
-<!-- [NAVBAR] -->
-	<nav class="navbar navbar-expand-lg sticky-top">
-	    <div class="container-fluid">
-	      	<a class="navbar-brand" href="#">
-     			<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-     			<span class="text-white navFontSize">Gallery</span>
-  			</a>
-	      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    		<span class="text-white"><i class="fas fa-bars fa-1x"></i></span>
-	  		</button>
-		    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-		        <ul class="navbar-nav ml-auto">
-		        	<li class="nav-item active pr-5">
-			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
-			        </li>
-			        <li class="nav-item active pr-5">
-			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> Connexion</a>
-			        </li>
-			        <li class="nav-item pr-5">
-			            <a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> S'enregistrer</a>
-			        </li>
-			        <li class="nav-item dropdown pr-5">
-			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
-			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=fr">Français</a>
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=en">Anglais</a>
-			            </div>
-          			</li>
-		        </ul>
-		    </div>
-	    </div>
-	</nav>
+<!--[INCLUDE HEADER NORMAL] -->
+<?php include('HeaderNormal.php'); ?>
 	<!-- [MODAL] -->
 	<!-- [MODAL-CONNEXION] -->
 	<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalConnexionTitle" aria-hidden="true">
@@ -220,53 +190,8 @@ ob_start();?>
   		</div>
   	</div>
   	<hr class="text-white m-3 whiteLine">
-	<!-- [FOOTER] -->
-	<footer class="sticky-bottom">
-    <div class="container-fluid padding">
-    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-      <div class="col-md-2 mb-3">
-        <h6>
-          <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
-        </h6>
-      </div>
-      <div class="col-md-2 mb-3">
-        <h6>
-          <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> Connexion</a>
-        </h6>
-      </div>
-      <div class="col-md-2 mb-3">
-        <h6>
-          <div class="dropup">
-             <a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> S'enregistrer</a>
-          </div>
-        </h6>
-      </div>
-      <div class="col-md-2 mb-3">
-        <h6>
-          <div class="dropup">
-            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
-              <div class="dropdown-menu">
-                <!-- Dropdown menu links -->
-                <a href="#" class="dropdown-item navFontSize">Français</a>
-                <a href="#" class="dropdown-item navFontSize">Anglais</a>
-              </div>
-          </div>
-        </h6>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-md-12">
-        <hr id="hr_footer">
-        <ul class="list-inline list-unstyled">
-          <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-github fa-2x"></i></a></li>
-          <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-          <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a></li>
-          <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-youtube-square fa-2x"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  </footer>
+  	<!--[INCLUDE FOOTER NORMAL] -->
+  	<?php include('FooterNormal.php'); ?>
   </body>
 
 <?php $content = ob_get_clean(); ?>
