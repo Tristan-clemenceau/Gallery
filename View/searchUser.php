@@ -3,24 +3,50 @@
 require_once('../Model/Multilingual.php');
 require_once('../Model/Person.php');
 require_once('../Model/Member.php');
+require_once('../Model/Connection.php');
+require_once('../Model/MemberDAO.php');
+
+if (!isset($_GET['loginUser'])) {
+	header("Location: ../index.php");
+	exit();
+}
 
 session_start();
+
 /*VAR*/
 $linkCSS = [];
 $linkJS = [];
 if (!isset($_SESSION['lang'])) {
-	header("Location: index.php");
+	header("Location: ../index.php");
 	exit();
 }else{
 	array_push($linkCSS, "../Public/CSS/default.css");
 	array_push($linkJS, "../Public/JS/home.js");
-	$title = $multilingualArray['userAccount'][$_SESSION['lang']]['title'];
+	$title = $multilingualArray['searchUser'][$_SESSION['lang']]['title'];
 }
+$member = new Member();
+$memberDao = new MemberDAO();
+$member = $memberDao->searchByLogin($_GET['loginUser']);
 
 ob_start();?>
 
-<!--[INCLUDE HEADER NORMAL] -->
-<?php include('HeaderNormal.php'); ?>
+<!--[INCLUDE HEADER] -->
+<?php
+	if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
+		/*HEADER NORMAL*/
+		include('HeaderNormal.php');
+	}elseif (isset($_SESSION['member']) && !isset($_SESSION['admin'])) {
+		/*HEADER USER*/
+		include('HeaderUser.php');
+	}elseif(!isset($_SESSION['member']) && isset($_SESSION['admin'])){
+		/*HEADER ADMIN*/
+		include('HeaderAdmin.php');
+	}else{
+		/*ERREUR*/
+		include('HeaderNormal.php'); 
+	}
+?>
+
 	<!-- [MODAL] -->
 	<!-- [MODAL-CONNEXION] -->
 	<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalConnexionTitle" aria-hidden="true">
@@ -122,7 +148,7 @@ ob_start();?>
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<div class="card text-center m-5 borderBleue">
 				<div class="card-header backgroundOrange">
-					<h1 class=" font-weight-bold text-center" ><span class="titleContent">USERNAME</span></h1>
+					<h1 class=" font-weight-bold text-center" ><span class="titleContent text-uppercase"><?php echo $member->getLogin(); ?></span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
 					<div class="container-fluid">
@@ -206,14 +232,28 @@ ob_start();?>
 					</div>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
-					<p class="text-white navFontSize">Membre depuis : </p>
+					<p class="text-white navFontSize">Membre depuis : <?php echo date_format($member->getRegistationDate(),"d/m/Y"); ?></p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!--[INCLUDE FOOTER NORMAL] -->
-<?php include('FooterNormal.php'); ?>
+<!--[INCLUDE FOOTER] -->
+<?php
+	if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
+		/*HEADER NORMAL*/
+		include('FooterNormal.php');
+	}elseif (isset($_SESSION['member']) && !isset($_SESSION['admin'])) {
+		/*HEADER USER*/
+		include('FooterUser.php');
+	}elseif(!isset($_SESSION['member']) && isset($_SESSION['admin'])){
+		/*HEADER ADMIN*/
+		include('FooterAdmin.php');
+	}else{
+		/*ERREUR*/
+		include('FooterNormal.php'); 
+	}
+?>
 </body>
 
 <?php $content = ob_get_clean(); ?>

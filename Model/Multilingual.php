@@ -47,6 +47,16 @@ $multilingualArray = array(
             "message" => "pp",
         )
     ),
+    "searchUser" => array(
+        "fr" => array(
+            "title" => "recherche d'utilisateur",
+            "message" => "pp",
+        ),
+        "en" => array(
+            "title" => "Search user",
+            "message" => "pp",
+        )
+    ),
     "OTHER" => array(
     	"fr" => array(
     		"title" => "Accueil",

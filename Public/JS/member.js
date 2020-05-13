@@ -27,10 +27,19 @@ $(document).ready(function(){
   $field_search_gallery.keyup(submitSearch);
 
   $btn_search.click(senDataResearch);
+  /*OTHER*/
+  $logo = $("#logo");
+  $linkIndex = $(".navbar-brand");
+  $accountLink = $("#accountLink");
+  $logOutLink = $("#logOutLink");
+
   /*VAR*/
   var emptyArr = [];
+  var arrayLink =[];
   emptyArr.push("alert-info");
   emptyArr.unshift("alert-info");
+
+  setLink();
 
   /*FUNCTION*/
   function isEmptyField(field){
@@ -104,9 +113,8 @@ $(document).ready(function(){
   }
 
   function sendDataGallery(){
-    if((document.title == "Accueil") || (document.title == "Home")){
       $.ajax({
-       url: "../Controller/galleryCreate.php",
+       url: arrayLink[0],
        method: "POST",
        data: { name : $field_gallery_name.val()}
       }).done(function(message){//need to change Alert in fact of result
@@ -121,27 +129,7 @@ $(document).ready(function(){
        console.log(item);
      });
       console.log( "errorThrown" + errorThrown );
-    });
-  }else{
-     $.ajax({
-       url: "Controller/galleryCreate.php",
-       method: "POST",
-       data: { name : $field_gallery_name.val()}
-      }).done(function(message){//need to change Alert in fact of result
-    if (message.state == "OK") {
-      setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),message.msg);
-      }else{
-        setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(1),message.msg);
-      }
-    }).fail(function( jqXHR, textStatus,errorThrown) {
-      console.log( "Request failed: " + textStatus );
-      $.each( jqXHR, function( i, item ){
-       console.log(item);
-     });
-      console.log( "errorThrown" + errorThrown );
-    });
-  }
-  
+    });  
 }
 
 function senDataResearch(){
@@ -154,13 +142,13 @@ function senDataResearch(){
 
 function sendDataSearchUsername(){
 $.ajax({
-       url: "../Controller/search.php",
+       url: arrayLink[1],
        method: "POST",
        data: { UserName : $field_search_username.val() }
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
       setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
-        //location.href = "View/gallery.php";
+      location.href = arrayLink[2]+$field_search_username.val();
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
       }
@@ -175,7 +163,7 @@ $.ajax({
 
 function sendDataSearchGallery(){
   $.ajax({
-       url: "../Controller/search.php",
+       url: arrayLink[1],
        method: "POST",
        data: { GalleryName : $field_search_gallery.val()}
       }).done(function(message){//need to change Alert in fact of result
@@ -200,6 +188,26 @@ function getDateTimeFromNow(){
     var str="";
     str+= d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
     return str;
+  }
+
+  function setLink(){
+    if((document.title == "Accueil") || (document.title == "Home")){
+      $logo.attr('src', '../Public/Images/Icon/Logo01.png');
+      $linkIndex.attr('href','UserView.php');
+      $logOutLink.attr('href','../index.php?action=logout');
+      $accountLink.attr('href','../index.php?action=userAccount');
+      arrayLink.push("../Controller/galleryCreate.php");
+      arrayLink.push("../Controller/search.php");
+      arrayLink.push("../View/searchUser.php?loginUser=");
+    }else{
+      $logo.attr('src', 'Public/Images/Icon/Logo01.png');
+      $linkIndex.attr('href','View/UserView.php');
+      $logOutLink.attr('href','index.php?action=logout');
+      $accountLink.attr('href','index.php?action=userAccount');
+      arrayLink.push("Controller/galleryCreate.php");
+      arrayLink.push("Controller/search.php");
+      arrayLink.push("View/searchUser.php?loginUser=");
+    }
   }
 
 

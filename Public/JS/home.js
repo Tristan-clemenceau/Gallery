@@ -28,6 +28,7 @@ $(document).ready(function(){
   $alert_search_msg = $('#alert_search_message');
   /*OTHER*/
   $logo = $("#logo");
+  $linkIndex = $(".navbar-brand");
 
   /*EVENT MODAL CONNEXION*/
   $field_connexion_username.keyup(submitConnexion);
@@ -47,10 +48,11 @@ $(document).ready(function(){
   $btn_search.click(senDataResearch);
   /*VAR*/
   var emptyArr = [];
+  var arrayLink =[];
   emptyArr.push("alert-info");
   emptyArr.unshift("alert-info");
 
-  setLogo();
+  setLink();
 
   /*FUNCTION*/
   function isEmptyField(field){
@@ -144,14 +146,14 @@ $(document).ready(function(){
 
   function sendDataConnexion(){
   $.ajax({
-      url: "Controller/auth.php",
+      url: arrayLink[0],
       method: "POST",
       data: { login : $field_connexion_username.val() , password : $field_connexion_password.val()}
   }).done(function(message){
       console.log(message.state);
       if (message.state == "OK") {
         setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(0),message.msg);
-        location.href = "View/UserView.php";
+        location.href = arrayLink[3];
       }else{
         setMessageAndState($alert_connexion,$alert_connexion_msg,getAlert(1),message.msg);
       }
@@ -166,14 +168,14 @@ $(document).ready(function(){
   }
   function sendDataRegister(){
   $.ajax({
-      url: "Controller/register.php",
+      url: arrayLink[1],
       method: "POST",
       data: { login : $field_register_username.val() , password : $field_register_password.val(), dateRegister : getDateTimeFromNow()}
   }).done(function(message){//need to change Alert in fact of result
     console.log(message.state);
       if (message.state == "OK") {
         setMessageAndState($alert_register,$alert_register_msg,getAlert(0),message.msg);
-        location.href = "View/UserView.php";
+        location.href = arrayLink[3];
       }else{
         setMessageAndState($alert_register,$alert_register_msg,getAlert(1),message.msg);
       }
@@ -197,13 +199,13 @@ $(document).ready(function(){
 
 function sendDataSearchUsername(){
 $.ajax({
-       url: "Controller/search.php",
+       url: arrayLink[2],
        method: "POST",
        data: { UserName : $field_search_username.val() }
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
       setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
-        location.href = "View/searchUser.php";
+        location.href = arrayLink[4]+$field_search_username.val();
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
       }
@@ -218,7 +220,7 @@ $.ajax({
 
 function sendDataSearchGallery(){
   $.ajax({
-       url: "Controller/search.php",
+       url: arrayLink[2],
        method: "POST",
        data: { GalleryName : $field_search_gallery.val()}
       }).done(function(message){//need to change Alert in fact of result
@@ -245,11 +247,23 @@ function sendDataSearchGallery(){
     return str;
   }
 
-  function setLogo(){
+  function setLink(){
     if((document.title == "Accueil") || (document.title == "Home")){
       $logo.attr('src', 'Public/Images/Icon/Logo01.png');
+      $linkIndex.attr('href','index.php');
+      arrayLink.push("Controller/auth.php");
+      arrayLink.push("Controller/register.php");
+      arrayLink.push("Controller/search.php");
+      arrayLink.push("View/UserView.php");
+      arrayLink.push("searchUser.php?loginUser=");
     }else{
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
+      $linkIndex.attr('href','../index.php');
+      arrayLink.push("../Controller/auth.php");
+      arrayLink.push("../Controller/register.php");
+      arrayLink.push("../Controller/search.php");
+      arrayLink.push("../View/UserView.php");
+      arrayLink.push("../View/searchUser.php?loginUser=");
     }
   }
 
