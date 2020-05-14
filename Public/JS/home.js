@@ -226,7 +226,7 @@ function sendDataSearchGallery(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
         setMessageAndState($alert_search,$alert_search_msg,getAlert(0),message.msg);
-        
+        location.href = arrayLink[5]+$field_search_gallery.val();
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
       }
@@ -255,7 +255,8 @@ function sendDataSearchGallery(){
       arrayLink.push("Controller/register.php");
       arrayLink.push("Controller/search.php");
       arrayLink.push("View/UserView.php");
-      arrayLink.push("searchUser.php?loginUser=");
+      arrayLink.push("View/searchUser.php?loginUser=");
+      arrayLink.push("View/searchGallery.php?galleryName=");
     }else{
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','../index.php');
@@ -264,6 +265,7 @@ function sendDataSearchGallery(){
       arrayLink.push("../Controller/search.php");
       arrayLink.push("../View/UserView.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
+      arrayLink.push("../View/searchGallery.php?galleryName=");
     }
   }
 
