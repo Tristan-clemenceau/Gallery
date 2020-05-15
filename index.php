@@ -35,6 +35,13 @@ try {
 					homeView();
 				}
 				break;
+			case "userGallery":
+				if (isset($_SESSION['member'])) {
+					gallery();
+				}else{
+					homeView();
+				}
+				break;
 			case "lang":
 				if(isset($_GET['lang'])){
 						switch ($_GET['lang']) {//POSSIBILITY OF EXPENSION

@@ -32,6 +32,7 @@ $(document).ready(function(){
   $linkIndex = $(".navbar-brand");
   $accountLink = $("#accountLink");
   $logOutLink = $("#logOutLink");
+  $galleryLink = $("#galleryLink");
 
   /*VAR*/
   var emptyArr = [];
@@ -196,6 +197,7 @@ function getDateTimeFromNow(){
       $linkIndex.attr('href','UserView.php');
       $logOutLink.attr('href','../index.php?action=logout');
       $accountLink.attr('href','../index.php?action=userAccount');
+      $galleryLink.attr('href','../index.php?action=userGallery');
       arrayLink.push("../Controller/galleryCreate.php");
       arrayLink.push("../Controller/search.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
@@ -205,6 +207,7 @@ function getDateTimeFromNow(){
       $linkIndex.attr('href','View/UserView.php');
       $logOutLink.attr('href','index.php?action=logout');
       $accountLink.attr('href','index.php?action=userAccount');
+      $galleryLink.attr('href','index.php?action=userGallery');
       arrayLink.push("Controller/galleryCreate.php");
       arrayLink.push("Controller/search.php");
       arrayLink.push("View/searchUser.php?loginUser=");

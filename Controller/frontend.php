@@ -37,4 +37,8 @@ function logout(){
 function account(){
 	require('View/UserAccount.php');
 }
+
+function gallery(){
+	require('View/UserGallery.php');
+}
 ?>

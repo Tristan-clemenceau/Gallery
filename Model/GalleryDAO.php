@@ -48,6 +48,41 @@ class GalleryDAO extends DbObject
 		return $ok;
 	}
 
+	public function getGalleriesOwnedFromIdUser($idUser){
+		parent :: connection();
+		$arGallery = [];
+
+		$sql = "SELECT g.id_Gallery,g.name_Gallery FROM GALLERY g,USER u WHERE g.owner_Gallery = u.id_User AND u.id_User = {$idUser}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		
+		while ($row = mysqli_fetch_assoc($sqlExecute)) {
+			$tempGallery = new Gallery($row['name_Gallery']);
+			$tempGallery->setId($row['id_Gallery']);
+
+			array_push($arGallery, $tempGallery);
+		}
+
+		parent :: deconnection();
+		return $arGallery;
+	}
+	public function getGalleriesMemberFromIdUser($idUser){
+		parent :: connection();
+		$arGallery = [];
+
+		$sql = "SELECT g.id_Gallery,g.name_Gallery FROM GALLERY g, MEMBER m,USER u WHERE g.id_Gallery = m.id_Gallery AND m.id_User = u.id_User AND u.id_User = {$idUser} AND g.id_Gallery NOT IN (SELECT g.id_Gallery FROM GALLERY g,USER u WHERE g.owner_Gallery = u.id_User AND u.id_User = {$idUser})";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		
+		while ($row = mysqli_fetch_assoc($sqlExecute)) {
+			$tempGallery = new Gallery($row['name_Gallery']);
+			$tempGallery->setId($row['id_Gallery']);
+
+			array_push($arGallery, $tempGallery);
+		}
+
+		parent :: deconnection();
+		return $arGallery;
+	}
+
 	/*UPDATE*/
 	public function updateName(Gallery $gallery){
 		parent :: connection();

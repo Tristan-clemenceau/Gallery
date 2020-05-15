@@ -18,7 +18,7 @@
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> Gallery</a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownGallery">
 			              <a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery">Creer une galerie</a>
-			              <a class="dropdown-item navFontSize" type="button" href="#">Mes galleries</a>
+			              <a id ="galleryLink" class="dropdown-item navFontSize" type="button" href="../index.php?action=userGallery">Mes galleries</a>
 			            </div>
           			</li>
 			        <li class="nav-item dropdown pr-5">

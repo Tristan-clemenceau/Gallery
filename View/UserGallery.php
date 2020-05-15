@@ -1,8 +1,10 @@
 <?php
 /*IMPORT*/ 
-require_once('../Model/Multilingual.php');
-require_once('../Model/Person.php');
-require_once('../Model/Member.php');
+require_once('Model/Multilingual.php');
+require_once('Model/Person.php');
+require_once('Model/Member.php');
+require_once('Model/Gallery.php');
+require_once('Model/GalleryDAO.php');
 
 if (!isset($_SESSION['member'])) {
 	header("Location: index.php");
@@ -16,51 +18,39 @@ if (!isset($_SESSION['lang'])) {
 	header("Location: index.php");
 	exit();
 }else{
-	array_push($linkCSS, "../Public/CSS/default.css");
-	array_push($linkJS, "../Public/JS/member.js");
-	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
+	array_push($linkCSS, "Public/CSS/default.css");
+	array_push($linkJS, "Public/JS/member.js");
+	$title = $multilingualArray['userGallery'][$_SESSION['lang']]['title'];
 }
+
+/*GET DATA*/
+$galleryDAO = new GalleryDAO();
+$_SESSION['member']->setArrOwned($galleryDAO->getGalleriesOwnedFromIdUser($_SESSION['member']->getId()));
+$_SESSION['member']->setArrGallery($galleryDAO->getGalleriesMemberFromIdUser($_SESSION['member']->getId()));
+
+function diplayOwnedGallery(){
+	if (count($_SESSION['member']->getArrOwned()) == 0) {
+		echo '<li class="list-group-item backgroundDarkGrey textBleue borderBleue"><div class="container"><div class="row"><div class="col-xl-11 col-sm-12"><a class="h-5 text-white text-uppercase">'."Pas de gallery".'</a></div><div class="col-xl-1 col-sm-12"></div></div></div></li>';
+	} else {
+		foreach($_SESSION['member']->getArrOwned() as $galleryOwned){
+		echo '<li class="list-group-item backgroundDarkGrey textBleue borderBleue"><div class="container"><div class="row"><div class="col-xl-11 col-sm-12"><a class="h-5 text-white text-uppercase" href="View/searchGallery.php?galleryName='.$galleryOwned->getName().'">'.$galleryOwned->getName().'</a></div><div class="col-xl-1 col-sm-12"><a class="h-5 text-white text-uppercase" href="#"><i class="fas fa-times fa-2x textOrange "></i></a></div></div></div></li>';
+		}
+	}
+}
+
+function diplayMemberGallery(){
+	if (count($_SESSION['member']->getArrGallery()) == 0) {
+		echo '<li class="list-group-item backgroundDarkGrey textBleue borderBleue"><a class="h-5 text-white text-uppercase">'."pas de gallerie".'</a></li>';
+	} else {
+		foreach($_SESSION['member']->getArrGallery() as $galleryMember){
+			echo '<li class="list-group-item backgroundDarkGrey textBleue borderBleue"><a class="h-5 text-white text-uppercase" href="View/searchGallery.php?galleryName='.$galleryMember->getName().'">'.$galleryMember->getName().'</a></li>';
+		}
+	}
+}
+
 ob_start();?>
-<!-- [NAVBAR] -->
-<nav class="navbar navbar-expand-lg sticky-top">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
-			<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-			<span class="text-white navFontSize">Gallery</span>
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="text-white"><i class="fas fa-bars fa-1x"></i></span>
-		</button>
-		<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active pr-5">
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
-				</li>
-				<li class="nav-item dropdown pr-5">
-					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> Gallery</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownGallery">
-						<a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery">Creer une galerie</a>
-						<a class="dropdown-item navFontSize" type="button" href="#">Mes galleries</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown pr-5">
-					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item navFontSize" type="button" href="index.php?action=userAccount">Mon compte</a>
-						<a class="dropdown-item navFontSize" type="button" href="index.php?action=logout">Log out</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown pr-5">
-					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=fr">Français</a>
-						<a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=en">Anglais</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
+<!--[INCLUDE HEADER USER] -->
+<?php include('HeaderUser.php'); ?>
 <!-- [MODAL] -->
 <!-- [MODAL-SEARCH] -->
 <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalSearchTitle" aria-hidden="true">
@@ -126,162 +116,49 @@ ob_start();?>
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<div class="card text-center m-5 borderBleue">
 				<div class="card-header backgroundOrange">
-					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Mon compte</span></h1>
+					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Mes galleries</span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
-					<div class="input-group mb-3 justify-content-center ">
-						<input id="field_username" type="text" class=" text-center borderBleue backgroundDarkGrey" placeholder="new username" aria-label="Recipient's username" aria-describedby="btn_modifier_username">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary btn-lg borderBleue" type="button" id="btn_modifier_username">Modifier</button>
-						</div>
-					</div>
-					<div class="input-group mb-3 justify-content-center">
-						<input id="field_password" type="Password" class=" text-center backgroundDarkGrey borderBleue" placeholder="new password" aria-label="Recipient's username" aria-describedby="btn_modifier_password">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" type="button" id="btn_modifier_password">Modifier</button>
-						</div>
-					</div>
-					<div id="alert_modification" class="alert alert-info fade show" role="alert">
-						<p id="alert_modification_message">Pour modifier une information il vous suffit de rentrer dans le champs prévu a cet effet la nouvelle information. Une fois terminé il vous suffit d'appyuer sur le bouton modifier près du champs dans lequel vous avez rentré une nouvelle information.</p>
-					</div>
-					<a href="#" id="btn_exporter"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue">Exporter</button></a>
-					<a href="#" id="btn_supprimer"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" data-toggle="modal" data-target="#modalConfirmation">supprimer</button></a>
+					<div class="panel panel-primary" id="result_panel">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                        <ul class="list-group">
+                        	<!--[PHP AUTO OWNED Gallery] -->
+                        	<?php diplayOwnedGallery(); ?>
+                        </ul>
+                        </div>
+                    </div>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
-					<p class="text-white navFontSize">Membre depuis : <?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<div class="card text-center m-5 borderBleue">
 				<div class="card-header backgroundOrange">
-					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Données</span></h1>
+					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Galleries membres</span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-xl-3 col-md-6 mb-4"><!--col-sm-12 col-md-12 col-lg-12 col-xl-12 -->
-								<div class="card borderBleue shadow h-100 py-2 backgroundDarkGrey">
-									<div class="card-body">
-										<div class="row no-gutters align-items-center">
-											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery Owned</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">2</div>
-											</div>
-											<div class="col-auto textBleue">
-												<i class="fas fa-image fa-2x textBleue"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-md-6 mb-4">
-								<div class="card borderBleue shadow h-100 py-2 backgroundDarkGrey">
-									<div class="card-body">
-										<div class="row no-gutters align-items-center">
-											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery Member</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">40</div>
-											</div>
-											<div class="col-auto">
-												<i class="fas fa-users fa-2x textBleue"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-md-6 mb-4">
-								<div class="card borderBleue shadow h-100 py-2 backgroundDarkGrey">
-									<div class="card-body">
-										<div class="row no-gutters align-items-center">
-											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Max member</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">40</div>
-											</div>
-											<div class="col-auto">
-												<i class="fas fa-users fa-2x textBleue"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-md-6 mb-4">
-								<div class="card borderBleue shadow h-100 py-2 backgroundDarkGrey">
-									<div class="card-body">
-										<div class="row no-gutters align-items-center">
-											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Max post</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">122</div>
-											</div>
-											<div class="col-auto">
-												<i class="fas fa-sticky-note fa-2x textBleue"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="panel panel-primary" id="result_panel">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                        <ul class="list-group">
+                        	<!--[PHP AUTO MEMBER Gallery] -->
+                        	<?php diplayMemberGallery(); ?>
+                        </ul>
+                        </div>
+                    </div>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
-					<p class="text-white navFontSize">Membre depuis : <?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- [FOOTER] -->
-<footer class="sticky-bottom">
-	<div class="container-fluid padding">
-		<div class="row text-center d-flex justify-content-center pt-5 mb-3">
-			<div class="col-md-2 mb-3">
-				<h6>
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
-				</h6>
-			</div>
-			<div class="col-md-2 mb-3">
-				<h6>
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-image"></i> Gallery</a>
-				</h6>
-			</div>
-			<div class="col-md-2 mb-3">
-				<h6>
-					<div class="dropup">
-						<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
-						<div class="dropdown-menu">
-							<!-- Dropdown menu links -->
-							<a class="dropdown-item navFontSize" type="button" href="index.php?action=userAccount">Mon compte</a>
-							<a class="dropdown-item navFontSize" type="button" href="index.php?action=logout">Log out</a>
-						</div>
-					</div>
-				</h6>
-			</div>
-			<div class="col-md-2 mb-3">
-				<h6>
-					<div class="dropup">
-						<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
-						<div class="dropdown-menu">
-							<!-- Dropdown menu links -->
-							<a href="#" class="dropdown-item navFontSize">Français</a>
-							<a href="#" class="dropdown-item navFontSize">Anglais</a>
-						</div>
-					</div>
-				</h6>
-			</div>
-		</div>
-		<div class="row text-center">
-			<div class="col-md-12">
-				<hr id="hr_footer">
-				<ul class="list-inline list-unstyled">
-					<li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-github fa-2x"></i></a></li>
-					<li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-					<li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a></li>
-					<li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-youtube-square fa-2x"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
+<!--[INCLUDE FOOTER USER] -->
+<?php include('FooterUser.php'); ?>
 </body>
 
 <?php $content = ob_get_clean(); ?>

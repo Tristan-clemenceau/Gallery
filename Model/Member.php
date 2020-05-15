@@ -92,6 +92,14 @@ class Member extends Person
 		$this->registrationDate = date_create($date);
 	}
 
+	public function setArrOwned($arrOwned){
+		$this->arr_Owned = $arrOwned;
+	}
+
+	public function setArrGallery($arrGallery){
+		$this->arr_Gallery = $arrGallery;
+	}
+
 	/*OTHER*/
 	public function addGallery(Gallery $gallery){
 		array_push($this->arr_Gallery, $gallery);
