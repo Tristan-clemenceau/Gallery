@@ -27,12 +27,14 @@ $(document).ready(function(){
   $alert_register_msg = $('#alert_register_message');
   $alert_search = $('#alert_search');
   $alert_search_msg = $('#alert_search_message');
+
   /*OTHER*/
+  
   $logo = $("#logo");
   $linkIndex = $(".navbar-brand");
 
   $(".card_Image_modal").click(displayImage);
-  
+
   $btn_Upload.click(function(){
     $("#modalUpload").modal();
   });
