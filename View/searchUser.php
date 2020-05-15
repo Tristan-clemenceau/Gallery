@@ -5,6 +5,8 @@ require_once('../Model/Person.php');
 require_once('../Model/Member.php');
 require_once('../Model/Connection.php');
 require_once('../Model/MemberDAO.php');
+require_once('../Model/Gallery.php');
+require_once('../Model/GalleryDAO.php');
 
 if (!isset($_GET['loginUser'])) {
 	header("Location: ../index.php");
@@ -25,8 +27,11 @@ if (!isset($_SESSION['lang'])) {
 	$title = $multilingualArray['searchUser'][$_SESSION['lang']]['title'];
 }
 $member = new Member();
+$galleryDAO = new GalleryDAO();
 $memberDao = new MemberDAO();
 $member = $memberDao->searchByLogin($_GET['loginUser']);
+$member->setArrOwned($galleryDAO->getGalleriesOwnedFromIdUser($member->getId()));
+$member->setArrGallery($galleryDAO->getGalleriesMemberFromIdUser($member->getId()));
 
 ob_start();?>
 
@@ -159,7 +164,7 @@ ob_start();?>
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Number of Gallery</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">2</div>
+												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo (count($member->getArrOwned())+count($member->getArrGallery()));?></div>
 											</div>
 											<div class="col-auto textBleue">
 												<i class="fas fa-image fa-2x textBleue"></i>
@@ -174,7 +179,7 @@ ob_start();?>
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Number post</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">40</div>
+												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo $memberDao->getNbPost($member->getId()); ?></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-users fa-2x textBleue"></i>
@@ -189,7 +194,7 @@ ob_start();?>
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery owned</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">40</div>
+												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo count($member->getArrOwned());?></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-users fa-2x textBleue"></i>
@@ -204,7 +209,7 @@ ob_start();?>
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery member</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">122</div>
+												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo count($member->getArrGallery());?></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-sticky-note fa-2x textBleue"></i>
@@ -219,7 +224,7 @@ ob_start();?>
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
 												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Max member</div>
-												<div class="h5 mb-0 font-weight-bold textBleue">122</div>
+												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo $memberDao->getNbMaxMemberOfOwnedGallery($member->getId()); ?></div>
 											</div>
 											<div class="col-auto">
 												<i class="fas fa-sticky-note fa-2x textBleue"></i>

@@ -104,6 +104,36 @@ class MemberDAO extends DbObject
 	/*DELETE*/
 
 	/*OTHER*/
+	public function getNbPost($idUser){
+		parent :: connection();
+
+		$sql = "SELECT count(*) as NbPost FROM POST p WHERE p.publisher_Post = {$idUser}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		$row = mysqli_fetch_row($sqlExecute);
+		$nbPost = $row[0];
+
+		parent :: deconnection();
+		return $nbPost;
+	} 
+
+	public function getNbMaxMemberOfOwnedGallery($idUser){
+		parent :: connection();
+
+		$sql = "SELECT MAX(m.id_User) as MaxUser FROM member m WHERE m.id_Gallery IN( SELECT g.id_Gallery FROM GALLERY g,USER u WHERE g.owner_Gallery = u.id_User AND u.id_User = {$idUser}) GROUP By m.id_Gallery limit 1";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		$row = mysqli_fetch_row($sqlExecute);
+
+		if (!isset($row[0])) {
+			$nbMember = 0;
+		}else{
+			$nbMember = $row[0];
+		}
+		
+
+		parent :: deconnection();
+		return $nbMember;
+	}
+
 	public function getAllGallery(){
 		parent :: connection();
 

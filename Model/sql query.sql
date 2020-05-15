@@ -32,4 +32,23 @@ SELECT count(*) as NbPost
 FROM POST p
 WHERE p.publisher_Post = 2
 
-/*Number of gallery*/
+/*Number member of gallery*/
+SELECT m.id_Gallery,MAX(m.id_User) as MaxUser
+FROM member m
+WHERE m.id_Gallery IN(	SELECT g.id_Gallery
+						FROM GALLERY g,USER u
+						WHERE g.owner_Gallery = u.id_User
+						AND u.id_User = 1)
+GROUP By m.id_Gallery
+limit 1;
+
+/*Number member of gallery*/
+SELECT m.id_Gallery,COUNT(m.id_User) as nbUser
+FROM member m
+GROUP By m.id_Gallery
+
+/*Get all member form a gallery*/
+SELECT u.id_User,u.login_User
+FROM MEMBER m, USER u
+WHERE m.id_User = u.id_User
+AND m.id_Gallery = 2;

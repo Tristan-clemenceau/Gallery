@@ -65,6 +65,7 @@ class GalleryDAO extends DbObject
 		parent :: deconnection();
 		return $arGallery;
 	}
+
 	public function getGalleriesMemberFromIdUser($idUser){
 		parent :: connection();
 		$arGallery = [];
@@ -81,6 +82,26 @@ class GalleryDAO extends DbObject
 
 		parent :: deconnection();
 		return $arGallery;
+	}
+
+	public function getGaleryByName($name){
+		parent :: connection();
+
+		$sql = "SELECT id_Gallery,name_Gallery,owner_Gallery FROM GALLERY WHERE name_Gallery ='{$name}'";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_fetch_row($sqlExecute);
+
+		$gallery = new Gallery($name);
+		$gallery->setId($row[0]);
+		$id = $row[2];
+
+		parent :: deconnection();
+
+		$memberDAO = new MemberDAO();
+		$gallery->setOwner($memberDAO->searchById($id));
+
+		return $gallery;
 	}
 
 	/*UPDATE*/
@@ -122,13 +143,21 @@ class GalleryDAO extends DbObject
 		parent :: deconnection();
 	}
 
-	public function getAllMember(){
+	public function getAllMember($idGallery){
 		parent :: connection();
+		$arMember = [];
 
-		$sql = "";
+		$sql = "SELECT u.id_User,u.login_User FROM MEMBER m, USER u WHERE m.id_User = u.id_User AND m.id_Gallery = {$idGallery}";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		
+		while ($row = mysqli_fetch_assoc($sqlExecute)) {
+			$tempMember = new Member($row['id_User'],$row['login_User']);
+
+			array_push($arMember, $tempMember);
+		}
 
 		parent :: deconnection();
+		return $arMember;
 	}
 }
 

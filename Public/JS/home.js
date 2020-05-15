@@ -3,6 +3,7 @@ $(document).ready(function(){
   $btn_connexion = $('#btn_connexion');
   $btn_register = $('#btn_register');
   $btn_search = $('#btn_search');
+  $btn_Upload = $('#btn_Upload');
 
   /*BTN DISABLED BY DEFAULT*/
   $btn_connexion.attr("disabled", true);
@@ -29,6 +30,12 @@ $(document).ready(function(){
   /*OTHER*/
   $logo = $("#logo");
   $linkIndex = $(".navbar-brand");
+
+  $(".card_Image_modal").click(displayImage);
+  
+  $btn_Upload.click(function(){
+    $("#modalUpload").modal();
+  });
 
   /*EVENT MODAL CONNEXION*/
   $field_connexion_username.keyup(submitConnexion);
@@ -268,5 +275,20 @@ function sendDataSearchGallery(){
       arrayLink.push("../View/searchGallery.php?galleryName=");
     }
   }
+
+  function displayImage(){
+  /*TAKE INFORMATION FROM CHILD EL*/
+  console.log($(this).children('.card-img-top').attr('src'));
+  console.log($(this).children('.card-body').children('.card-title').text());
+  console.log($(this).children('.card-body').children('.card-text').text());
+  console.log($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
+  /*PUT IT ON MODAL*/
+  $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
+  $("#modalImageTitle").text($(this).children('.card-body').children('.card-title').text());
+  $("#modalImageContent").text($(this).children('.card-body').children('.card-text').text());
+  $("#modalImageAuthor").text($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
+  /*DISPLAY MODAL*/
+  $("#modalImage").modal();
+}
 
 });
