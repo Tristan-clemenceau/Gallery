@@ -3,12 +3,14 @@ $(document).ready(function(){
   $btn_connexion = $('#btn_connexion');
   $btn_register = $('#btn_register');
   $btn_search = $('#btn_search');
-  $btn_Upload = $('#btn_Upload');
+  $btn_upload_modal = $('#btn_upload_modal');
+  $btn_Upload= $("#btn_Upload");
 
   /*BTN DISABLED BY DEFAULT*/
   $btn_connexion.attr("disabled", true);
   $btn_register.attr("disabled", true);
   $btn_search.attr("disabled", true);
+  $btn_upload_modal.attr("disabled", true);
 
   /*FIELDS*/
   $field_connexion_username = $('#connexionInputUsername');
@@ -20,6 +22,9 @@ $(document).ready(function(){
 
   $field_search_username = $('#searchInputUsername');
   $field_search_gallery = $('#searchInputGallery');
+
+  $field_upload_desc =$('#uploadInputDesc');
+  $field_upload_file =$('#uploadFile');
   /*ALERT*/
   $alert_connexion = $('#alert_connexion');
   $alert_connexion_msg = $('#alert_connexion_message');
@@ -27,9 +32,11 @@ $(document).ready(function(){
   $alert_register_msg = $('#alert_register_message');
   $alert_search = $('#alert_search');
   $alert_search_msg = $('#alert_search_message');
+  $alert_upload =$("#upload_search");
+  $alert_upload_msg = $("#upload_search_message");
 
   /*OTHER*/
-  
+
   $logo = $("#logo");
   $linkIndex = $(".navbar-brand");
 
@@ -54,10 +61,16 @@ $(document).ready(function(){
   $field_search_username.keyup(submitSearch);
   $field_search_gallery.keyup(submitSearch);
 
-  $btn_search.click(senDataResearch);
+  /*EVENT MODAL UPLOAD*/
+  $field_upload_desc.keyup(submitUpload);
+  $field_upload_file.change(submitUpload);
+
+  $btn_upload_modal.click(sendDataUpload);
   /*VAR*/
   var emptyArr = [];
   var arrayLink =[];
+  emptyArr.push("alert-info");
+  emptyArr.push("alert-info");
   emptyArr.push("alert-info");
   emptyArr.unshift("alert-info");
 
@@ -105,6 +118,10 @@ $(document).ready(function(){
         objParent.toggleClass(emptyArr[2]+" "+state);
         emptyArr[2] = state;
         break;
+      case "upload_search":
+        objParent.toggleClass(emptyArr[3]+" "+state);
+        emptyArr[3] = state;
+        break;
     }
     objChield.empty();
     objChield.html(message);
@@ -151,6 +168,18 @@ $(document).ready(function(){
       $btn_search.attr("disabled",true);
       setMessageAndState($alert_search,$alert_search_msg,getAlert(2),"Vous devez remplir un des deux champs pour effectuer une recherche");
     }
+  }
+
+  function submitUpload(){
+    if(!isEmptyField($field_upload_desc) && !($field_upload_file.val() == '')){
+      console.log($field_upload_file.length)
+      setMessageAndState($alert_upload,$alert_upload_msg,getAlert(0),"Vous pouvez appuyer sur le bouton ajouter");
+      $btn_upload_modal.attr("disabled",false);
+    }else{
+      $btn_upload_modal.attr("disabled",true);
+       setMessageAndState($alert_upload,$alert_upload_msg,getAlert(2),"Vous devez choisir un fichier et ajouter une description");
+    }
+
   }
 
   function sendDataConnexion(){
@@ -238,6 +267,31 @@ function sendDataSearchGallery(){
         location.href = arrayLink[5]+$field_search_gallery.val();
       }else{
         setMessageAndState($alert_search,$alert_search_msg,getAlert(1),message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+}
+
+function sendDataUpload(){
+  var dataFormUpl = new FormData(document.getElementById("formDataUpload"));
+  $.ajax({
+       url: '../Controller/upload.php',
+       method: "POST",
+       enctype: 'multipart/form-data',
+       processData: false,
+       contentType: false,
+       data: dataFormUpl
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+        setMessageAndState($alert_upload,$alert_upload_msg,getAlert(0),message.msg);
+        //location.href = arrayLink[5]+$field_search_gallery.val();
+      }else{
+        setMessageAndState($alert_upload,$alert_upload_msg,getAlert(1),message.msg);
       }
     }).fail(function( jqXHR, textStatus,errorThrown) {
       console.log( "Request failed: " + textStatus );

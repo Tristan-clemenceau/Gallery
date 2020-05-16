@@ -198,20 +198,22 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 </button>
             </div>
             <div class="modal-body">
-                <form><!--action="Register" method="post"-->
+                <form enctype="multipart/form-data" method="post" id="formDataUpload">
                     <div class="form-group">
-                        <label for="searchInputUsername">Username</label>
-                        <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
-                        <label for="searchInputGallery" class="mt-2">Gallery</label>
-                        <input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+                        <label for="uplaodInputUsername">Auteur</label>
+                        <input type="text" class="form-control" id="uplaodInputUsername" aria-describedby="emailHelp" value="<?php echo $_SESSION['member']->getLogin(); ?>" readonly>
+                        <label for="uploadInputDesc" class="mt-2">Gallery</label>
+                        <textarea class="form-control" id ="uploadInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
+                        <label for="uploadFile" class="mt-2">Fichier</label>
+                        <input type="file" id="uploadFile" name="file" required>
                     </div>
-                    <div id="alert_search" class="alert alert-info fade show" role="alert">
-                        <p id="alert_search_message" class="text-center">Vous devez remplir un des deux champs afin d'effectuer une recherche</p>
+                    <div id="upload_search" class="alert alert-info fade show" role="alert">
+                        <p id="upload_search_message" class="text-center">Ajouter un fichier et une description pour ajouter un post.</p>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn_search">Recherche</button>
+                <button type="button" class="btn btn-primary" id="btn_upload_modal">Ajouter</button>
             </div>
         </div>
     </div>
@@ -299,6 +301,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                                         <h5 class="card-title">Card title</h5>
                                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                         <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -309,6 +312,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                                         <h5 class="card-title">Card title</h5>
                                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                                         <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue">Delete</button>
                                     </div>
                                 </div>
                             </div>
