@@ -114,6 +114,18 @@ class MemberDAO extends DbObject
 
 		parent :: deconnection();
 		return $nbPost;
+	}
+
+	public function getNbPostGallery($idUser,$idGallery){
+		parent :: connection();
+
+		$sql = "SELECT count(*) as NbPost FROM POST p WHERE p.publisher_Post = {$idUser} AND p.id_Gallery = {$idGallery}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		$row = mysqli_fetch_row($sqlExecute);
+		$nbPost = $row[0];
+
+		parent :: deconnection();
+		return $nbPost;
 	} 
 
 	public function getNbMaxMemberOfOwnedGallery($idUser){

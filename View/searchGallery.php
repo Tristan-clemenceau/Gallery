@@ -62,7 +62,7 @@ function displayNumberOfpost(Gallery $galleryTemp){
         $cpt = 0;
         foreach ($galleryTemp->getArrMember() as $memberGal) {
            $memberDAO = new MemberDAO();
-           $cpt+= $memberDAO->getNbPost($memberGal->getId());
+           $cpt+= $memberDAO->getNbPostGallery($memberGal->getId(),$galleryTemp->getId());
         }
         return $cpt;
     }
@@ -82,7 +82,7 @@ function displayPost(Gallery $galleryTemp){
 
         foreach ($arrayPost as $post) {
             echo '<div class="col-xl-4 col-md-12 mb-12 "><div class="card borderBleue mb-4 card_Image_modal"><img class="card-img-top"src="'."../Public/Images/Uploads/".$post->getImage()->getLink().'" alt="Image"><div class="card-body backgroundDarkGrey"><p class="card-text">'.$post->getDescription().'</p><p class="card-text-botom-auth"><small class="text-muted text-uppercase">'.$post->getPublisher()->getLogin().'</small></p>
-            <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue" value="'.$post->getId().'">Delete</button></div></div></div>';
+            <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue deletePost" value="'.$post->getId().'">Delete</button></div></div></div>';
         }
     }
 }
@@ -122,9 +122,9 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <form><!--action="Register" method="post"-->
                     <div class="form-group">
                         <label for="connexionInputUsername">Username</label>
-                        <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+                        <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required>
                         <label for="connexionInputPassword" class="mt-2">Password</label>
-                        <input type="password" class="form-control" id="connexionInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+                        <input type="password" class="form-control" id="connexionInputPassword" placeholder="Password" aria-describedby="passHelp" required>
                     </div>
                     <div id="alert_connexion" class="alert alert-info fade show" role="alert">
                         <p id="alert_connexion_message" class="text-center">Tous les champs doivent êtres remplis</p>
@@ -256,8 +256,18 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <div class="card-body backgroundDarkGrey">
                     <div class="panel panel-primary" id="result_panel">
                         <div class="panel-heading">
+                            
                         </div>
                         <div class="panel-body">
+                            <form class="form-inline justify-content-center">
+                            <div class="form-group mx-sm-4 mb-2">
+                                <input type="hidden" name="idGallery" value="<?php echo $gallery->getId()  ?>">
+                                <input class="form-control" list="inputAddMember" name="browser" placeholder="username" id="inputAddmemberField">
+                                <datalist id="inputAddMember">
+                                </datalist>
+                            </div>
+                            <button id="btn_Member" class="btn btn-primary mb-2">Add member</button>
+                            </form>
                             <ul class="list-group">
                                 <?php displayMember($gallery);?>
                             </ul>

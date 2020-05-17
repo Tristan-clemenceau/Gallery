@@ -5,12 +5,14 @@ $(document).ready(function(){
   $btn_search = $('#btn_search');
   $btn_upload_modal = $('#btn_upload_modal');
   $btn_Upload= $("#btn_Upload");
+  $btn_Member = $("#btn_Member");
 
   /*BTN DISABLED BY DEFAULT*/
   $btn_connexion.attr("disabled", true);
   $btn_register.attr("disabled", true);
   $btn_search.attr("disabled", true);
   $btn_upload_modal.attr("disabled", true);
+  $btn_Member.attr("disabled", true);
 
   /*FIELDS*/
   $field_connexion_username = $('#connexionInputUsername');
@@ -36,15 +38,20 @@ $(document).ready(function(){
   $alert_upload_msg = $("#upload_search_message");
 
   /*OTHER*/
-
   $logo = $("#logo");
   $linkIndex = $(".navbar-brand");
 
   $(".card_Image_modal").click(displayImage);
 
+  $(".deletePost").click(function(){/*DELETE POST */
+    console.log("delete");
+  });
+
   $btn_Upload.click(function(){
     $("#modalUpload").modal();
   });
+
+  $("#inputAddmemberField").change(sendDataAddMemberGallery);/*GET ALL MEMBER */
 
   /*EVENT MODAL CONNEXION*/
   $field_connexion_username.keyup(submitConnexion);
@@ -66,6 +73,8 @@ $(document).ready(function(){
   $field_upload_file.change(submitUpload);
 
   $btn_upload_modal.click(sendDataUpload);
+  /*OTHER*/
+
   /*VAR*/
   var emptyArr = [];
   var arrayLink =[];
@@ -75,6 +84,7 @@ $(document).ready(function(){
   emptyArr.unshift("alert-info");
 
   setLink();
+  displayOption();
 
   /*FUNCTION*/
   function isEmptyField(field){
@@ -333,12 +343,20 @@ function sendDataUpload(){
   }
 
   function displayImage(){
-  /*PUT IT ON MODAL*/
-  $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
-  $("#modalImageContent").text($(this).children('.card-body').children('.card-text').text());
-  $("#modalImageAuthor").text($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
-  /*DISPLAY MODAL*/
-  $("#modalImage").modal();
-}
+    /*PUT IT ON MODAL*/
+    $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
+    $("#modalImageContent").text($(this).children('.card-body').children('.card-text').text());
+    $("#modalImageAuthor").text($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
+    /*DISPLAY MODAL*/
+    $("#modalImage").modal();
+  }
+
+  function displayOption(){
+    $("#inputAddMember").append( '<option value="CACA">' );
+  }
+
+  function sendDataAddMemberGallery(){
+    console.log('SENDER DATA');
+  }
 
 });
