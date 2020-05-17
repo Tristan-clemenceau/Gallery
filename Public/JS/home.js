@@ -172,7 +172,6 @@ $(document).ready(function(){
 
   function submitUpload(){
     if(!isEmptyField($field_upload_desc) && !($field_upload_file.val() == '')){
-      console.log($field_upload_file.length)
       setMessageAndState($alert_upload,$alert_upload_msg,getAlert(0),"Vous pouvez appuyer sur le bouton ajouter");
       $btn_upload_modal.attr("disabled",false);
     }else{
@@ -333,11 +332,6 @@ function sendDataUpload(){
   }
 
   function displayImage(){
-  /*TAKE INFORMATION FROM CHILD EL*/
-  console.log($(this).children('.card-img-top').attr('src'));
-  console.log($(this).children('.card-body').children('.card-title').text());
-  console.log($(this).children('.card-body').children('.card-text').text());
-  console.log($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
   /*PUT IT ON MODAL*/
   $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
   $("#modalImageTitle").text($(this).children('.card-body').children('.card-title').text());

@@ -15,6 +15,8 @@ if (!isset($_GET['galleryName'])) {
 
 session_start();
 
+$_SESSION['page'] = "bf6957fb3792c3f2ab826e647557d1b58dcecafb0f366030ad2aaf91cb1303d5";
+
 /*VAR*/
 $linkCSS = [];
 $linkJS = [];
@@ -124,16 +126,16 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 </button>
             </div>
             <div class="modal-body">
-                <form><!--action="Register" method="post"-->
+                <form>
                     <div class="form-group">
                         <label for="registerInputUsername">Username</label>
-                        <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+                        <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
                         <label for="registerInputPassword">Password</label>
-                        <input type="password" class="form-control" id="registerInputPassword" placeholder="Password" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+                        <input type="password" class="form-control" id="registerInputPassword" placeholder="Password" aria-describedby="passHelp" required>
                         <label for="confirmRegisterInputPassword">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="Confirm password" aria-describedby="passHelp" required><!-- name="confirmRegisterInputPassword" -->
+                        <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="Confirm password" aria-describedby="passHelp" required>
                     </div>
                     <div id="alert_register" class="alert alert-info fade show" role="alert">
                         <p id="alert_register_message" class="text-center">Tous les champs doivent êtres remplis et les deux mots de passes doivent correspondre</p>
@@ -158,12 +160,12 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 </button>
             </div>
             <div class="modal-body">
-                <form><!--action="Register" method="post"-->
+                <form>
                     <div class="form-group">
                         <label for="searchInputUsername">Username</label>
-                        <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+                        <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required>
                         <label for="searchInputGallery" class="mt-2">Gallery</label>
-                        <input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+                        <input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required>
                     </div>
                     <div id="alert_search" class="alert alert-info fade show" role="alert">
                         <p id="alert_search_message" class="text-center">Vous devez remplir un des deux champs afin d'effectuer une recherche</p>
