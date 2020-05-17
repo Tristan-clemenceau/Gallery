@@ -288,7 +288,8 @@ function sendDataUpload(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
         setMessageAndState($alert_upload,$alert_upload_msg,getAlert(0),message.msg);
-        //location.href = arrayLink[5]+$field_search_gallery.val();
+        $("#modalUpload").modal('toggle');
+        location.reload(true);
       }else{
         setMessageAndState($alert_upload,$alert_upload_msg,getAlert(1),message.msg);
       }
@@ -334,7 +335,6 @@ function sendDataUpload(){
   function displayImage(){
   /*PUT IT ON MODAL*/
   $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
-  $("#modalImageTitle").text($(this).children('.card-body').children('.card-title').text());
   $("#modalImageContent").text($(this).children('.card-body').children('.card-text').text());
   $("#modalImageAuthor").text($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
   /*DISPLAY MODAL*/

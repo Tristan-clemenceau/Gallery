@@ -13,7 +13,7 @@
 	/*VERIF*/
 	session_start();
 
-	if(isset($_SESSION['page'])){
+	if(isset($_SESSION['page']) && isset($_SESSION['member'])){
 		$data = array("state" => "", "msg" => "");
 		/*IMPORT*/ 
 		require_once('../Model/pageTOKEN.php');
@@ -21,21 +21,33 @@
 		if(($_SESSION['page'] == $pageArray['searchGallery'])){
 			/*HEADER*/
 			header("Content-Type: application/json");
-			if(isset($_FILES['file']) && isset($_POST['desc'])){//BOTH FILE ARE RECIEVE
+			if(isset($_FILES['file']) && isset($_POST['desc']) && isset($_POST['galleryId'])){
 				$allowedExtension = array('jpg','jpeg','png');
-				if($_FILES['file']['error'] === 0 && $_FILES['file']['size'] <= 31457280){//SIZE AND NO ERROR
+				if($_FILES['file']['error'] === 0 && $_FILES['file']['size'] <= 2097152){//SIZE AND NO ERROR
 					$arrFile = explode('.', $_FILES['file']['name']);
 					$fileExt = strtolower(end($arrFile));
 					if(in_array($fileExt, $allowedExtension)){
+						$fileNameGenerated = uniqid('',true).".".$fileExt;
+						$destination = "../Public/Images/Uploads/".$fileNameGenerated;
+						move_uploaded_file($_FILES['file']['tmp_name'], $destination);
+						/*SET IMAGE*/
+						$imageDAO = new ImageDAO();
+						$postDAO = new PostDAO();
+						$image = new Image();
+
+						$image = $imageDAO->create($fileNameGenerated);
+						$postDAO->create($_POST['desc'],$_SESSION['member']->getId(),$_POST['galleryId'],$image->getId());
+
+						/*SET POST*/
 						$data['state'] = "OK";
-						$data['msg'] = "Fichier ok";
+						$data['msg'] = "Post partagé";
 					}else{
 						$data['state'] = "ERROR";
 						$data['msg'] = "Fichier non accepté seuls les fichiers .jpg , .jpeg , .png sont autorisés";
 					}
 				}else{
 					$data['state'] = "ERROR";
-					$data['msg'] = "Pictures is bigger than  30 mb or it was not uploaded correctly please retry ";
+					$data['msg'] = "Pictures is bigger than  2 mb or it was not uploaded correctly please retry ";
 				}
 			}else{
 				$data['state'] = "ERROR";

@@ -5,6 +5,10 @@ require_once('../Model/Person.php');
 require_once('../Model/Member.php');
 require_once('../Model/Connection.php');
 require_once('../Model/MemberDAO.php');
+require_once('../Model/Post.php');
+require_once('../Model/PostDAO.php');
+require_once('../Model/Image.php');
+require_once('../Model/ImageDAO.php');
 require_once('../Model/Gallery.php');
 require_once('../Model/GalleryDAO.php');
 
@@ -61,6 +65,25 @@ function displayNumberOfpost(Gallery $galleryTemp){
            $cpt+= $memberDAO->getNbPost($memberGal->getId());
         }
         return $cpt;
+    }
+}
+
+function displayPost(Gallery $galleryTemp){
+    if (displayNumberOfpost($galleryTemp) == 0) {
+        echo '<p class="text-center">Pas de post</p>';
+    } else {
+        $arrayPost = array();
+        $postDAO = new PostDAO();
+
+        foreach ($galleryTemp->getArrMember() as $galleryItem) {
+        /*GET POST*/
+        $arrayPost = array_merge($arrayPost,$postDAO->getPostById($galleryItem->getId(),$galleryTemp->getId(),$galleryItem->getLogin()));
+        }
+
+        foreach ($arrayPost as $post) {
+            echo '<div class="col-xl-4 col-md-12 mb-12 "><div class="card borderBleue mb-4 card_Image_modal"><img class="card-img-top"src="'."../Public/Images/Uploads/".$post->getImage()->getLink().'" alt="Image"><div class="card-body backgroundDarkGrey"><p class="card-text">'.$post->getDescription().'</p><p class="card-text-botom-auth"><small class="text-muted text-uppercase">'.$post->getPublisher()->getLogin().'</small></p>
+            <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue" value="'.$post->getId().'">Delete</button></div></div></div>';
+        }
     }
 }
 
@@ -208,6 +231,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                         <textarea class="form-control" id ="uploadInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
                         <label for="uploadFile" class="mt-2">Fichier</label>
                         <input type="file" id="uploadFile" name="file" required>
+                        <input type="hidden" name="galleryId" value="<?php echo $gallery->getId(); ?>">
                     </div>
                     <div id="upload_search" class="alert alert-info fade show" role="alert">
                         <p id="upload_search_message" class="text-center">Ajouter un fichier et une description pour ajouter un post.</p>
@@ -296,88 +320,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                     <button id="btn_Upload" type="button" class="btn btn-primary btn-lg btn-block mb-4">Add image</button>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xl-3 col-md-12 mb-12 "><!--[CARD nb gallery]-->
-                                <div class="card borderBleue mb-4 card_Image_modal">
-                                    <img class="card-img-top"src="../Public/Images/Pictures/Slide_01.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue mb-5 card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue mb-5 card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_03.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey borderBleue">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue mb-5 card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-12 mb-12"><!--[CARD nb gallery]-->
-                                <div class="card borderBleue card_Image_modal">
-                                    <img class="card-img-top" src="../Public/Images/Pictures/Slide_02.jpg" alt="Card image cap">
-                                    <div class="card-body backgroundDarkGrey">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text-botom-auth"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php displayPost($gallery); ?>
                         </div>
                     </div>
                 </div>

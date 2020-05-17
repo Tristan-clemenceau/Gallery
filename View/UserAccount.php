@@ -47,12 +47,12 @@ ob_start();?>
 				</button>
 			</div>
 			<div class="modal-body">
-				<form><!--action="Register" method="post"-->
+				<form>
 					<div class="form-group">
 						<label for="searchInputUsername">Username</label>
-						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required><!-- name="registerInputUsername" -->
+						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required>
 						<label for="searchInputGallery" class="mt-2">Gallery</label>
-						<input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required><!-- name="registerInputPassword" -->
+						<input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required>
 					</div>
 					<div id="alert_search" class="alert alert-info fade show" role="alert">
 						<p id="alert_search_message" class="text-center">Vous devez remplir un des deux champs afin d'effectuer une recherche</p>
