@@ -43,9 +43,7 @@ $(document).ready(function(){
 
   $(".card_Image_modal").click(displayImage);
 
-  $(".deletePost").click(function(){/*DELETE POST */
-    console.log("delete");
-  });
+  $(".deletePost").click(deletePost);
 
   $btn_Upload.click(function(){
     $("#modalUpload").modal();
@@ -351,8 +349,29 @@ function sendDataUpload(){
     $("#modalImage").modal();
   }
 
+  function deletePost(){
+    $.ajax({
+       url: '../Controller/deletePost.php',
+       method: "POST",
+       data: { idPost : $(this).val()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+        location.reload(true);
+        console.log(message.msg);
+      }else{
+        console.log(message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+  }
+
   function displayOption(){
-    $("#inputAddMember").append( '<option value="CACA">' );
+    $("#inputAddMember").append('<option value="CACA">');
   }
 
   function sendDataAddMemberGallery(){

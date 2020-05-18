@@ -57,13 +57,35 @@ class PostDAO extends DbObject
 	}
 
 	/*DELETE*/
-	public function delete(Post $post){
+	public function delete($idPost){
 		parent :: connection();
 
-		$sql = "DELETE FROM POST WHERE id_Post = {$post->getId()} ";
+		/*GET INFORMATION*/
+		$sql = "SELECT p.id_Image FROM POST p WHERE p.id_Post = {$idPost}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_fetch_row($sqlExecute);
+		$idImage = $row[0];
+
+		$sql = "SELECT i.link_Image FROM IMAGE i WHERE i.id_Image = {$idImage}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+		
+		$row = mysqli_fetch_row($sqlExecute);
+		$LinkImage = $row[0];
+
+		$linkTodelete = "../Public/Images/Uploads/{$LinkImage}";
+
+		unlink($linkTodelete);
+
+		/*DELETE POST AND IMAGE*/
+		$sql = "DELETE FROM POST WHERE id_Post = {$idPost}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$sql = "DELETE FROM IMAGE WHERE id_Image = {$idImage}";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();
+		
 	}
 
 	/*OTHER*/
