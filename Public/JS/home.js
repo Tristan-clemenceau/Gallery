@@ -342,9 +342,9 @@ function sendDataUpload(){
 
   function displayImage(){
     /*PUT IT ON MODAL*/
-    $("#modalImageImage").attr('src',$(this).children('.card-img-top').attr('src'));
-    $("#modalImageContent").text($(this).children('.card-body').children('.card-text').text());
-    $("#modalImageAuthor").text($(this).children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
+    $("#modalImageImage").attr('src',$(this).attr('src'));
+    $("#modalImageContent").text($(this).parent().children('.card-body').children('.card-text').text());
+    $("#modalImageAuthor").text($(this).parent().children('.card-body').children('.card-text-botom-auth').children('.text-muted').text());
     /*DISPLAY MODAL*/
     $("#modalImage").modal();
   }
@@ -357,7 +357,6 @@ function sendDataUpload(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
         location.reload(true);
-        console.log(message.msg);
       }else{
         console.log(message.msg);
       }

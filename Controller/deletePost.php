@@ -23,6 +23,8 @@ if(isset($_SESSION['page']) && isset($_SESSION['member'])){
             if ($galleryDAO->isMemberFromGallery($_POST['idPost'],$_SESSION['member']->getId())) {//USER IS MEMBER OF GALLERY
                 $postDAO = new PostDAO();
                 $postDAO->delete($_POST['idPost']);
+                $data['state'] = "OK";
+               $data['msg'] = "Post and image Deleted";
             } else {
                $data['state'] = "ERROR";
                $data['msg'] = "User is not a member";
