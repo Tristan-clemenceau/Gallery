@@ -19,7 +19,7 @@ if (!isset($_GET['galleryName'])) {
 
 session_start();
 
-$_SESSION['page'] = "bf6957fb3792c3f2ab826e647557d1b58dcecafb0f366030ad2aaf91cb1303d5";
+$_SESSION['page'] = "22d94b62867c07c7582765cdf83ba9d7a0225f8d4fb55c422cd0f4ed54a2812f";
 
 /*VAR*/
 $linkCSS = [];
@@ -271,6 +271,34 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btn_modify_modal">Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [MODAL-GALLERY] -->
+<div class="modal fade" id="modalGallery" tabindex="-1" role="dialog" aria-labelledby="ModalGalleryTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content backgroundDarkGrey">
+            <div class="modal-header">
+                <img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+                <h5 class="mt-2 navFontSize text-center" id="ModalGalleryTitle">Gallery</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="galleryInputName">Gallery name</label>
+                        <input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="Enter gallery name" required>
+                    </div>
+                    <div id="alert_gallery" class="alert alert-info fade show" role="alert">
+                        <p id="alert_gallery_message" class="text-center">Vous devez remplir le champs pour pouvoir creer votre gallerie</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_gallery_create">Créer</button>
             </div>
         </div>
     </div>

@@ -15,6 +15,8 @@ if (!isset($_GET['loginUser'])) {
 
 session_start();
 
+$_SESSION['page'] = "8a1276bb767f24f4714fe6aa8d70e4e9c9c204be4700f16274a435dab8dc1859";
+
 /*VAR*/
 $linkCSS = [];
 $linkJS = [];
@@ -147,6 +149,34 @@ ob_start();?>
 	    </div>
 	  </div>
 	</div>
+	<!-- [MODAL-GALLERY] -->
+<div class="modal fade" id="modalGallery" tabindex="-1" role="dialog" aria-labelledby="ModalGalleryTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered " role="document">
+		<div class="modal-content backgroundDarkGrey">
+			<div class="modal-header">
+				<img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+				<h5 class="mt-2 navFontSize text-center" id="ModalGalleryTitle">Gallery</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="galleryInputName">Gallery name</label>
+						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="Enter gallery name" required>
+					</div>
+					<div id="alert_gallery" class="alert alert-info fade show" role="alert">
+						<p id="alert_gallery_message" class="text-center">Vous devez remplir le champs pour pouvoir creer votre gallerie</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="btn_gallery_create">Créer</button>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- [CONTENT] -->
 <div class="container-fluid">
 	<div class="row justify-content-center">

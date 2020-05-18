@@ -6,7 +6,7 @@
 		/*IMPORT*/ 
 		require_once('../Model/pageTOKEN.php');
 		require_once('../Model/Multilingual.php');
-		if($_SESSION['page'] == $pageArray['index']){//VERIF
+		if(($_SESSION['page'] == $pageArray['index']) || ($_SESSION['page'] == $pageArray['homeView'])){//VERIF
 			if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['dateRegister'])) {
 			/*IMPORT*/ 
 			require_once('../Model/Connection.php');

@@ -10,7 +10,7 @@ if (!isset($_SESSION['member'])) {
 	exit();
 }
 
-$_SESSION['page'] = "411cae512aea65d322edf2a17d8b111ffcd7a9bdc0b126e6eef8bd32e37c320e";
+$_SESSION['page'] = "aae48327bf1546a57399a8be29d5db613efaf801054053f7458e94b9a4f9e828";
 
 /*VAR*/
 $linkCSS = [];

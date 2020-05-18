@@ -11,6 +11,9 @@ if (!isset($_SESSION['lang'])) {
 	array_push($linkJS, "Public/JS/home.js");
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['title'];
 }
+
+$_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f708ad61";
+
 ob_start();?>
 <!--[INCLUDE HEADER NORMAL] -->
 <?php include('HeaderNormal.php'); ?>

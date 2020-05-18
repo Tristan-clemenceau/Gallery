@@ -14,7 +14,7 @@
 		/*IMPORT*/ 
 		require_once('../Model/pageTOKEN.php');
 		require_once('../Model/Multilingual.php');
-		if(($_SESSION['page'] == $pageArray['userAcc']) || ($_SESSION['page'] == $pageArray['userView']) || ($_SESSION['page'] == $pageArray['index'])){
+		if(($_SESSION['page'] == $pageArray['index']) || ($_SESSION['page'] == $pageArray['userAcc']) || ($_SESSION['page'] == $pageArray['userView'])|| ($_SESSION['page'] == $pageArray['userGallery']) || ($_SESSION['page'] == $pageArray['searchGallery']) || ($_SESSION['page'] == $pageArray['searchUser']) || ($_SESSION['page'] == $pageArray['homeView'])){
 			/*HEADER*/
 			header("Content-Type: application/json");
 			if(isset($_POST['UserName']) && isset($_POST['GalleryName'])){

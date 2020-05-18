@@ -11,6 +11,8 @@ if (!isset($_SESSION['member'])) {
 	exit();
 }
 
+$_SESSION['page'] = "60bfee97a2e5f6df3b4e2eaefbf3d9f426bfe98d7768dac6ca2d5da44624d1b8";
+
 /*VAR*/
 $linkCSS = [];
 $linkJS = [];
