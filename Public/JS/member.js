@@ -70,7 +70,7 @@ $(document).ready(function(){
     return result;
   }
 
-  function setMessageAndState(objParent,objChield,state,message){//[0]modal search [1]modal gallery
+  function setMessageAndState(objParent,objChield,state,message){
     switch(objParent.attr('id')){
       case "alert_search":
       objParent.toggleClass(emptyArr[0]+" "+state);
@@ -87,11 +87,9 @@ $(document).ready(function(){
 
   function submitGallery(){
     if(!isEmptyField($field_gallery_name)){
-      /*OK QUERY AJAX*/
       setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(0),"Vous pouvez appuyer sur le bouton connexion");
       $btn_gallery_create.attr("disabled", false);
     }else{
-      /*NOT OK*/
       $btn_gallery_create.attr("disabled", true);
       setMessageAndState($alert_gallery,$alert_gallery_msg,getAlert(2),"Vous devez remplir le champs afin de pouvoir proceder à la création");
     }
@@ -202,6 +200,9 @@ function getDateTimeFromNow(){
       arrayLink.push("../Controller/search.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
+      $('.langFR').each(function(item){
+        $( this ).attr('href','../cacacacacac.ph');
+      });
     }else{
       $logo.attr('src', 'Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','View/UserView.php');
@@ -212,6 +213,9 @@ function getDateTimeFromNow(){
       arrayLink.push("Controller/search.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
+      $('.langFR').each(function(item){
+        $( this ).attr('href','../cacacacacac.ph');
+      });
     }
   }
 

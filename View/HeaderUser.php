@@ -31,8 +31,8 @@
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=fr">Français</a>
-			              <a class="dropdown-item navFontSize" type="button" href="index.php?action=lang&lang=en">Anglais</a>
+			              <a class="dropdown-item navFontSize langFR" type="button" href="">Français</a>
+			              <a class="dropdown-item navFontSize langFR" type="button" href="">Anglais</a>
 			            </div>
           			</li>
 		        </ul>

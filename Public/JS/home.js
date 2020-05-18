@@ -405,6 +405,9 @@ function sendDataUpload(){
       arrayLink.push("View/UserView.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
+      $('.langFR').each(function(item){
+        $( this ).attr('href','../cacacacacac.ph');
+      });
     }else{
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','../index.php');
@@ -414,6 +417,9 @@ function sendDataUpload(){
       arrayLink.push("../View/UserView.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
+      $('.langFR').each(function(item){
+        $( this ).attr('href','../cacacacacac.ph');
+      });
     }
   }
 
