@@ -6,6 +6,8 @@ $(document).ready(function(){
   $btn_upload_modal = $('#btn_upload_modal');
   $btn_Upload= $("#btn_Upload");
   $btn_Member = $("#btn_Member");
+  $btn_modify_post = $("#btn_modify_modal");
+
 
   /*BTN DISABLED BY DEFAULT*/
   $btn_connexion.attr("disabled", true);
@@ -13,6 +15,7 @@ $(document).ready(function(){
   $btn_search.attr("disabled", true);
   $btn_upload_modal.attr("disabled", true);
   $btn_Member.attr("disabled", true);
+  $btn_modify_post.attr("disabled", true);
 
   /*FIELDS*/
   $field_connexion_username = $('#connexionInputUsername');
@@ -27,6 +30,9 @@ $(document).ready(function(){
 
   $field_upload_desc =$('#uploadInputDesc');
   $field_upload_file =$('#uploadFile');
+
+  $field_modify_post = $("#uploadModifyInputDesc");
+
   /*ALERT*/
   $alert_connexion = $('#alert_connexion');
   $alert_connexion_msg = $('#alert_connexion_message');
@@ -36,6 +42,8 @@ $(document).ready(function(){
   $alert_search_msg = $('#alert_search_message');
   $alert_upload =$("#upload_search");
   $alert_upload_msg = $("#upload_search_message");
+  $alert_modify = $("#upload_Modify");
+  $alert_modify_msg = $("#upload_Modify_message");
 
   /*OTHER*/
   $logo = $("#logo");
@@ -47,6 +55,10 @@ $(document).ready(function(){
 
   $btn_Upload.click(function(){
     $("#modalUpload").modal();
+  });
+  $(".modifyPost").click(function(){
+    $("#modalModifyPost").modal();
+    $("#hidden_Field_IdPost").val($(this).val());
   });
 
   $("#inputAddmemberField").change(sendDataAddMemberGallery);/*GET ALL MEMBER */
@@ -71,6 +83,10 @@ $(document).ready(function(){
   $field_upload_file.change(submitUpload);
 
   $btn_upload_modal.click(sendDataUpload);
+  /*EVENT MODAL MODIFY*/
+  $field_modify_post.keyup(submitModifyPost);
+
+  $btn_modify_post.click(modifyPost);
   /*OTHER*/
 
   /*VAR*/
@@ -185,6 +201,17 @@ $(document).ready(function(){
     }else{
       $btn_upload_modal.attr("disabled",true);
        setMessageAndState($alert_upload,$alert_upload_msg,getAlert(2),"Vous devez choisir un fichier et ajouter une description");
+    }
+
+  }
+
+  function submitModifyPost(){
+    if(!isEmptyField($field_modify_post)){
+      setMessageAndState($alert_modify,$alert_modify_msg,getAlert(0),"Vous pouvez appuyer sur le bouton Modifier");
+      $btn_modify_post.attr("disabled",false);
+    }else{
+      $btn_modify_post.attr("disabled",true);
+       setMessageAndState($alert_modify,$alert_modify_msg,getAlert(2),"Vous devez choisir un fichier et ajouter une description");
     }
 
   }
@@ -369,8 +396,29 @@ function sendDataUpload(){
     });
   }
 
+  function modifyPost(){
+    $.ajax({
+       url: '../Controller/modifyPost.php',
+       method: "POST",
+       data: { idPost : $("#hidden_Field_IdPost").val(),desc : $field_modify_post.val()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+        setMessageAndState($alert_modify,$alert_modify_msg,getAlert(0),message.msg);
+        location.reload(true);
+      }else{
+        setMessageAndState($alert_modify,$alert_modify_msg,getAlert(1),message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+  }
+
   function displayOption(){
-    $("#inputAddMember").append('<option value="CACA">');
+    $("#inputAddMember").append('<option value="test">');
   }
 
   function sendDataAddMemberGallery(){

@@ -82,7 +82,7 @@ function displayPost(Gallery $galleryTemp){
 
         foreach ($arrayPost as $post) {
             echo '<div class="col-xl-4 col-md-12 mb-12 "><div class="card borderBleue mb-4"><img class="card-img-top card_Image_modal"src="'."../Public/Images/Uploads/".$post->getImage()->getLink().'" alt="Image"><div class="card-body backgroundDarkGrey"><p class="card-text">'.$post->getDescription().'</p><p class="card-text-botom-auth"><small class="text-muted text-uppercase">'.$post->getPublisher()->getLogin().'</small></p>
-            <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue deletePost" value="'.$post->getId().'">Delete</button></div></div></div>';
+            <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue deletePost" value="'.$post->getId().'">Delete</button><button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue modifyPost" value="'.$post->getId().'">Modify</button></div></div></div>';
         }
     }
 }
@@ -227,7 +227,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                     <div class="form-group">
                         <label for="uplaodInputUsername">Auteur</label>
                         <input type="text" class="form-control" id="uplaodInputUsername" aria-describedby="emailHelp" value="<?php echo $_SESSION['member']->getLogin(); ?>" readonly>
-                        <label for="uploadInputDesc" class="mt-2">Gallery</label>
+                        <label for="uploadInputDesc" class="mt-2">Description</label>
                         <textarea class="form-control" id ="uploadInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
                         <label for="uploadFile" class="mt-2">Fichier</label>
                         <input type="file" id="uploadFile" name="file" required>
@@ -240,6 +240,37 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btn_upload_modal">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [MODAL-Modify-Image] -->
+<div id="modalModifyPost" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content backgroundDarkGrey">
+            <div class="modal-header">
+                <img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
+                <h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle">Modify</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form >
+                    <div class="form-group">
+                        <label for="modifyInputUsername">Auteur</label>
+                        <input type="text" class="form-control" id="modifyInputUsername" aria-describedby="emailHelp" value="<?php echo $_SESSION['member']->getLogin(); ?>" readonly>
+                        <label for="uploadModifyInputDesc" class="mt-2">Description</label>
+                        <textarea class="form-control" id ="uploadModifyInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
+                        <input id="hidden_Field_IdPost" type="hidden" name="idPost" value="">
+                    </div>
+                    <div id="upload_Modify" class="alert alert-info fade show" role="alert">
+                        <p id="upload_Modify_message" class="text-center">Ajouter une description pour mofifier un post.</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_modify_modal">Modifier</button>
             </div>
         </div>
     </div>

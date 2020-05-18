@@ -47,10 +47,10 @@ class PostDAO extends DbObject
 	}
 
 	/*UPDATE*/
-	public function updateDescription(Post $post){
+	public function updateDescription($description,$idPost){
 		parent :: connection();
 
-		$sql = "UPDATE POST SET description_Post = '".$post->getDescription()."' WHERE id_Post = ".$post->getId();
+		$sql = "UPDATE POST SET description_Post = '{$description}' WHERE id_Post = {$idPost}";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 
 		parent :: deconnection();
@@ -69,7 +69,7 @@ class PostDAO extends DbObject
 
 		$sql = "SELECT i.link_Image FROM IMAGE i WHERE i.id_Image = {$idImage}";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
-		
+
 		$row = mysqli_fetch_row($sqlExecute);
 		$LinkImage = $row[0];
 
