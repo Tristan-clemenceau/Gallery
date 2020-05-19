@@ -34,6 +34,9 @@ $(document).ready(function(){
   $logOutLink = $("#logOutLink");
   $galleryLink = $("#galleryLink");
 
+  /*OTHER*/
+  $(".langLinkAuto").click(sendDataLanguage);
+
   /*VAR*/
   var emptyArr = [];
   var arrayLink =[];
@@ -181,6 +184,26 @@ function sendDataSearchGallery(){
     });
 }
 
+function sendDataLanguage(){
+    $.ajax({
+       url: arrayLink[4],
+       method: "POST",
+       data: { language : $(this).text()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+        console.log(message.msg);
+      }else{
+        console.log(message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+  }
+
 function getDateTimeFromNow(){
     //H:i:s
     var d = new Date();
@@ -203,12 +226,13 @@ function getDateTimeFromNow(){
         $( this ).attr('href','../index.php?action=logout');
       });
       $('.langLinkAuto').each(function(item){
-        $( this ).attr('href','../sourceLang.php');
+        $( this ).attr('href','#');
       });
       arrayLink.push("../Controller/galleryCreate.php");
       arrayLink.push("../Controller/search.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
+      arrayLink.push("../Controller/language.php");
     }else{
       $logo.attr('src', 'Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','View/UserView.php');
@@ -222,12 +246,13 @@ function getDateTimeFromNow(){
         $( this ).attr('href','index.php?action=logout');
       });
       $('.langLinkAuto').each(function(item){
-        $( this ).attr('href','sourceLang.php');
+        $( this ).attr('href','#');
       });
       arrayLink.push("Controller/galleryCreate.php");
       arrayLink.push("Controller/search.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
+      arrayLink.push("Controller/language.php");
     }
   }
 

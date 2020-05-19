@@ -39,8 +39,8 @@
             <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
               <div class="dropdown-menu">
                 <!-- Dropdown menu links -->
-                <a href="#" class="dropdown-item navFontSize langLinkAuto">Français</a>
-                <a href="#" class="dropdown-item navFontSize langLinkAuto">Anglais</a>
+                <a href="#" class="dropdown-item navFontSize langLinkAuto">FR</a>
+                <a href="#" class="dropdown-item navFontSize langLinkAuto">EN</a>
               </div>
           </div>
         </h6>

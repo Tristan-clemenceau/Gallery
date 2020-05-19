@@ -100,7 +100,7 @@ $(document).ready(function(){
 
   $btn_gallery_create.click(sendDataGallery);
   /*OTHER*/
-
+  $(".langLinkAuto").click(sendDataLanguage);
   /*VAR*/
   var emptyArr = [];
   var arrayLink =[];
@@ -387,6 +387,26 @@ function sendDataUpload(){
     });
 }
 
+  function sendDataLanguage(){
+    $.ajax({
+       url: arrayLink[6],
+       method: "POST",
+       data: { language : $(this).text()}
+      }).done(function(message){//need to change Alert in fact of result
+    if (message.state == "OK") {
+        console.log(message.msg);
+      }else{
+        console.log(message.msg);
+      }
+    }).fail(function( jqXHR, textStatus,errorThrown) {
+      console.log( "Request failed: " + textStatus );
+      $.each( jqXHR, function( i, item ){
+       console.log(item);
+     });
+      console.log( "errorThrown" + errorThrown );
+    });
+  }
+
   function getDateTimeFromNow(){
     //H:i:s
     var d = new Date();
@@ -405,6 +425,7 @@ function sendDataUpload(){
       arrayLink.push("View/UserView.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
+      arrayLink.push("Controller/language.php");
       $('.galleryLinkAuto').each(function(item){
         $( this ).attr('href','index.php?action=userGallery');
       });
@@ -415,7 +436,7 @@ function sendDataUpload(){
         $( this ).attr('href','index.php?action=logout');
       });
       $('.langLinkAuto').each(function(item){
-        $( this ).attr('href','sourceLang.php');
+        $( this ).attr('href','#');
       });
     }else{
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
@@ -426,6 +447,7 @@ function sendDataUpload(){
       arrayLink.push("../View/UserView.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
+      arrayLink.push("../Controller/language.php");
       $('.galleryLinkAuto').each(function(item){
         $( this ).attr('href','../index.php?action=userGallery');
       });
@@ -436,7 +458,7 @@ function sendDataUpload(){
         $( this ).attr('href','../index.php?action=logout');
       });
       $('.langLinkAuto').each(function(item){
-        $( this ).attr('href','../sourceLang.php');
+        $( this ).attr('href','#');
       });
     }
   }
