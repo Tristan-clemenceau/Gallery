@@ -405,8 +405,17 @@ function sendDataUpload(){
       arrayLink.push("View/UserView.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
-      $('.langFR').each(function(item){
-        $( this ).attr('href','../cacacacacac.ph');
+      $('.galleryLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=userGallery');
+      });
+      $('.accountLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=userAccount');
+      });
+      $('.logoutLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=logout');
+      });
+      $('.langLinkAuto').each(function(item){
+        $( this ).attr('href','sourceLang.php');
       });
     }else{
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
@@ -417,8 +426,17 @@ function sendDataUpload(){
       arrayLink.push("../View/UserView.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
-      $('.langFR').each(function(item){
-        $( this ).attr('href','../cacacacacac.ph');
+      $('.galleryLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=userGallery');
+      });
+      $('.accountLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=userAccount');
+      });
+      $('.logoutLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=logout');
+      });
+      $('.langLinkAuto').each(function(item){
+        $( this ).attr('href','../sourceLang.php');
       });
     }
   }

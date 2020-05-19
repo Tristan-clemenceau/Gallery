@@ -18,21 +18,21 @@
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> Gallery</a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownGallery">
 			              <a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery">Creer une galerie</a>
-			              <a id ="galleryLink" class="dropdown-item navFontSize" type="button" href="../index.php?action=userGallery">Mes galleries</a>
+			              <a class="dropdown-item navFontSize galleryLinkAuto" type="button" href="">Mes galleries</a>
 			            </div>
           			</li>
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a id="accountLink" class="dropdown-item navFontSize" type="button" href="../index.php?action=userAccount">Mon compte</a>
-			              <a id="logOutLink"class="dropdown-item navFontSize" type="button" href="../index.php?action=logout">Log out</a>
+			              <a  class="dropdown-item navFontSize accountLinkAuto" type="button" href="">Mon compte</a>
+			              <a class="dropdown-item navFontSize logoutLinkAuto" type="button" href="">Log out</a>
 			            </div>
           			</li>
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a class="dropdown-item navFontSize langFR" type="button" href="">Français</a>
-			              <a class="dropdown-item navFontSize langFR" type="button" href="">Anglais</a>
+			              <a class="dropdown-item navFontSize langLinkAuto" type="button" href="">Français</a>
+			              <a class="dropdown-item navFontSize langLinkAuto" type="button" href="">Anglais</a>
 			            </div>
           			</li>
 		        </ul>

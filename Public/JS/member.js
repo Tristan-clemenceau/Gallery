@@ -193,29 +193,41 @@ function getDateTimeFromNow(){
     if((document.title == "Accueil") || (document.title == "Home")){
       $logo.attr('src', '../Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','UserView.php');
-      $logOutLink.attr('href','../index.php?action=logout');
-      $accountLink.attr('href','../index.php?action=userAccount');
-      $galleryLink.attr('href','../index.php?action=userGallery');
+      $('.galleryLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=userGallery');
+      });
+      $('.accountLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=userAccount');
+      });
+      $('.logoutLinkAuto').each(function(item){
+        $( this ).attr('href','../index.php?action=logout');
+      });
+      $('.langLinkAuto').each(function(item){
+        $( this ).attr('href','../sourceLang.php');
+      });
       arrayLink.push("../Controller/galleryCreate.php");
       arrayLink.push("../Controller/search.php");
       arrayLink.push("../View/searchUser.php?loginUser=");
       arrayLink.push("../View/searchGallery.php?galleryName=");
-      $('.langFR').each(function(item){
-        $( this ).attr('href','../cacacacacac.ph');
-      });
     }else{
       $logo.attr('src', 'Public/Images/Icon/Logo01.png');
       $linkIndex.attr('href','View/UserView.php');
-      $logOutLink.attr('href','index.php?action=logout');
-      $accountLink.attr('href','index.php?action=userAccount');
-      $galleryLink.attr('href','index.php?action=userGallery');
+       $('.galleryLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=userGallery');
+      });
+      $('.accountLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=userAccount');
+      });
+      $('.logoutLinkAuto').each(function(item){
+        $( this ).attr('href','index.php?action=logout');
+      });
+      $('.langLinkAuto').each(function(item){
+        $( this ).attr('href','sourceLang.php');
+      });
       arrayLink.push("Controller/galleryCreate.php");
       arrayLink.push("Controller/search.php");
       arrayLink.push("View/searchUser.php?loginUser=");
       arrayLink.push("View/searchGallery.php?galleryName=");
-      $('.langFR').each(function(item){
-        $( this ).attr('href','../cacacacacac.ph');
-      });
     }
   }
 
