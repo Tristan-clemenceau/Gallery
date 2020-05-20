@@ -370,7 +370,7 @@ function sendDataUpload(){
        processData: false,
        contentType: false,
        data: dataFormUpl
-      }).done(function(message){//need to change Alert in fact of result
+      }).done(function(message){
     if (message.state == "OK") {
         setMessageAndState($alert_upload,$alert_upload_msg,getAlert(0),message.msg);
         $("#modalUpload").modal('toggle');
