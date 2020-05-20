@@ -19,32 +19,32 @@
 			header("Content-Type: application/json");
 			if(isset($_POST['UserName']) && isset($_POST['GalleryName'])){
 				$data['state'] = "ERROR";
-				$data['msg'] = "Les deux champs ne peuvent pas être combiné pour la recherche";
+				$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['erreur03'];
 			}else{
 				if (isset($_POST['UserName'])){//SEARCH USER
 					$memberDAO = new MemberDAO();
 					$member = new Member();
 					if ($memberDAO->alreadyInDb($_POST['UserName'])) {
 						$data['state'] = "OK";
-						$data['msg'] = "Utilisateur trouvé";
+						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['success01'];
 					} else {
 						$data['state'] = "ERROR";
-						$data['msg'] = "L'utilisateur n'existe pas";
+						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['erreur01'];
 					}
 				}elseif (isset($_POST['GalleryName'])) {//SEARCH GALLERY
 					$galleryDAO = new GalleryDAO();
 					$gallery = new Gallery();
 					if ($galleryDAO->alreadyTaken($_POST['GalleryName'])) {
 						$data['state'] = "OK";
-						$data['msg'] = "Gallerie trouvée";
+						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['success02'];
 					} else {
 						$data['state'] = "ERROR";
-						$data['msg'] = "La gallerie n'existe pas";
+						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['erreur02'];
 					}
 					
 				}else{
 					$data['state'] = "ERROR";
-					$data['msg'] = "Aux moins un des deux champs doit être remplis";
+					$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['erreur04'];
 				}
 			}
 			/*ANSWER*/

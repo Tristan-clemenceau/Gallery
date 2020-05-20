@@ -73,16 +73,6 @@ $multilingualArray = array(
             "modalSearchBtn" => "Research",
     	)
     ),
-    "auth" => array(
-        "fr" => array(
-            "erreur" => "Accueil",
-            "message" => "pp",
-        ),
-        "en" => array(
-            "erreur" => "Accueil",
-            "message" => "pp",
-        )
-    ),
     "userView" => array(
         "fr" => array(
             "pageTitle" => "Accueil",
@@ -415,15 +405,91 @@ $multilingualArray = array(
             "message" => "pp",
         )
     ),
-    "OTHER" => array(
+    "auth" => array(
+        "fr" => array(
+            "erreur01" => "Mot de passe incorect ou pseudo incorect",
+            "success01" => "Connection réussie",
+        ),
+        "en" => array(
+            "erreur01" => "Incorrect password or username",
+            "success01" => "Successfully loged",
+        )
+    ),
+    "deletePost" => array(
+        "fr" => array(
+            "erreur01" => "L'utilisateur n'est pas membre de la galerie",
+            "erreur02" => "Post introuvable",
+            "success01" => "Post détruit",
+        ),
+        "en" => array(
+            "erreur01" => "The user is not a member of this gallery",
+            "erreur02" => "Post not found",
+            "success01" => "Post deleted",
+        )
+    ),
+    "galleryCreate" => array(
+        "fr" => array(
+            "erreur01" => "La nom de cette gallerie est déjà pris",
+            "success01" => "Gallerie créée",
+        ),
+        "en" => array(
+            "erreur01" => "Galery name already taken",
+            "success01" => "Gallery created",
+        )
+    ),
+    "modifyPost" => array(
     	"fr" => array(
-    		"title" => "Accueil",
-    		"aa" => "pp",
+    		"erreur01" => "L'utilisateur n'est pas membre de la galerie",
+            "erreur02" => "Post introuvable",
+            "success01" => "Post modifié",
     	),
     	"en" => array(
-    		"title" => "Home",
-    		"aa" => "pp",
+    		"erreur01" => "The user is not a member of this gallery",
+            "erreur02" => "Post not found",
+            "success01" => "Post modified",
     	)
+    ),
+    "register" => array(
+        "fr" => array(
+            "erreur01" => "Le pseudo est déjà pris",
+            "success01" => "l'Enregistrement c'est déroulé sans encombre",
+        ),
+        "en" => array(
+            "erreur01" => "Username already taken",
+            "success01" => "Successfully registered",
+        )
+    ),
+    "search" => array(
+        "fr" => array(
+            "erreur01" => "L'utilisateur n'existe pas",
+            "erreur02" => "La galerie n'existe pas",
+            "erreur03" => "Les deux champs ne peuvent pas être combinés",
+            "erreur04" => "Aux moins un des deux champs doit etre remplis",
+            "success01" => "Utilisateur trouvé",
+            "success02" => "Gallerie trouvée",
+        ),
+        "en" => array(
+            "erreur01" => "User not found",
+            "erreur02" => "Gallery not found",
+            "erreur03" => "The two fields can not be fill to run the research",
+            "erreur04" => "One of the fields must be fill",
+            "success01" => "User found",
+            "success02" => "Gallery found",
+        )
+    ),
+    "upload" => array(
+        "fr" => array(
+            "erreur01" => "Fichier non accepté seuls les fichiers .jpg , .jpeg , .png sont autorisés",
+            "erreur02" => "Le fichier est superieur a 2 MB veuillez essayer avec un fichier plus petit",
+            "erreur03" => "Pas de receptions des deux fichiers",
+            "success01" => "Post partagé",
+        ),
+        "en" => array(
+            "erreur01" => "Only .jpg , .jpeg ,.png files are allowed",
+            "erreur02" => "Pictures is bigger than  2 mb or it was not uploaded correctly please retry ",
+            "erreur03" => "Files not recieved",
+            "success01" => "Post shared",
+        )
     ),
 ); 
 ?>

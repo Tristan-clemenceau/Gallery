@@ -24,14 +24,14 @@ if(isset($_SESSION['page']) && isset($_SESSION['member'])){
                 $postDAO = new PostDAO();
                 $postDAO->updateDescription($_POST['desc'],$_POST['idPost']);
                 $data['state'] = "OK";
-               $data['msg'] = "Post modified";
+               $data['msg'] = $multilingualArray['modifyPost'][$_SESSION['lang']]['success01'];
             } else {
                $data['state'] = "ERROR";
-               $data['msg'] = "User is not a member";
+               $data['msg'] =  $multilingualArray['modifyPost'][$_SESSION['lang']]['erreur01'];
             }
 		}else{
 			$data['state'] = "ERROR";
-			$data['msg'] = "pas d'idPost";
+			$data['msg'] = $multilingualArray['modifyPost'][$_SESSION['lang']]['erreur02'];
 		}
 		/*ANSWER*/
 		echo json_encode( $data );

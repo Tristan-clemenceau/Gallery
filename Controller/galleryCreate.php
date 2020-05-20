@@ -25,7 +25,7 @@
 			if($daoGallery->alreadyTaken($_POST['name'])){
 				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
-				$data['msg'] = "Gallery name already taken";
+				$data['msg'] = $multilingualArray['galleryCreate'][$_SESSION['lang']]['erreur01'];
 			}else{
 				$gallery = $daoGallery->create($_POST['name'],$_SESSION['member']->getId());
 				$gallery->setOwner($_SESSION['member']);
@@ -36,7 +36,7 @@
 				
 				/*JSON OBJECT*/
 				$data['state'] = "OK";
-				$data['msg'] = "Gallery successfully created";
+				$data['msg'] = $multilingualArray['galleryCreate'][$_SESSION['lang']]['success01'];
 			}
 
 			/*ANSWER*/

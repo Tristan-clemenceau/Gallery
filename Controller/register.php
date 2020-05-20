@@ -22,7 +22,7 @@
 			if($daoMember->alreadyInDb($_POST['login'])){
 				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
-				$data['msg'] = "Username already taken";
+				$data['msg'] = $multilingualArray['register'][$_SESSION['lang']]['erreur01'];
 			}else{
 				$member = $daoMember->create($_POST['login'],$_POST['dateRegister'],'');
 				$daoMember->updatePassword($member->getId(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]));
@@ -30,7 +30,7 @@
 				/*ADDING OBJECT TO SESSION*/
 				$_SESSION['member'] = $member;
 				$data['state'] = "OK";
-				$data['msg'] = "Successfully registered";
+				$data['msg'] = $multilingualArray['register'][$_SESSION['lang']]['success01'];
 			}
 
 			/*ANSWER*/

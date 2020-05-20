@@ -30,7 +30,7 @@ if(isset($_SESSION['page'])){
 				case 'en':
 				$_SESSION['lang'] = "en";
 				$data['state'] = "OK";
-				$data['msg'] = "Langue changée en /{$_SESSION['lang']}";
+				$data['msg'] = "Langue changée EN /{$_SESSION['lang']}";
 				break;
 
 				default:

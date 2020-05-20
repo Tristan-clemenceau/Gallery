@@ -24,14 +24,14 @@ if(isset($_SESSION['page']) && isset($_SESSION['member'])){
                 $postDAO = new PostDAO();
                 $postDAO->delete($_POST['idPost']);
                 $data['state'] = "OK";
-               $data['msg'] = "Post and image Deleted";
+               $data['msg'] = $multilingualArray['deletePost'][$_SESSION['lang']]['success01'];
             } else {
                $data['state'] = "ERROR";
-               $data['msg'] = "User is not a member";
+               $data['msg'] = $multilingualArray['deletePost'][$_SESSION['lang']]['erreur01'];
             }
 		}else{
 			$data['state'] = "ERROR";
-			$data['msg'] = "pas d'idPost";
+			$data['msg'] = $multilingualArray['deletePost'][$_SESSION['lang']]['erreur02'];
 		}
 		/*ANSWER*/
 		echo json_encode( $data );

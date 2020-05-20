@@ -26,16 +26,15 @@
 					/*ADDING OBJECT TO SESSION*/
 					$_SESSION['member'] = $member;
 					$data['state'] = "OK";
-					$data['msg'] = "Successfully login";
+					$data['msg'] = $multilingualArray['auth'][$_SESSION['lang']]['success01'];
 				}else{
 					//eerreur
 					$data['state'] = "ERROR";
-					$data['msg'] = "Incorrect pass / username";
+					$data['msg'] = $multilingualArray['auth'][$_SESSION['lang']]['erreur01'];
 				}
 			}else{
-				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
-				$data['msg'] = "Incorrect pass / username";
+				$data['msg'] = $multilingualArray['auth'][$_SESSION['lang']]['erreur01'];
 			}
 			/*ANSWER*/
 			echo json_encode( $data );

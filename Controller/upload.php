@@ -40,18 +40,18 @@
 
 						/*SET POST*/
 						$data['state'] = "OK";
-						$data['msg'] = "Post partagé";
+						$data['msg'] = $multilingualArray['upload'][$_SESSION['lang']]['success01'];
 					}else{
 						$data['state'] = "ERROR";
-						$data['msg'] = "Fichier non accepté seuls les fichiers .jpg , .jpeg , .png sont autorisés";
+						$data['msg'] = $multilingualArray['upload'][$_SESSION['lang']]['erreur01'];
 					}
 				}else{
 					$data['state'] = "ERROR";
-					$data['msg'] = "Pictures is bigger than  2 mb or it was not uploaded correctly please retry ";
+					$data['msg'] = $multilingualArray['upload'][$_SESSION['lang']]['erreur02'];
 				}
 			}else{
 				$data['state'] = "ERROR";
-				$data['msg'] = "Pas de receptions des deux fichiers";
+				$data['msg'] = $multilingualArray['upload'][$_SESSION['lang']]['erreur03'];
 			}
 			/*ANSWER*/
 			echo json_encode( $data );
