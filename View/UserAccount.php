@@ -23,7 +23,7 @@ if (!isset($_SESSION['lang'])) {
 }else{
 	array_push($linkCSS, "Public/CSS/default.css");
 	array_push($linkJS, "Public/JS/member.js");
-	$title = $multilingualArray['userAccount'][$_SESSION['lang']]['title'];
+	$title = $multilingualArray['userAccount'][$_SESSION['lang']]['pageTitle'];
 }
 /*GET DATA*/
 $galleryDAO = new GalleryDAO();
@@ -41,7 +41,7 @@ ob_start();?>
 		<div class="modal-content backgroundDarkGrey">
 			<div class="modal-header">
 				<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-				<h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle">Search</h5>
+				<h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchTitle']; ?></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
 				</button>
@@ -49,18 +49,18 @@ ob_start();?>
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<label for="searchInputUsername">Username</label>
-						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="Enter username" required>
-						<label for="searchInputGallery" class="mt-2">Gallery</label>
-						<input type="text" class="form-control" id="searchInputGallery" placeholder="Enter Gallery name" aria-describedby="passHelp" required>
+						<label for="searchInputUsername"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
+						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+						<label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
+						<input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
 					</div>
 					<div id="alert_search" class="alert alert-info fade show" role="alert">
-						<p id="alert_search_message" class="text-center">Vous devez remplir un des deux champs afin d'effectuer une recherche</p>
+						<p id="alert_search_message" class="text-center"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" id="btn_search">Recherche</button>
+				<button type="button" class="btn btn-primary" id="btn_search"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchBtn']; ?></button>
 			</div>
 		</div>
 	</div>
@@ -71,7 +71,7 @@ ob_start();?>
 		<div class="modal-content backgroundDarkGrey">
 			<div class="modal-header">
 				<img src="Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-				<h5 class="mt-2 navFontSize text-center" id="ModalGalleryTitle">Gallery</h5>
+				<h5 class="mt-2 navFontSize text-center" id="ModalGalleryTitle"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryTitle']; ?></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
 				</button>
@@ -79,16 +79,16 @@ ob_start();?>
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<label for="galleryInputName">Gallery name</label>
-						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="Enter gallery name" required>
+						<label for="galleryInputName"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
+						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
 					</div>
 					<div id="alert_gallery" class="alert alert-info fade show" role="alert">
-						<p id="alert_gallery_message" class="text-center">Vous devez remplir le champs pour pouvoir creer votre gallerie</p>
+						<p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" id="btn_gallery_create">Créer</button>
+				<button type="button" class="btn btn-primary" id="btn_gallery_create"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryBtn']; ?></button>
 			</div>
 		</div>
 	</div>
@@ -99,36 +99,36 @@ ob_start();?>
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<div class="card text-center m-5 borderBleue">
 				<div class="card-header backgroundOrange">
-					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Mon compte</span></h1>
+					<h1 class=" font-weight-bold text-center" ><span class="titleContent"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteTitle']; ?></span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
 					<div class="input-group mb-3 justify-content-center ">
-						<input id="field_username" type="text" class=" text-center borderBleue backgroundDarkGrey" placeholder="new username" aria-label="Recipient's username" aria-describedby="btn_modifier_username">
+						<input id="field_username" type="text" class=" text-center borderBleue backgroundDarkGrey" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteInputUsername']; ?>" aria-label="Recipient's username" aria-describedby="btn_modifier_username">
 						<div class="input-group-append">
-							<button class="btn btn-outline-secondary btn-lg borderBleue" type="button" id="btn_modifier_username">Modifier</button>
+							<button class="btn btn-outline-secondary btn-lg borderBleue" type="button" id="btn_modifier_username"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnModify']; ?></button>
 						</div>
 					</div>
 					<div class="input-group mb-3 justify-content-center">
-						<input id="field_password" type="Password" class=" text-center backgroundDarkGrey borderBleue" placeholder="new password" aria-label="Recipient's username" aria-describedby="btn_modifier_password">
+						<input id="field_password" type="Password" class=" text-center backgroundDarkGrey borderBleue" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteInputPassword']; ?>" aria-label="Recipient's username" aria-describedby="btn_modifier_password">
 						<div class="input-group-append">
-							<button class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" type="button" id="btn_modifier_password">Modifier</button>
+							<button class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" type="button" id="btn_modifier_password"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnModify']; ?></button>
 						</div>
 					</div>
 					<div id="alert_modification" class="alert alert-info fade show" role="alert">
-						<p id="alert_modification_message">Pour modifier une information il vous suffit de rentrer dans le champs prévu a cet effet la nouvelle information. Une fois terminé il vous suffit d'appyuer sur le bouton modifier près du champs dans lequel vous avez rentré une nouvelle information.</p>
+						<p id="alert_modification_message"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteAlertMessage']; ?></p>
 					</div>
-					<a href="#" id="btn_exporter"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue">Exporter</button></a>
-					<a href="#" id="btn_supprimer"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" data-toggle="modal" data-target="#modalConfirmation">supprimer</button></a>
+					<a href="#" id="btn_exporter"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnExport']; ?></button></a>
+					<a href="#" id="btn_supprimer"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" data-toggle="modal" data-target="#modalConfirmation"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnDelete']; ?></button></a>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
-					<p class="text-white navFontSize">Membre depuis : <?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
+					<p class="text-white navFontSize"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['memberSince']; ?><?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<div class="card text-center m-5 borderBleue">
 				<div class="card-header backgroundOrange">
-					<h1 class=" font-weight-bold text-center" ><span class="titleContent">Données</span></h1>
+					<h1 class=" font-weight-bold text-center" ><span class="titleContent"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneTitle']; ?></span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
 					<div class="container-fluid">
@@ -138,7 +138,7 @@ ob_start();?>
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Number of Gallery</div>
+												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneLabelNbGalleries']; ?></div>
 												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo (count($_SESSION['member']->getArrOwned())+count($_SESSION['member']->getArrGallery()));?></div>
 											</div>
 											<div class="col-auto textBleue">
@@ -153,11 +153,11 @@ ob_start();?>
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Number post</div>
+												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneLabelNbPost']; ?></div>
 												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo $memberDAO->getNbPost($_SESSION['member']->getId()); ?></div>
 											</div>
 											<div class="col-auto">
-												<i class="fas fa-users fa-2x textBleue"></i>
+												<i class="fas fa-sticky-note fa-2x textBleue"></i>
 											</div>
 										</div>
 									</div>
@@ -168,7 +168,7 @@ ob_start();?>
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery owned</div>
+												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneLabelNbGalleriesOwned']; ?></div>
 												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo count($_SESSION['member']->getArrOwned());?></div>
 											</div>
 											<div class="col-auto">
@@ -183,11 +183,11 @@ ob_start();?>
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Gallery member</div>
+												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneLabelNbGalleriesJoined']; ?></div>
 												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo count($_SESSION['member']->getArrGallery());?></div>
 											</div>
 											<div class="col-auto">
-												<i class="fas fa-sticky-note fa-2x textBleue"></i>
+												<i class="fas fa-users fa-2x textBleue"></i>
 											</div>
 										</div>
 									</div>
@@ -198,11 +198,11 @@ ob_start();?>
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-2">
-												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1">Max member</div>
+												<div class="text-xs font-weight-bold textBleue text-uppercase mb-1"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardDonneLabelNbGalleriesMaxMember']; ?></div>
 												<div class="h5 mb-0 font-weight-bold textBleue"><?php echo $memberDAO->getNbMaxMemberOfOwnedGallery($_SESSION['member']->getId()); ?></div>
 											</div>
 											<div class="col-auto">
-												<i class="fas fa-sticky-note fa-2x textBleue"></i>
+												<i class="fas fa-users fa-2x textBleue"></i>
 											</div>
 										</div>
 									</div>
@@ -212,7 +212,7 @@ ob_start();?>
 					</div>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
-					<p class="text-white navFontSize">Membre depuis : <?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
+					<p class="text-white navFontSize"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['memberSince']; ?><?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>
 				</div>
 			</div>
 		</div>
