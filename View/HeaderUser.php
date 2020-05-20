@@ -12,24 +12,24 @@
 		    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		        	<li class="nav-item active pr-5">
-			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
+			            <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['recherche']; ?></a>
 			        </li>
 			        <li class="nav-item dropdown pr-5">
-			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> Gallery</a>
+			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdownGallery" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['galleries']; ?></a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownGallery">
-			              <a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery">Creer une galerie</a>
-			              <a class="dropdown-item navFontSize galleryLinkAuto" type="button" href="">Mes galleries</a>
+			              <a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery"> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['creerGalleries']; ?></a>
+			              <a class="dropdown-item navFontSize galleryLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['mesGalleries']; ?></a>
 			            </div>
           			</li>
 			        <li class="nav-item dropdown pr-5">
 			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			              <a  class="dropdown-item navFontSize accountLinkAuto" type="button" href="">Mon compte</a>
-			              <a class="dropdown-item navFontSize logoutLinkAuto" type="button" href="">Log out</a>
+			              <a  class="dropdown-item navFontSize accountLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['moncompte']; ?></a>
+			              <a class="dropdown-item navFontSize logoutLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['deconnexion']; ?></a>
 			            </div>
           			</li>
 			        <li class="nav-item dropdown pr-5">
-			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
+			            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['langue']; ?></a>
 			            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 			              <a class="dropdown-item navFontSize langLinkAuto" type="button" href="">FR</a>
 			              <a class="dropdown-item navFontSize langLinkAuto" type="button" href="">EN</a>
