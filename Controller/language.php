@@ -25,12 +25,12 @@ if(isset($_SESSION['page'])){
 				case 'fr':
 				$_SESSION['lang'] = "fr";
 				$data['state'] = "OK";
-				$data['msg'] = "Langue changée FR";
+				$data['msg'] = "Langue changée FR /{$_SESSION['lang']}";
 				break;
 				case 'en':
 				$_SESSION['lang'] = "en";
 				$data['state'] = "OK";
-				$data['msg'] = "Langue changée EN";
+				$data['msg'] = "Langue changée en /{$_SESSION['lang']}";
 				break;
 
 				default:

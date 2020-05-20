@@ -77,6 +77,50 @@ $multilingualArray = array(
             "message" => "pp",
         )
     ),
+    "hfNormal" => array(
+        "fr" => array(
+            "recherche" => "Recherche",
+            "connexion" => "Connexion",
+            "enregistrement" => "S'enregistrer",
+            "langue" => "Langues",
+        ),
+        "en" => array(
+            "recherche" => "Research",
+            "connexion" => "Connection",
+            "enregistrement" => "Register",
+            "langue" => "Languages",
+        )
+    ),
+    "hfUser" => array(
+        "fr" => array(
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+        ),
+        "en" => array(
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+            "message" => "pp",
+            "title" => "Galleries",
+        )
+    ),
+    "hfAdmin" => array(
+        "fr" => array(
+            "title" => "Galleries",
+            "message" => "pp",
+        ),
+        "en" => array(
+            "title" => "Gallery",
+            "message" => "pp",
+        )
+    ),
     "OTHER" => array(
     	"fr" => array(
     		"title" => "Accueil",

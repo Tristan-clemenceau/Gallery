@@ -11,16 +11,16 @@
 		<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active pr-5">
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> Recherche</a>
+					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> <?php echo $multilingualArray['hfNormal'][$_SESSION['lang']]['recherche']; ?></a>
 				</li>
 				<li class="nav-item active pr-5">
-					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> Connexion</a>
+					<a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalConnexion"><i class="fas fa-user"></i> <?php echo $multilingualArray['hfNormal'][$_SESSION['lang']]['connexion']; ?></a>
 				</li>
 				<li class="nav-item pr-5">
-					<a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> S'enregistrer</a>
+					<a class="nav-link text-white navFontSize"data-toggle="modal" data-target="#modalRegister"><i class="fas fa-user-edit"></i> <?php echo $multilingualArray['hfNormal'][$_SESSION['lang']]['enregistrement']; ?></a>
 				</li>
 				<li class="nav-item dropdown pr-5">
-					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> Langues</a>
+					<a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <?php echo $multilingualArray['hfNormal'][$_SESSION['lang']]['langue']; ?></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item navFontSize langLinkAuto" type="button" href="">FR</a>
 						<a class="dropdown-item navFontSize langLinkAuto" type="button" href="">EN</a>

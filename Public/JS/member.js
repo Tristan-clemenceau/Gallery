@@ -192,6 +192,7 @@ function sendDataLanguage(){
       }).done(function(message){//need to change Alert in fact of result
     if (message.state == "OK") {
         console.log(message.msg);
+        location.reload(true);
       }else{
         console.log(message.msg);
       }

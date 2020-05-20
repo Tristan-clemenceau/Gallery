@@ -4,7 +4,10 @@ require_once('Model/Person.php');
 require_once('Model/Member.php');
 
 session_start();
-$_SESSION['lang'] = "fr";
+if (!isset($_SESSION['lang'])) {
+	$_SESSION['lang'] = "fr";
+}
+
 $_SESSION['page'] = "6325f9085fc1da9a3da508fdf34e8ed1b6e7c1bd800706fbbd91547f3c602393";
 require('Controller/frontend.php');
 
