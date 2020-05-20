@@ -24,7 +24,7 @@
 				if (isset($_POST['UserName'])){//SEARCH USER
 					$memberDAO = new MemberDAO();
 					$member = new Member();
-					if ($memberDAO->alreadyInDb($_POST['UserName'])) {
+					if ($memberDAO->alreadyInDb(htmlspecialchars(strip_tags($_POST['UserName']),ENT_QUOTES))) {
 						$data['state'] = "OK";
 						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['success01'];
 					} else {
@@ -34,7 +34,7 @@
 				}elseif (isset($_POST['GalleryName'])) {//SEARCH GALLERY
 					$galleryDAO = new GalleryDAO();
 					$gallery = new Gallery();
-					if ($galleryDAO->alreadyTaken($_POST['GalleryName'])) {
+					if ($galleryDAO->alreadyTaken(htmlspecialchars(strip_tags($_POST['GalleryName']),ENT_QUOTES))) {
 						$data['state'] = "OK";
 						$data['msg'] = $multilingualArray['search'][$_SESSION['lang']]['success02'];
 					} else {

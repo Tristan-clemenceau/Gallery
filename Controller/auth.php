@@ -19,10 +19,10 @@
 			$daoMember = new MemberDAO();
 			$member = new Member();
 
-			if($daoMember->alreadyInDb($_POST['login'])){
+			if($daoMember->alreadyInDb(htmlspecialchars(strip_tags($_POST['login']),ENT_QUOTES))){
 				//verify login & pass
-				$member = $daoMember->searchByLogin($_POST['login']);
-				if($daoMember->verifyPass($member->getId(),$member->getLogin(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]))){
+				$member = $daoMember->searchByLogin(strip_tags($_POST['login']));
+				if($daoMember->verifyPass($member->getId(),$member->getLogin(),$member->setPass(htmlspecialchars(strip_tags($_POST['password']),ENT_QUOTES),$pageArray[$member->getPair()]))){
 					/*ADDING OBJECT TO SESSION*/
 					$_SESSION['member'] = $member;
 					$data['state'] = "OK";

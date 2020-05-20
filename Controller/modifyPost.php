@@ -22,7 +22,7 @@ if(isset($_SESSION['page']) && isset($_SESSION['member'])){
             $galleryDAO = new GalleryDAO();
             if ($galleryDAO->isMemberFromGallery($_POST['idPost'],$_SESSION['member']->getId())) {//USER IS MEMBER OF GALLERY
                 $postDAO = new PostDAO();
-                $postDAO->updateDescription($_POST['desc'],$_POST['idPost']);
+                $postDAO->updateDescription(htmlspecialchars(strip_tags($_POST['desc']),ENT_QUOTES),$_POST['idPost']);
                 $data['state'] = "OK";
                $data['msg'] = $multilingualArray['modifyPost'][$_SESSION['lang']]['success01'];
             } else {

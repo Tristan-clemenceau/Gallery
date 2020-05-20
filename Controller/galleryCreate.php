@@ -22,12 +22,12 @@
 			$daoGallery = new GalleryDAO();
 			$gallery = new Gallery();
 
-			if($daoGallery->alreadyTaken($_POST['name'])){
+			if($daoGallery->alreadyTaken(htmlspecialchars(strip_tags($_POST['name']),ENT_QUOTES))){
 				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
 				$data['msg'] = $multilingualArray['galleryCreate'][$_SESSION['lang']]['erreur01'];
 			}else{
-				$gallery = $daoGallery->create($_POST['name'],$_SESSION['member']->getId());
+				$gallery = $daoGallery->create(htmlspecialchars(strip_tags($_POST['name']),ENT_QUOTES),$_SESSION['member']->getId());
 				$gallery->setOwner($_SESSION['member']);
 
 				/*ADDING OBJECT TO SESSION*/

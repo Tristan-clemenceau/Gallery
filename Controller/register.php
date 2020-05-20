@@ -19,13 +19,13 @@
 			$daoMember = new MemberDAO();
 			$member = new Member();
 
-			if($daoMember->alreadyInDb($_POST['login'])){
+			if($daoMember->alreadyInDb(htmlspecialchars(strip_tags($_POST['login']), ENT_QUOTES))){
 				//ERREUR statut / message (fr / anglais)
 				$data['state'] = "ERROR";
 				$data['msg'] = $multilingualArray['register'][$_SESSION['lang']]['erreur01'];
 			}else{
-				$member = $daoMember->create($_POST['login'],$_POST['dateRegister'],'');
-				$daoMember->updatePassword($member->getId(),$member->setPass($_POST['password'],$pageArray[$member->getPair()]));
+				$member = $daoMember->create(strip_tags($_POST['login']),$_POST['dateRegister'],'');
+				$daoMember->updatePassword($member->getId(),$member->setPass(htmlspecialchars(strip_tags($_POST['password']),ENT_QUOTES),$pageArray[$member->getPair()]));
 
 				/*ADDING OBJECT TO SESSION*/
 				$_SESSION['member'] = $member;

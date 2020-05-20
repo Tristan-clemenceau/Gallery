@@ -36,7 +36,7 @@
 						$image = new Image();
 
 						$image = $imageDAO->create($fileNameGenerated);
-						$postDAO->create($_POST['desc'],$_SESSION['member']->getId(),$_POST['galleryId'],$image->getId());
+						$postDAO->create(htmlspecialchars(strip_tags($_POST['desc']),ENT_QUOTES),$_SESSION['member']->getId(),$_POST['galleryId'],$image->getId());
 
 						/*SET POST*/
 						$data['state'] = "OK";
