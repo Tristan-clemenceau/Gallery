@@ -131,7 +131,7 @@ class MemberDAO extends DbObject
 	public function getNbMaxMemberOfOwnedGallery($idUser){
 		parent :: connection();
 
-		$sql = "SELECT MAX(m.id_User) as MaxUser FROM member m WHERE m.id_Gallery IN( SELECT g.id_Gallery FROM GALLERY g,USER u WHERE g.owner_Gallery = u.id_User AND u.id_User = {$idUser}) GROUP By m.id_Gallery limit 1";
+		$sql = "SELECT count(*) as MaxUser FROM member m WHERE m.id_Gallery IN( SELECT g.id_Gallery FROM GALLERY g,USER u WHERE g.owner_Gallery = u.id_User AND u.id_User = {$idUser}) GROUP By m.id_Gallery limit 1";
 		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
 		$row = mysqli_fetch_row($sqlExecute);
 

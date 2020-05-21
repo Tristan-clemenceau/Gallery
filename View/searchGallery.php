@@ -94,9 +94,11 @@ function displayPost(Gallery $galleryTemp,$multilingualArray){
     }
 }
 
-function displayButtonAddPost($multilingualArray){
+function displayButtonAddPost($multilingualArray,$galleryDao,$gallery){
     if(isset($_SESSION['member'])){
-        echo '<button id="btn_Upload" type="button" class="btn btn-primary btn-lg btn-block mb-4">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['addPostBtn'].'</button>';
+        if($galleryDao->isMemberFromGalleryWithoutPost($_SESSION['member']->getId(),$gallery->getId())){
+            echo '<button id="btn_Upload" type="button" class="btn btn-primary btn-lg btn-block mb-4">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['addPostBtn'].'</button>';
+        }
     }
 }
 
@@ -421,7 +423,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                     <h1 class=" font-weight-bold text-center" ><span class="titleContent text-uppercase"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['cardPostTitle']; ?></span></h1>
                 </div>
                 <div class="card-body backgroundDarkGrey">
-                    <?php displayButtonAddPost($multilingualArray);?>
+                    <?php displayButtonAddPost($multilingualArray,$galleryDAO,$gallery);?>
                     <div class="container-fluid">
                         <div class="row">
                             <?php displayPost($gallery,$multilingualArray); ?>

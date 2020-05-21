@@ -123,6 +123,25 @@ class GalleryDAO extends DbObject
 		return $ok;
 	}
 
+	public function isMemberFromGalleryWithoutPost($idMember,$idGallery){
+		parent :: connection();
+
+		$ok = false;
+
+		$sql = "SELECT m.id_User FROM  MEMBER m WHERE m.id_Gallery = {$idGallery} AND m.id_User = {$idMember}";
+		$sqlExecute = mysqli_query(parent :: getCo(),$sql);
+
+		$row = mysqli_num_rows($sqlExecute);
+
+		if($row != 0){
+			$ok = true;
+		}
+
+		parent :: deconnection();
+
+		return $ok;
+	}
+
 	/*UPDATE*/
 	public function updateName(Gallery $gallery){
 		parent :: connection();
