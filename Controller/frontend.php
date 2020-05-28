@@ -22,10 +22,6 @@ function homeView(){
 	require('View/homeView.php');
 }
 
-function testView(){
-	require('View/UserView.php');
-}
-
 function logout(){
 	/*DELETE OLD*/
 	session_unset();
