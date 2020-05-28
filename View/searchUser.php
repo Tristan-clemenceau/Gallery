@@ -70,9 +70,9 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="connexionInputUsername"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="connexionInputUsername" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
 	            <label for="connexionInputPassword" class="mt-2"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputPassword']; ?></label>
-	            <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>"  required>
 	          </div>
 	          <div id="alert_connexion" class="alert alert-info fade show" role="alert">
 	            <p id="alert_connexion_message" class="text-center"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalConnexionAlertMessage']; ?></p>
@@ -100,13 +100,13 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="registerInputUsername"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="registerInputUsername"  placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
 	          </div>
 	          <div class="form-group">
 	            <label for="registerInputPassword"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPassword']; ?></label>
-	            <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>"  required>
 	            <label for="confirmRegisterInputPassword"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?></label>
-	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>"  required>
 	          </div>
 	          <div id="alert_register" class="alert alert-info fade show" role="alert">
 	            <p id="alert_register_message" class="text-center"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalRegisterAlertMessage']; ?></p>
@@ -134,9 +134,9 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="searchInputUsername"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
 	            <label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchInputGallery']; ?>"  required>
 	          </div>
 	          <div id="alert_search" class="alert alert-info fade show" role="alert">
 	            <p id="alert_search_message" class="text-center"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -164,7 +164,7 @@ ob_start();?>
 				<form>
 					<div class="form-group">
 						<label for="galleryInputName"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
-						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
+						<input type="text" class="form-control" id="galleryInputName"  placeholder="<?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
 					</div>
 					<div id="alert_gallery" class="alert alert-info fade show" role="alert">
 						<p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['searchUser'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>

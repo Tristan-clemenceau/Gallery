@@ -4,46 +4,44 @@
     <div class="container-fluid padding">
     <div class="row text-center d-flex justify-content-center pt-5 mb-3">
       <div class="col-md-2 mb-3">
-        <h6>
+      
           <a class="nav-link text-white navFontSize" data-toggle="modal" data-target="#modalSearch"><i class="fas fa-search"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['recherche']; ?></a>
-        </h6>
+      
       </div>
       <div class="col-md-2 mb-3">
-        <h6>
+      
           <div class="dropup">
-            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['galleries']; ?></a>
+            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-image"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['galleries']; ?></a>
               <div class="dropdown-menu">
                 <!-- Dropdown menu links -->
-                <a class="dropdown-item navFontSize" type="button" data-toggle="modal" data-target="#modalGallery"> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['creerGalleries']; ?></a>
-                <a class="dropdown-item navFontSize galleryLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['mesGalleries']; ?></a>
+                <a class="dropdown-item navFontSize" data-toggle="modal" data-target="#modalGallery"> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['creerGalleries']; ?></a>
+                <a class="dropdown-item navFontSize galleryLinkAuto" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['mesGalleries']; ?></a>
               </div>
           </div>
-          
-        </h6>
       </div>
       <div class="col-md-2 mb-3">
-        <h6>
+      
           <div class="dropup">
-            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
+            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php echo $_SESSION['member']->getLogin();?></a>
               <div class="dropdown-menu">
                 <!-- Dropdown menu links -->
-                <a class="dropdown-item navFontSize accountLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['moncompte']; ?></a>
-			          <a class="dropdown-item navFontSize logoutLinkAuto" type="button" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['deconnexion']; ?></a>
+                <a class="dropdown-item navFontSize accountLinkAuto" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['moncompte']; ?></a>
+			          <a class="dropdown-item navFontSize logoutLinkAuto" href=""> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['deconnexion']; ?></a>
               </div>
           </div>
-        </h6>
+      
       </div>
       <div class="col-md-2 mb-3">
-        <h6>
+      
           <div class="dropup">
-            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['langue']; ?></a>
+            <a class="nav-link dropdown-toggle text-white navFontSize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <?php echo $multilingualArray['hfUser'][$_SESSION['lang']]['langue']; ?></a>
               <div class="dropdown-menu">
                 <!-- Dropdown menu links -->
                 <a href="#" class="dropdown-item navFontSize langLinkAuto">FR</a>
                 <a href="#" class="dropdown-item navFontSize langLinkAuto">EN</a>
               </div>
           </div>
-        </h6>
+      
       </div>
     </div>
     <div class="row text-center">
@@ -58,4 +56,4 @@
       </div>
     </div>
   </div>
-  </footer>
+</footer>

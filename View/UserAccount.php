@@ -50,9 +50,9 @@ ob_start();?>
 				<form>
 					<div class="form-group">
 						<label for="searchInputUsername"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+						<input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
 						<label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-						<input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+						<input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" required>
 					</div>
 					<div id="alert_search" class="alert alert-info fade show" role="alert">
 						<p id="alert_search_message" class="text-center"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -80,7 +80,7 @@ ob_start();?>
 				<form>
 					<div class="form-group">
 						<label for="galleryInputName"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
-						<input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
+						<input type="text" class="form-control" id="galleryInputName" placeholder="<?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
 					</div>
 					<div id="alert_gallery" class="alert alert-info fade show" role="alert">
 						<p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>
@@ -117,8 +117,8 @@ ob_start();?>
 					<div id="alert_modification" class="alert alert-info fade show" role="alert">
 						<p id="alert_modification_message"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteAlertMessage']; ?></p>
 					</div>
-					<a href="#" id="btn_exporter"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnExport']; ?></button></a>
-					<a href="#" id="btn_supprimer"><button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" data-toggle="modal" data-target="#modalConfirmation"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnDelete']; ?></button></a>
+					<button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnExport']; ?></button>
+					<button type="button" class="btn btn-outline-secondary btn-lg backgroundDarkGrey borderBleue" data-toggle="modal"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['cardCompteBtnDelete']; ?></button>
 				</div>
 				<div class="card-footer text-muted backgroundOrange">
 					<p class="text-white navFontSize"><?php echo $multilingualArray['userAccount'][$_SESSION['lang']]['memberSince']; ?><?php echo date_format($_SESSION['member']->getRegistationDate(),"d/m/Y"); ?></p>

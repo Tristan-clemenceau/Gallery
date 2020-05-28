@@ -12,9 +12,9 @@ if (!isset($_SESSION['lang'])) {
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['pageTitle'];
 }
 
-$_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f708ad61";
+$_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f708ad61";?>
 
-ob_start();?>
+<?php ob_start(); ?>
 <!--[INCLUDE HEADER NORMAL] -->
 <?php include('HeaderNormal.php'); ?>
 	<!-- [MODAL] -->
@@ -33,9 +33,9 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="connexionInputUsername"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="connexionInputUsername" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
 	            <label for="connexionInputPassword" class="mt-2"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputPassword']; ?></label>
-	            <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>" required>
 	          </div>
 	          <div id="alert_connexion" class="alert alert-info fade show" role="alert">
 	            <p id="alert_connexion_message" class="text-center"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalConnexionAlertMessage']; ?></p>
@@ -63,13 +63,13 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="registerInputUsername"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="registerInputUsername"  placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
 	          </div>
 	          <div class="form-group">
 	            <label for="registerInputPassword"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPassword']; ?></label>
-	            <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>"  required>
 	            <label for="confirmRegisterInputPassword"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?></label>
-	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>" aria-describedby="passHelp" required>
+	            <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>"  required>
 	          </div>
 	          <div id="alert_register" class="alert alert-info fade show" role="alert">
 	            <p id="alert_register_message" class="text-center"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalRegisterAlertMessage']; ?></p>
@@ -97,9 +97,9 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="searchInputUsername"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
 	            <label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchInputGallery']; ?>"  required>
 	          </div>
 	          <div id="alert_search" class="alert alert-info fade show" role="alert">
 	            <p id="alert_search_message" class="text-center"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -129,7 +129,7 @@ ob_start();?>
 				      	<div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary  "><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button class="btn btn-primary  "onclick="location.href='#decouvrir'" type="button"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -137,7 +137,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary  "><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button class="btn btn-primary  "onclick="location.href='#decouvrir'" type="button"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -145,7 +145,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary  "><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button class="btn btn-primary  "onclick="location.href='#decouvrir'" type="button"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -153,7 +153,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary  "><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button class="btn btn-primary  "onclick="location.href='#decouvrir'" type="button"><?php echo $multilingualArray['homeView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				  </div>

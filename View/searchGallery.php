@@ -122,7 +122,7 @@ function displayAddMemberFeature(Gallery $galleryTemp,$multilingualArray){
 function displayAddPostFeature(Gallery $galleryTemp,$multilingualArray){
     if(isset($_SESSION['member'])){
         echo '<label for="uplaodInputUsername">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadInputAuthor'].'</label>
-<input type="text" class="form-control" id="uplaodInputUsername" aria-describedby="emailHelp" value="'.$_SESSION['member']->getLogin().'" readonly>
+<input type="text" class="form-control" id="uplaodInputUsername" value="'.$_SESSION['member']->getLogin().'" readonly>
 <label for="uploadInputDesc" class="mt-2">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadInputDescription'].'</label>
 <textarea class="form-control" id ="uploadInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
 <label for="uploadFile" class="mt-2">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadInputFile'].'</label>
@@ -135,7 +135,7 @@ function displayAddPostFeature(Gallery $galleryTemp,$multilingualArray){
 function displayModifyFeature($multilingualArray){
    if(isset($_SESSION['member'])){
     echo'<label for="modifyInputUsername">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadInputAuthor'].'</label>
-    <input type="text" class="form-control" id="modifyInputUsername" aria-describedby="emailHelp" value="'.$_SESSION['member']->getLogin().'" readonly>
+    <input type="text" class="form-control" id="modifyInputUsername" value="'.$_SESSION['member']->getLogin().'" readonly>
     <label for="uploadModifyInputDesc" class="mt-2">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadInputDescription'].'</label>
     <textarea class="form-control" id ="uploadModifyInputDesc" placeholder="1000 char max" aria-label="With textarea" maxlength="1000" name="desc"></textarea>
     <input id="hidden_Field_IdPost" type="hidden" name="idPost" value="">';
@@ -177,9 +177,9 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <form>
                     <div class="form-group">
                         <label for="connexionInputUsername"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputUsername']; ?></label>
-                        <input type="text" class="form-control" id="connexionInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
+                        <input type="text" class="form-control" id="connexionInputUsername"  placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputUsername']; ?>" required>
                         <label for="connexionInputPassword" class="mt-2"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputPassword']; ?></label>
-                        <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>" aria-describedby="passHelp" required>
+                        <input type="password" class="form-control" id="connexionInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionInputPassword']; ?>"  required>
                     </div>
                     <div id="alert_connexion" class="alert alert-info fade show" role="alert">
                         <p id="alert_connexion_message" class="text-center"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalConnexionAlertMessage']; ?></p>
@@ -207,13 +207,13 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <form>
                     <div class="form-group">
                         <label for="registerInputUsername"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputUsername']; ?></label>
-                        <input type="text" class="form-control" id="registerInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
+                        <input type="text" class="form-control" id="registerInputUsername"  placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputUsername']; ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="registerInputPassword"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPassword']; ?></label>
-                        <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>" aria-describedby="passHelp" required>
+                        <input type="password" class="form-control" id="registerInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPassword']; ?>"  required>
                         <label for="confirmRegisterInputPassword"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?></label>
-                        <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>" aria-describedby="passHelp" required>
+                        <input type="password" class="form-control" id="confirmRegisterInputPassword" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterInputPasswordConfirm']; ?>"  required>
                     </div>
                     <div id="alert_register" class="alert alert-info fade show" role="alert">
                         <p id="alert_register_message" class="text-center"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalRegisterAlertMessage']; ?></p>
@@ -227,12 +227,12 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
     </div>
 </div>
 <!-- [MODAL-SEARCH] -->
-<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalSearchTitle" aria-hidden="true">
+<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content backgroundDarkGrey">
             <div class="modal-header">
                 <img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-                <h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchTitle']; ?></h5>
+                <h5 class="mt-2 navFontSize text-center" ><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchTitle']; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
                 </button>
@@ -241,9 +241,9 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <form>
                     <div class="form-group">
                         <label for="searchInputUsername"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-                        <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+                        <input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
                         <label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-                        <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+                        <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?>"  required>
                     </div>
                     <div id="alert_search" class="alert alert-info fade show" role="alert">
                         <p id="alert_search_message" class="text-center"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -257,22 +257,22 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
     </div>
 </div>
 <!--[MODAL IMAGE]-->
-<div id="modalImage" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="modalImage" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div  class="modal-dialog modal-xl">
     <div  class="modal-content backgroundDarkGrey">
       <img id="modalImageImage" src="../Public/Images/Pictures/Slide_03.jpg" alt="Card image cap">
-      <h5 id ="modalImageContent" class="text-center text-break"></h5>
-      <p id="modalImageAuthor" class="text-center"></p>
+      <h5 id ="modalImageContent" class="text-center text-break">...</h5>
+      <p id="modalImageAuthor" class="text-center">...</p>
     </div>
   </div>
 </div>
 <!-- [MODAL-UPLOAD-Image] -->
-<div id="modalUpload" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="modalUpload" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content backgroundDarkGrey">
             <div class="modal-header">
                 <img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-                <h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadImgTitle']; ?></h5>
+                <h5 class="mt-2 navFontSize text-center" ><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalUploadImgTitle']; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
                 </button>
@@ -299,7 +299,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
         <div class="modal-content backgroundDarkGrey">
             <div class="modal-header">
                 <img src="../Public/Images/Icon/Logo01.png" width="50" height="50" alt="Logo">
-                <h5 class="mt-2 navFontSize text-center" id="ModalSearchTitle"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalModifyImgTitle']; ?></h5>
+                <h5 class="mt-2 navFontSize text-center" ><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalModifyImgTitle']; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-times text-white" aria-hidden="true"></i></span>
                 </button>
@@ -335,7 +335,7 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
                 <form>
                     <div class="form-group">
                         <label for="galleryInputName"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
-                        <input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
+                        <input type="text" class="form-control" id="galleryInputName"  placeholder="<?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
                     </div>
                     <div id="alert_gallery" class="alert alert-info fade show" role="alert">
                         <p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['searchGallery'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>

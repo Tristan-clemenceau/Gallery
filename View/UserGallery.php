@@ -69,9 +69,9 @@ ob_start();?>
 				<form>
 					<div class="form-group">
 						<label for="searchInputUsername"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-						<input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+						<input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
 						<label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-						<input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+						<input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" required>
 					</div>
 					<div id="alert_search" class="alert alert-info fade show" role="alert">
 						<p id="alert_search_message" class="text-center"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -99,7 +99,7 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="galleryInputName"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
-	            <input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
+	            <input type="text" class="form-control" id="galleryInputName" placeholder="<?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
 	          </div>
 	          <div id="alert_gallery" class="alert alert-info fade show" role="alert">
 	            <p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>
@@ -121,7 +121,7 @@ ob_start();?>
 					<h1 class=" font-weight-bold text-center" ><span class="titleContent"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['cardGalleryOwnedTitle']; ?></span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
-					<div class="panel panel-primary" id="result_panel">
+					<div class="panel panel-primary" >
                         <div class="panel-heading">
                         </div>
                         <div class="panel-body">
@@ -142,7 +142,7 @@ ob_start();?>
 					<h1 class=" font-weight-bold text-center" ><span class="titleContent"><?php echo $multilingualArray['userGallery'][$_SESSION['lang']]['cardGalleryMemberTitle']; ?></span></h1>
 				</div>
 				<div class="card-body backgroundDarkGrey">
-					<div class="panel panel-primary" id="result_panel">
+					<div class="panel panel-primary">
                         <div class="panel-heading">
                         </div>
                         <div class="panel-body">

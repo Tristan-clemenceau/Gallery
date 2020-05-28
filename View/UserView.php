@@ -42,9 +42,9 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="searchInputUsername"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputUsername']; ?></label>
-	            <input type="text" class="form-control" id="searchInputUsername" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
+	            <input type="text" class="form-control" id="searchInputUsername"  placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputUsername']; ?>" required>
 	            <label for="searchInputGallery" class="mt-2"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputGallery']; ?></label>
-	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputGallery']; ?>" aria-describedby="passHelp" required>
+	            <input type="text" class="form-control" id="searchInputGallery" placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchInputGallery']; ?>"  required>
 	          </div>
 	          <div id="alert_search" class="alert alert-info fade show" role="alert">
 	            <p id="alert_search_message" class="text-center"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalSearchAlertMessage']; ?></p>
@@ -72,7 +72,7 @@ ob_start();?>
 	        <form>
 	          <div class="form-group">
 	            <label for="galleryInputName"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalGalleryInputGallery']; ?></label>
-	            <input type="text" class="form-control" id="galleryInputName" aria-describedby="emailHelp" placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
+	            <input type="text" class="form-control" id="galleryInputName"  placeholder="<?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalGalleryInputGallery']; ?>" required>
 	          </div>
 	          <div id="alert_gallery" class="alert alert-info fade show" role="alert">
 	            <p id="alert_gallery_message" class="text-center"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['modalGalleryAlertMessage']; ?></p>
@@ -102,7 +102,7 @@ ob_start();?>
 				      	<div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary "><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button type="button" class="btn btn-primary " onclick="location.href='#decouvrir'" ><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -110,7 +110,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary "><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button type="button" class="btn btn-primary " onclick="location.href='#decouvrir'"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -118,7 +118,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary "><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button type="button" class="btn btn-primary " onclick="location.href='#decouvrir'" ><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				    <div class="carousel-item">
@@ -126,7 +126,7 @@ ob_start();?>
 				      <div class="carousel-caption d-none d-md-block">
 			        		<h1 class="display-1 font-weight-bold"><span class="itemBoxTitle"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderTitle']; ?></span> </h1>
 			        		<p class="display-4 itemBoxContent"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderContent']; ?></p>
-			        		<a href="#decouvrir"><button type="button" class="btn btn-primary "><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button></a>
+			        		<button type="button" class="btn btn-primary " onclick="location.href='#decouvrir'" ><?php echo $multilingualArray['userView'][$_SESSION['lang']]['sliderBtn']; ?></button>
 			      		</div>
 				    </div>
 				  </div>
@@ -134,7 +134,7 @@ ob_start();?>
   			</div>
   		</div>
   	</div>
-  	<hr class="text-white m-3 whiteLine">
+  	<hr class="text-white m-3 whiteLine"/>
   	<h1 class="display-3 font-weight-bold text-center" id="decouvrir"><span class="titleContent"><?php echo $multilingualArray['userView'][$_SESSION['lang']]['bigTitle']; ?></span></h1>
   	<div class="container-fluid">
   		<div class="row pt-5">
@@ -165,10 +165,9 @@ ob_start();?>
   			</div>
   		</div>
   	</div>
-  	<hr class="text-white m-3 whiteLine">
+  	<hr class="text-white m-3 whiteLine"/>
 	<!--[INCLUDE FOOTER USER] -->
   	<?php include('FooterUser.php'); ?>
-  </body>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php');?>
