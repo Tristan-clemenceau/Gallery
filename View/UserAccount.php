@@ -220,7 +220,7 @@ ob_start();?>
 </div>
 <!--[INCLUDE FOOTER USER] -->
 <?php include('FooterUser.php'); ?>
-</body>
+
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php');?>

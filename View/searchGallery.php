@@ -88,7 +88,7 @@ function displayPost(Gallery $galleryTemp,$multilingualArray){
         }
 
         foreach ($arrayPost as $post) {
-            echo '<div class="col-xl-4 col-md-12 mb-12 "><div class="card borderBleue mb-4"><img class="card-img-top card_Image_modal"src="'."../Public/Images/Uploads/".$post->getImage()->getLink().'" alt="Image"><div class="card-body backgroundDarkGrey"><p class="card-text">'.$post->getDescription().'</p><p class="card-text-botom-auth"><small class="text-muted text-uppercase">'.$post->getPublisher()->getLogin().'</small></p>
+            echo '<div class="col-xl-4 col-md-12 mb-12 "><div class="card borderBleue mb-4"><img class="card-img-top card_Image_modal" src="'."../Public/Images/Uploads/".$post->getImage()->getLink().'" alt="Image"><div class="card-body backgroundDarkGrey"><p class="card-text">'.$post->getDescription().'</p><p class="card-text-botom-auth"><small class="text-muted text-uppercase">'.$post->getPublisher()->getLogin().'</small></p>
             <button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue deletePost" value="'.$post->getId().'">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['cardPostBtnDelete'].'</button><button class="btn btn-outline-secondary btn-md backgroundDarkGrey borderBleue modifyPost" value="'.$post->getId().'">'.$multilingualArray['searchGallery'][$_SESSION['lang']]['cardPostBtnModify'].'</button></div></div></div>';
         }
     }
@@ -452,7 +452,6 @@ if(!isset($_SESSION['member']) && !isset($_SESSION['admin'])){/*ADMIN and User*/
     include('FooterNormal.php'); 
 }
 ?>
-</body>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php');?>

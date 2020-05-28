@@ -12,9 +12,9 @@ if (!isset($_SESSION['lang'])) {
 	$title = $multilingualArray['homeView'][$_SESSION['lang']]['pageTitle'];
 }
 
-$_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f708ad61";?>
+$_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f708ad61";
 
-<?php ob_start(); ?>
+ ob_start(); ?>
 <!--[INCLUDE HEADER NORMAL] -->
 <?php include('HeaderNormal.php'); ?>
 	<!-- [MODAL] -->
@@ -195,7 +195,6 @@ $_SESSION['page'] = "56872ee8a82e5b999541244e318f5e9945a7e95835c47fc54deb0788f70
   	<hr class="text-white m-3 whiteLine">
   	<!--[INCLUDE FOOTER NORMAL] -->
   	<?php include('FooterNormal.php'); ?>
-  </body>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('View/template.php');?>

@@ -289,7 +289,6 @@ ob_start();?>
 		include('FooterNormal.php'); 
 	}
 ?>
-</body>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php');?>
